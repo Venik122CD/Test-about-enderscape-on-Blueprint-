@@ -20,7 +20,7 @@
       "max_delay": 24000,
       "min_delay": 12000,
       "replace_current_music": false,
-      "sound": "enderscape:music.the_end.biome.magnia_crags"
+      "sound": "enderscape:music.enderscape.biome.magnia_crags"
     },
     "particle": {
       "options": {
