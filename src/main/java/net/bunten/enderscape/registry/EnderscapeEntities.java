@@ -69,7 +69,6 @@ public class EnderscapeEntities {
         event.put(RUSTLE.get(), Rustle.createAttributes().build());
     }
     
-    @SubscribeEvent
     public static void spawnPlacementsListener(RegisterSpawnPlacementsEvent event) {
         event.register(DRIFTER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractDrifter::canSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(DRIFTLET.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractDrifter::canSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
