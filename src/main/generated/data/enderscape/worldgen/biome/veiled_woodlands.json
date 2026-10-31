@@ -1,10 +1,9 @@
 {
-  "carvers": {},
   "downfall": 0.5,
   "effects": {
     "additions_sound": {
       "sound": "enderscape:ambient.veiled_woodlands.additions",
-      "tick_chance": 6.0E-4
+      "tick_chance": 0.0006
     },
     "ambient_sound": "enderscape:ambient.veiled_woodlands.loop",
     "fog_color": 1052695,
@@ -17,10 +16,10 @@
       "tick_delay": 6000
     },
     "music": {
-      "max_delay": 24000,
+      "sound": "enderscape:music.enderscape.biome.veiled_woodlands",
       "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "enderscape:music.the_end.biome.veiled_woodlands"
+      "max_delay": 24000,
+      "replace_current_music": false
     },
     "particle": {
       "options": {
@@ -60,9 +59,10 @@
       "enderscape:veiled_trees",
       "enderscape:veiled_woodlands_vegetation",
       "enderscape:wisp_flower_patches",
-      "enderscape:murublight_shelf"
+      "enderscape:murublight_bracket"
     ]
   ],
+  "carvers": [],
   "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
@@ -73,7 +73,7 @@
         "type": "enderscape:rustle",
         "maxCount": 3,
         "minCount": 2,
-        "weight": 20
+        "weight": 6
       }
     ],
     "misc": [],
@@ -82,7 +82,7 @@
         "type": "enderscape:rubblemite",
         "maxCount": 3,
         "minCount": 2,
-        "weight": 4
+        "weight": 2
       },
       {
         "type": "minecraft:enderman",

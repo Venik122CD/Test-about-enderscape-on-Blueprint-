@@ -36,7 +36,7 @@ public class EnderscapeBlockTagProvider extends BlockTagsProvider {
         tag(CORRUPT_BARRENS_VEGETATION_PLANTABLE_ON).addTag(OVERGROWTH_BLOCKS).addTag(BlockTags.DIRT).add(END_STONE, MIRESTONE.get(), VEILED_END_STONE.get());
         tag(DRY_END_GROWTH_PLANTABLE_ON).add(END_STONE, VEILED_END_STONE.get(), CELESTIAL_OVERGROWTH.get());
         tag(DUSK_PURPUR_BLOCKS).add(DUSK_PURPUR_BLOCK.get(), DUSK_PURPUR_PILLAR.get(), DUSK_PURPUR_STAIRS.get(), DUSK_PURPUR_SLAB.get(), DUSK_PURPUR_WALL.get(), CHISELED_DUSK_PURPUR.get());
-        tag(ENDERMITE_SAFE_WHEN_NEARBY).add(CORRUPT_OVERGROWTH.get(), CORRUPT_PATH_BLOCK.get(), CORRUPT_GROWTH.get(), POTTED_CORRUPT_GROWTH.get());
+        tag(ENDERMITE_SAFE_WHEN_NEARBY).add(CORRUPT_OVERGROWTH.get(), CORRUPT_PATH.get(), CORRUPT_GROWTH.get(), POTTED_CORRUPT_GROWTH.get());
         tag(END_ORE_BLOCKS).add(NEBULITE_ORE.get(), SHADOLINE_ORE.get(), MIRESTONE_NEBULITE_ORE.get(), MIRESTONE_SHADOLINE_ORE.get());
         tag(ETCHED_MAGNIA_BLOCKS).add(ETCHED_ALLURING_MAGNIA.get(), ETCHED_REPULSIVE_MAGNIA.get());
         tag(FLANGER_BERRY_VINE_PLANTABLE_ON).addTag(CHANTERELLE_CAP_BLOCKS);
@@ -108,7 +108,7 @@ public class EnderscapeBlockTagProvider extends BlockTagsProvider {
                 .addTag(SHADOLINE_BLOCKS)
                 .addTag(VERADITE_BLOCKS)
                 .addTag(KURODITE_BLOCKS)
-                .add(BLINKLAMP.get(), BULB_LANTERN.get(), CELESTIAL_PATH_BLOCK.get(), CORRUPT_PATH_BLOCK.get(), END_LAMP.get(), NEBULITE_BLOCK.get(), RAW_SHADOLINE_BLOCK.get(), VEILED_END_STONE.get(), VOID_SHALE.get());
+                .add(BLINKLAMP.get(), BULB_LANTERN.get(), CELESTIAL_PATH.get(), CORRUPT_PATH.get(), END_LAMP.get(), NEBULITE_BLOCK.get(), RAW_SHADOLINE_BLOCK.get(), VEILED_END_STONE.get(), VOID_SHALE.get());
 
         tag(BlockTags.DRAGON_IMMUNE)
                 .add(END_STONE_BRICKS, END_STONE_BRICK_STAIRS, END_STONE_BRICK_SLAB, END_STONE_BRICK_WALL)
@@ -121,7 +121,7 @@ public class EnderscapeBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.BEACON_BASE_BLOCKS).add(NEBULITE_BLOCK.get());
         tag(BlockTags.CEILING_HANGING_SIGNS).add(VEILED_HANGING_SIGN.get(), CELESTIAL_HANGING_SIGN.get(), MURUBLIGHT_HANGING_SIGN.get());
-        tag(BlockTags.CLIMBABLE).add(BLINKLIGHT_VINES_BODY.get(), BLINKLIGHT_VINES_HEAD.get(), FLANGER_BERRY_VINE.get(), MURUBLIGHT_SHELF.get(), VEILED_VINES.get());
+        tag(BlockTags.CLIMBABLE).add(BLINKLIGHT_VINES_BODY.get(), BLINKLIGHT_VINES_HEAD.get(), FLANGER_BERRY_VINE.get(), MURUBLIGHT_BRACKET.get(), VEILED_VINES.get());
         tag(BlockTags.COMBINATION_STEP_SOUND_BLOCKS).add(VEILED_LEAF_PILE.get());
         tag(BlockTags.FALL_DAMAGE_RESETTING).add(VEILED_LEAF_PILE.get());
         tag(BlockTags.FEATURES_CANNOT_REPLACE).add(END_TRIAL_SPAWNER.get(), END_VAULT.get());
@@ -222,7 +222,7 @@ public class EnderscapeBlockTagProvider extends BlockTagsProvider {
 
         tag(externalKey("antixray", "hidden_only_ores")).add(NEBULITE_ORE.get(), MIRESTONE_NEBULITE_ORE.get());
 
-        tag(externalKey("create", "tree_attachments")).add(MURUBLIGHT_SHELF.get());
+        tag(externalKey("create", "tree_attachments")).add(MURUBLIGHT_BRACKET.get());
         tag(externalKey("create", "tree_roots")).add(VEILED_LOG.get(), VEILED_WOOD.get());
         tag(externalKey("create", "wrench_pickup")).add(BLINKLAMP.get(), ALLURING_MAGNIA_SPROUT.get(), REPULSIVE_MAGNIA_SPROUT.get());
     }

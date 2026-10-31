@@ -1,5 +1,4 @@
 {
-  "carvers": {},
   "downfall": 0.5,
   "effects": {
     "additions_sound": {
@@ -17,10 +16,10 @@
       "tick_delay": 6000
     },
     "music": {
-      "max_delay": 24000,
+      "sound": "enderscape:music.enderscape.biome.celestial_grove",
       "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "enderscape:music.the_end.biome.celestial_grove"
+      "max_delay": 24000,
+      "replace_current_music": false
     },
     "particle": {
       "options": {
@@ -61,9 +60,10 @@
       "enderscape:celestial_grove_vegetation",
       "enderscape:bulb_flower_patches",
       "enderscape:common_dry_end_growth",
-      "enderscape:uncommon_murublight_shelf"
+      "enderscape:uncommon_murublight_bracket"
     ]
   ],
+  "carvers": [],
   "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {
@@ -75,12 +75,6 @@
         "maxCount": 6,
         "minCount": 3,
         "weight": 6
-      },
-      {
-        "type": "enderscape:driftlet",
-        "maxCount": 3,
-        "minCount": 2,
-        "weight": 2
       }
     ],
     "misc": [],

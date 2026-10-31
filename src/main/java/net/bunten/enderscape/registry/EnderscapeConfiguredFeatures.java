@@ -2,6 +2,7 @@ package net.bunten.enderscape.registry;
 
 import net.bunten.enderscape.Enderscape;
 import net.bunten.enderscape.block.properties.StateProperties;
+import net.bunten.enderscape.feature.MagniaSpikeConfig;
 import net.bunten.enderscape.feature.*;
 import net.bunten.enderscape.registry.tag.EnderscapeBlockTags;
 import net.minecraft.core.Direction;
@@ -55,9 +56,11 @@ public class EnderscapeConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_CELESTIAL_CHANTERELLE = registerKey("large_celestial_chanterelle");
     public static final ResourceKey<ConfiguredFeature<?, ?>> MAGNIA_ARCH = registerKey("magnia_arch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> MAGNIA_TOWER = registerKey("magnia_tower");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MAGNIA_SPIKE = registerKey("magnia_spike");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_MAGNIA_SPIKE = registerKey("large_magnia_spike");
     public static final ResourceKey<ConfiguredFeature<?, ?>> MIRESTONE_BLOB = registerKey("mirestone_blob");
     public static final ResourceKey<ConfiguredFeature<?, ?>> MIRESTONE_PILLARS = registerKey("mirestone_pillars");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MURUBLIGHT_SHELF = registerKey("murublight_shelf");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MURUBLIGHT_BRACKET = registerKey("murublight_bracket");
     public static final ResourceKey<ConfiguredFeature<?, ?>> NEBULITE_ORE = registerKey("nebulite_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DOWNWARD_REPULSIVE_MAGNIA_SPROUT = registerKey("downward_repulsive_magnia_sprout");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SCATTERED_SHADOLINE_ORE = registerKey("scattered_shadoline_ore");
@@ -106,7 +109,7 @@ public class EnderscapeConfiguredFeatures {
 
     public void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         registerVeiledWoodlands(context);
-        registerMagniaCrags(context);
+        registerMagniaFields(context);
         registerCelestialGrove(context);
         registerCorruptBarrens(context);
 
@@ -114,7 +117,7 @@ public class EnderscapeConfiguredFeatures {
 
         register(context, CHORUS_SPROUTS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simple(EnderscapeBlocks.CHORUS_SPROUTS.get())));
         register(context, DRY_END_GROWTH, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simple(EnderscapeBlocks.DRY_END_GROWTH.get())));
-        register(context, MURUBLIGHT_SHELF, EnderscapeFeatures.MURUBLIGHT_SHELF.get(), NoneFeatureConfiguration.NONE);
+        register(context, MURUBLIGHT_BRACKET, EnderscapeFeatures.MURUBLIGHT_BRACKET.get(), NoneFeatureConfiguration.NONE);
 
         register(context, NEBULITE_ORE, Feature.ORE, new OreConfiguration(nebuliteOreTargets, 4));
         register(context, CEILING_NEBULITE_ORE, EnderscapeFeatures.CEILING_ORE.get(), new CeilingOreConfig(nebuliteOreTargets, ConstantInt.of(8)));
@@ -178,7 +181,7 @@ public class EnderscapeConfiguredFeatures {
         ));
     }
 
-    private void registerMagniaCrags(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+    private void registerMagniaFields(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         register(context, UPWARD_ALLURING_MAGNIA_SPROUT, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(simple(EnderscapeBlocks.ALLURING_MAGNIA_SPROUT.get())));
 
         register(context, DOWNWARD_REPULSIVE_MAGNIA_SPROUT, Feature.BLOCK_COLUMN,
@@ -187,7 +190,9 @@ public class EnderscapeConfiguredFeatures {
                 ), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, true));
 
         register(context, MAGNIA_ARCH, EnderscapeFeatures.MAGNIA_ARCH.get(), new NoneFeatureConfiguration());
-        register(context, MAGNIA_TOWER, EnderscapeFeatures.MAGNIA_TOWER.get(), new MagniaTowerConfig(UniformFloat.of(6.0F, 8.0F), UniformInt.of(12, 18), ConstantInt.of(3), ConstantInt.of(7), ConstantFloat.of(0.06F)));
+        register(context, MAGNIA_SPIKE, EnderscapeFeatures.MAGNIA_SPIKE.get(), new MagniaSpikeConfig(UniformInt.of(3, 8), ConstantFloat.of(0.05F), 2));
+        register(context, LARGE_MAGNIA_SPIKE, EnderscapeFeatures.MAGNIA_SPIKE.get(), new MagniaSpikeConfig(UniformInt.of(6, 12), ConstantFloat.of(0.05F), 6));
+        register(context, MAGNIA_TOWER, EnderscapeFeatures.MAGNIA_TOWER.get(), new MagniaTowerConfig(UniformFloat.of(6.0F, 8.0F), UniformInt.of(12, 18), ConstantInt.of(3), ConstantInt.of(7), ConstantFloat.of(0.025F), ConstantFloat.of(0.05F)));
     }
 
     private void registerCelestialGrove(BootstrapContext<ConfiguredFeature<?, ?>> context) {

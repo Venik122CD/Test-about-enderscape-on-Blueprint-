@@ -130,7 +130,13 @@ public class EnderscapeClientNetworking {
         ResourceLocation location = payload.location();
 
         client.execute(() -> {
-            EnderscapeClient.structureMusic = location.equals(Enderscape.END_CITY_RESOURCE_KEY.location()) ? Optional.of(EnderscapeMusic.MUSIC_END_CITY) : Optional.empty();
+            if (location.equals(Enderscape.END_CITY_RESOURCE_KEY.location())) {
+                EnderscapeClient.structureMusic = Optional.of(EnderscapeMusic.MUSIC_END_CITY);
+            } else if (location.equals(ResourceLocation.withDefaultNamespace("stronghold")) || location.equals(Enderscape.id("stronghold"))) {
+                EnderscapeClient.structureMusic = Optional.of(EnderscapeMusic.MUSIC_STRONGHOLD);
+            } else {
+                EnderscapeClient.structureMusic = Optional.empty();
+            }
         });
     }
 

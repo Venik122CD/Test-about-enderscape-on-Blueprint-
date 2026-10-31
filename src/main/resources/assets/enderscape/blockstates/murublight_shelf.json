@@ -1,120 +1,402 @@
 {
-	"variants": {
-		"facing=east": [
-			{
-				"model": "enderscape:block/murublight_shelf",
-				"x": 90,
-				"y": 90
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_2",
-				"x": 90,
-				"y": 90
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_3",
-				"x": 90,
-				"y": 90
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_4",
-				"x": 90,
-				"y": 90
-			}
-		],
-		"facing=north": [
-			{
-				"model": "enderscape:block/murublight_shelf",
-				"x": 90
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_2",
-				"x": 90
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_3",
-				"x": 90
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_4",
-				"x": 90
-			}
-		],
-		"facing=south": [
-			{
-				"model": "enderscape:block/murublight_shelf",
-				"x": 90,
-				"y": 180
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_2",
-				"x": 90,
-				"y": 180
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_3",
-				"x": 90,
-				"y": 180
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_4",
-				"x": 90,
-				"y": 180
-			}
-		],
-		"facing=west": [
-			{
-				"model": "enderscape:block/murublight_shelf",
-				"x": 90,
-				"y": 270
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_2",
-				"x": 90,
-				"y": 270
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_3",
-				"x": 90,
-				"y": 270
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_4",
-				"x": 90,
-				"y": 270
-			}
-		],
-		"facing=down": [
-			{
-				"model": "enderscape:block/murublight_shelf",
-				"x": 180
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_2",
-				"x": 180
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_3",
-				"x": 180
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_4",
-				"x": 180
-			}
-		],
-		"facing=up": [
-			{
-				"model": "enderscape:block/murublight_shelf"
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_2"
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_3"
-			},
-			{
-				"model": "enderscape:block/murublight_shelf_4"
-			}
-		]
-	}
+    "multipart": [
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf"
+            },
+            "when": {
+                "facing": "north"
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf",
+                "y": 90
+            },
+            "when": {
+                "facing": "east"
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf",
+                "y": 180
+            },
+            "when": {
+                "facing": "south"
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf",
+                "y": 270
+            },
+            "when": {
+                "facing": "west"
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_unpowered"
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "north"
+                    },
+                    {
+                        "powered": "false"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_unpowered",
+                "y": 90
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "east"
+                    },
+                    {
+                        "powered": "false"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_unpowered",
+                "y": 180
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "south"
+                    },
+                    {
+                        "powered": "false"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_unpowered",
+                "y": 270
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "west"
+                    },
+                    {
+                        "powered": "false"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_unconnected"
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "north"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "unconnected"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_unconnected",
+                "y": 90
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "east"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "unconnected"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_unconnected",
+                "y": 180
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "south"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "unconnected"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_unconnected",
+                "y": 270
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "west"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "unconnected"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_left"
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "north"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "left"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_left",
+                "y": 90
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "east"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "left"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_left",
+                "y": 180
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "south"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "left"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_left",
+                "y": 270
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "west"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "left"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_center"
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "north"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "center"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_center",
+                "y": 90
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "east"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "center"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_center",
+                "y": 180
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "south"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "center"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_center",
+                "y": 270
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "west"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "center"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_right"
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "north"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "right"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_right",
+                "y": 90
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "east"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "right"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_right",
+                "y": 180
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "south"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "right"
+                    }
+                ]
+            }
+        },
+        {
+            "apply": {
+                "model": "enderscape:block/murublight_shelf_right",
+                "y": 270
+            },
+            "when": {
+                "AND": [
+                    {
+                        "facing": "west"
+                    },
+                    {
+                        "powered": "true"
+                    },
+                    {
+                        "side_chain": "right"
+                    }
+                ]
+            }
+        }
+    ]
 }

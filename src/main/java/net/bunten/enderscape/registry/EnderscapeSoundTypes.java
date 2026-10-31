@@ -25,7 +25,11 @@ public class EnderscapeSoundTypes {
     public static final SoundType CHORUS_SPROUTS = registerSoundType("chorus_sprouts", 1, 1.15F);
     public static final SoundType CORRUPT_GROWTH = registerSoundType("corrupt_growth", 0.5F, 1);
     public static final SoundType CORRUPT_OVERGROWTH = registerSoundType("corrupt_overgrowth", 1, 1.1F);
-    public static final SoundType CUT_SHADOLINE = registerSoundType("cut_shadoline", 1.1F, 1.2F);
+    public static final SoundType BLISTERED_MAGNIA = registerSoundType("blistered_magnia", 1, 1.2F);
+    public static final SoundType DUSK_PURPUR = registerSoundType("dusk_purpur", 0.7F, 1.1F);
+    public static final SoundType ETCHED_MAGNIA = registerSoundType("etched_magnia", 1, 1.2F);
+    public static final SoundType MAGNIA_RADIO = registerSoundType("magnia_radio", 1, 1.2F);
+    public static final SoundType POLARIZED_MAGNIA = registerSoundType("polarized_magnia", 1F, 1F);
     public static final SoundType DRIFT_JELLY_BLOCK = registerSoundType("drift_jelly", 1, 1);
     public static final SoundType DRY_END_GROWTH = registerSoundType("dry_end_growth", 1, 1.15F);
     public static final SoundType END_GATEWAY = registerSoundType("end_gateway", 1, 1F);
@@ -49,7 +53,7 @@ public class EnderscapeSoundTypes {
     public static final SoundType MURUBLIGHT_CAP = registerSoundType("murublight_cap", 0.8F, 1.2F);
     public static final SoundType MURUBLIGHT_HANGING_SIGN = registerSoundType("murublight_hanging_sign", 0.8F, 1.2F);
     public static final SoundType MURUBLIGHT_PLANKS = registerSoundType("murublight_planks", 1, 1);
-    public static final SoundType MURUBLIGHT_SHELF = registerSoundType("murublight_shelf", 1, 1);
+    public static final SoundType MURUBLIGHT_BRACKET = registerSoundType("murublight_bracket", 1, 1);
     public static final SoundType MURUBLIGHT_STEM = registerSoundType("murublight_stem", 1, 1);
     public static final SoundType NEBULITE_BLOCK = registerSoundType("nebulite_block", 1, 1.23F);
     public static final SoundType NEBULITE_ORE = registerSoundType("nebulite_ore", 1, 1.3F);

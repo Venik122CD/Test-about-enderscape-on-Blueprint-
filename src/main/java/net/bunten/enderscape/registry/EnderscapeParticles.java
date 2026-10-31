@@ -39,6 +39,9 @@ public class EnderscapeParticles {
     public static final Supplier<SimpleParticleType> RUSTLE_SLEEPING_BUBBLE = register("rustle_sleeping_bubble", true);
     public static final Supplier<SimpleParticleType> RUSTLE_SLEEPING_BUBBLE_POP = register("rustle_sleeping_bubble_pop", true);
     public static final Supplier<SimpleParticleType> VEILED_LEAVES = register("veiled_leaves", false);
+    public static final Supplier<SimpleParticleType> ENTITY_EFFECTED_BY_MAGNIA = register("entity_effected_by_magnia", false);
+    public static final Supplier<SimpleParticleType> MAGNIA_BLISTERING = register("magnia_blistering", true);
+    public static final Supplier<SimpleParticleType> VOID_FIRE_FLAME = register("void_fire_flame", false);
     public static final Supplier<SimpleParticleType> VOID_POOF = register("void_poof", true);
     public static final Supplier<SimpleParticleType> VOID_STARS = register("void_stars", false);
 

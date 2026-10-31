@@ -52,7 +52,7 @@ public class EnderscapeCreativeModeTab {
         output.accept(SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE);
         output.accept(STASIS_ARMOR_TRIM_SMITHING_TEMPLATE.get());
 
-        output.accept(getEnchantedBook(parameters, EnderscapeEnchantments.LIGHTSPEED, 3));
+        output.accept(getEnchantedBook(parameters, EnderscapeEnchantments.RESONANCE, 3));
         output.accept(getEnchantedBook(parameters, EnderscapeEnchantments.TRANSDIMENSIONAL, 1));
         output.accept(getEnchantedBook(parameters, EnderscapeEnchantments.REBOUND, 1));
 
@@ -78,6 +78,11 @@ public class EnderscapeCreativeModeTab {
         output.accept(DRIFT_JELLY_BOTTLE.get());
         output.accept(DRIFT_JELLY_BLOCK.get());
         output.accept(DRIFT_LEGGINGS.get());
+        output.accept(SHADOLINE_HELMET.get());
+        output.accept(SHADOLINE_CHESTPLATE.get());
+        output.accept(SHADOLINE_LEGGINGS.get());
+        output.accept(SHADOLINE_BOOTS.get());
+        output.accept(DAGGER.get());
         output.accept(MAGNIA_ATTRACTOR.get());
         output.accept(MIRROR.get());
         output.accept(ELYTRA);
@@ -151,10 +156,19 @@ public class EnderscapeCreativeModeTab {
         output.accept(CHISELED_KURODITE.get());
 
         output.accept(ALLURING_MAGNIA.get());
+        output.accept(POLARIZED_MAGNIA.get());
+        output.accept(BLISTERED_MAGNIA.get());
+        output.accept(MAGNIA_RADIO.get());
         output.accept(ETCHED_ALLURING_MAGNIA.get());
+        output.accept(ETCHED_ALLURING_MAGNIA_STAIRS.get());
+        output.accept(ETCHED_ALLURING_MAGNIA_SLAB.get());
+        output.accept(ETCHED_ALLURING_MAGNIA_WALL.get());
         output.accept(ALLURING_MAGNIA_SPROUT.get());
         output.accept(REPULSIVE_MAGNIA.get());
         output.accept(ETCHED_REPULSIVE_MAGNIA.get());
+        output.accept(ETCHED_REPULSIVE_MAGNIA_STAIRS.get());
+        output.accept(ETCHED_REPULSIVE_MAGNIA_SLAB.get());
+        output.accept(ETCHED_REPULSIVE_MAGNIA_WALL.get());
         output.accept(REPULSIVE_MAGNIA_SPROUT.get());
 
         output.accept(VOID_SHALE.get());
@@ -164,6 +178,7 @@ public class EnderscapeCreativeModeTab {
         output.accept(RAW_SHADOLINE.get());
         output.accept(RAW_SHADOLINE_BLOCK.get());
         output.accept(SHADOLINE_INGOT.get());
+        output.accept(SHADOLINE_NUGGET.get());
         output.accept(SHADOLINE_BLOCK.get());
         output.accept(SHADOLINE_BLOCK_STAIRS.get());
         output.accept(SHADOLINE_BLOCK_SLAB.get());
@@ -174,6 +189,8 @@ public class EnderscapeCreativeModeTab {
         output.accept(CUT_SHADOLINE_WALL.get());
         output.accept(CHISELED_SHADOLINE.get());
         output.accept(SHADOLINE_PILLAR.get());
+        output.accept(SHADOLINE_BARS.get());
+        output.accept(SHADOLINE_CHAIN.get());
 
         output.accept(NEBULITE_ORE.get());
         output.accept(MIRESTONE_NEBULITE_ORE.get());
@@ -232,10 +249,13 @@ public class EnderscapeCreativeModeTab {
         output.accept(VEILED_HANGING_SIGN_ITEM.get());
 
         output.accept(CELESTIAL_OVERGROWTH.get());
-        output.accept(CELESTIAL_PATH_BLOCK.get());
+        output.accept(CELESTIAL_PATH.get());
         output.accept(CELESTIAL_GROWTH.get());
         output.accept(BULB_FLOWER.get());
         output.accept(BULB_LANTERN.get());
+        output.accept(VOID_TORCH_ITEM.get());
+        output.accept(VOID_LANTERN.get());
+        output.accept(VOID_CAMPFIRE.get());
         output.accept(FLANGER_BERRY.get());
         output.accept(FLANGER_BERRY_FLOWER.get());
         output.accept(UNRIPE_FLANGER_BERRY_BLOCK.get());
@@ -265,12 +285,12 @@ public class EnderscapeCreativeModeTab {
         output.accept(CELESTIAL_HANGING_SIGN_ITEM.get());
 
         output.accept(CORRUPT_OVERGROWTH.get());
-        output.accept(CORRUPT_PATH_BLOCK.get());
+        output.accept(CORRUPT_PATH.get());
         output.accept(CORRUPT_GROWTH.get());
         output.accept(BLINKLIGHT.get());
         output.accept(BLINKLAMP.get());
 
-        output.accept(MURUBLIGHT_SHELF_ITEM.get());
+        output.accept(MURUBLIGHT_BRACKET_ITEM.get());
         output.accept(MURUBLIGHT_CHANTERELLE.get());
 
         output.accept(MURUBLIGHT_CAP.get());
@@ -457,10 +477,10 @@ public class EnderscapeCreativeModeTab {
             addAfter(event, END_STONE,
                     VEILED_END_STONE,
                     CELESTIAL_OVERGROWTH,
-                    CELESTIAL_PATH_BLOCK,
+                    CELESTIAL_PATH,
                     MIRESTONE,
                     CORRUPT_OVERGROWTH,
-                    CORRUPT_PATH_BLOCK,
+                    CORRUPT_PATH,
                     VERADITE,
                     KURODITE,
                     ALLURING_MAGNIA,
@@ -478,7 +498,7 @@ public class EnderscapeCreativeModeTab {
             addBefore(event, OAK_LEAVES, CELESTIAL_STEM, MURUBLIGHT_STEM);
             addBefore(event, BROWN_MUSHROOM_BLOCK, VEILED_LEAVES, VEILED_LEAF_PILE, VEILED_VINES);
             addBefore(event, OAK_SAPLING, CELESTIAL_CAP, MURUBLIGHT_CAP);
-            addBefore(event, SHORT_GRASS, CELESTIAL_CHANTERELLE, MURUBLIGHT_CHANTERELLE, MURUBLIGHT_SHELF_ITEM);
+            addBefore(event, SHORT_GRASS, CELESTIAL_CHANTERELLE, MURUBLIGHT_CHANTERELLE, MURUBLIGHT_BRACKET_ITEM);
             addBefore(event, BROWN_MUSHROOM, VEILED_SAPLING);
 
             addBefore(event, VINE,
@@ -518,7 +538,7 @@ public class EnderscapeCreativeModeTab {
             addBefore(event, LEATHER_HELMET, END_STONE_RUBBLE_SHIELD, VERADITE_RUBBLE_SHIELD, MIRESTONE_RUBBLE_SHIELD, KURODITE_RUBBLE_SHIELD);
             addAfter(event, TURTLE_HELMET, DRIFT_LEGGINGS);
         } else if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-            addBefore(event, CARROT, FLANGER_BERRY, MURUBLIGHT_SHELF_ITEM);
+            addBefore(event, CARROT, FLANGER_BERRY, MURUBLIGHT_BRACKET_ITEM);
             addBefore(event, PUMPKIN_PIE, CHORUS_CAKE_ROLL_ITEM);
             addAfter(event, HONEY_BOTTLE, DRIFT_JELLY_BOTTLE);
         } else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {

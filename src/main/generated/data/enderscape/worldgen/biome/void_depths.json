@@ -1,10 +1,9 @@
 {
-  "carvers": {},
   "downfall": 0.5,
   "effects": {
     "additions_sound": {
       "sound": "enderscape:ambient.void_depths.additions",
-      "tick_chance": 6.0E-4
+      "tick_chance": 0.0006
     },
     "ambient_sound": "enderscape:ambient.void_depths.loop",
     "fog_color": 328712,
@@ -17,10 +16,10 @@
       "tick_delay": 6000
     },
     "music": {
-      "max_delay": 24000,
+      "sound": "enderscape:music.enderscape.biome.void_depths",
       "min_delay": 12000,
-      "replace_current_music": false,
-      "sound": "enderscape:music.the_end.biome.void_depths"
+      "max_delay": 24000,
+      "replace_current_music": false
     },
     "particle": {
       "options": {
@@ -52,9 +51,10 @@
     [
       "enderscape:uncommon_chorus_plants",
       "enderscape:uncommon_chorus_sprouts",
-      "enderscape:murublight_shelf"
+      "enderscape:murublight_bracket"
     ]
   ],
+  "carvers": [],
   "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {

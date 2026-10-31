@@ -32,6 +32,9 @@ public class EnderscapeParticleProviders {
         event.registerSpriteSet(RUSTLE_SLEEPING_BUBBLE_POP.get(), RustleSleepingBubblePopParticle.Provider::new);
         event.registerSpriteSet(VEILED_LEAVES.get(), VeiledLeavesParticle.Provider::new);
         event.registerSpriteSet(VOID_POOF.get(), VoidPoofParticle.Provider::new);
+        event.registerSpriteSet(ENTITY_EFFECTED_BY_MAGNIA.get(), net.minecraft.client.particle.EndRodParticle.Provider::new);
+        event.registerSpriteSet(MAGNIA_BLISTERING.get(), net.minecraft.client.particle.EndRodParticle.Provider::new);
+        event.registerSpriteSet(VOID_FIRE_FLAME.get(), net.minecraft.client.particle.FlameParticle.Provider::new);
         event.registerSpriteSet(VOID_STARS.get(), VoidStarParticle.Provider::new);
     }
 }

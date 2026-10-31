@@ -12,6 +12,8 @@ public class StateProperties extends BlockStateProperties {
     public static final IntegerProperty BLINKLIGHT_BODY_STAGE = IntegerProperty.create("stage", 0, 2);
     public static final IntegerProperty BLINKLIGHT_HEAD_STAGE = IntegerProperty.create("stage", 0, 5);
 
+    public static final EnumProperty<MagniaPolarityProperty> MAGNIA_POLARITY = EnumProperty.create("polarity", MagniaPolarityProperty.class);
+    public static final EnumProperty<OptionalMagniaPolarityProperty> OPTIONAL_MAGNIA_POLARITY = EnumProperty.create("polarity", OptionalMagniaPolarityProperty.class);
     public static final EnumProperty<Part> GROWTH_PART = EnumProperty.create("part", Part.class);
 
 }

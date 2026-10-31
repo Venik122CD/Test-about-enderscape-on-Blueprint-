@@ -40,7 +40,7 @@ import org.jetbrains.annotations.Nullable;
 
 import static net.bunten.enderscape.block.properties.MagniaType.REPULSIVE;
 
-public abstract class MagniaSproutBlock extends DirectionalPlantBlock implements SimpleWaterloggedBlock, EntityBlock {
+public abstract class MagniaSproutBlock extends DirectionalPlantBlock implements HasMagniaPolarity, SimpleWaterloggedBlock, EntityBlock {
 
     public static final BooleanProperty POWERED = StateProperties.POWERED;
     public static final BooleanProperty OVERHEATED = StateProperties.OVERHEATED;
@@ -52,6 +52,11 @@ public abstract class MagniaSproutBlock extends DirectionalPlantBlock implements
         super(DirectionProperties.create().all(), settings);
         registerDefaultState(defaultBlockState().setValue(POWERED, false).setValue(OVERHEATED, false).setValue(WATERLOGGED, false));
         this.magniaType = magniaType;
+    }
+
+    @Override
+    public java.util.Optional<MagniaType> getPolarity(BlockState state) {
+        return java.util.Optional.of(magniaType);
     }
 
     @Nullable
@@ -95,7 +100,7 @@ public abstract class MagniaSproutBlock extends DirectionalPlantBlock implements
     }
 
     private boolean trySetPowered(BlockState state, Level level, BlockPos pos) {
-        if (isOverheated(state) || shouldOverheat(level, pos) || !getNeighborSignal(level, pos, state.getValue(FACING))) return false;
+        if (isOverheated(state) || shouldOverheat(level, pos) || !getNeighborSignal(state, level, pos, state.getValue(FACING))) return false;
 
         return setPowered(state, level, pos, true);
     }
@@ -142,6 +147,21 @@ public abstract class MagniaSproutBlock extends DirectionalPlantBlock implements
     }
 
     @Override
+    protected void randomTick(BlockState state, net.minecraft.server.level.ServerLevel level, BlockPos pos, net.minecraft.util.RandomSource random) {
+        BlockPos relative = pos.relative(getFacing(state));
+        if (shouldBlisterMagnia(state, level, relative) && random.nextInt(3) == 0) {
+            level.setBlockAndUpdate(relative, net.bunten.enderscape.registry.EnderscapeBlocks.BLISTERED_MAGNIA.get().defaultBlockState().setValue(BlisteredMagniaBlock.POLARITY, BlisteredMagniaBlock.selectPolarity(level, relative)));
+            Vec3 center = relative.getCenter();
+            level.sendParticles(net.bunten.enderscape.registry.EnderscapeParticles.MAGNIA_BLISTERING.get(), center.x(), center.y(), center.z(), 12, 0.7F, 0.7F, 0.7F, 0);
+        }
+    }
+
+    private static boolean shouldBlisterMagnia(BlockState state, Level level, BlockPos relative) {
+        BlockState target = level.getBlockState(relative);
+        return isPowered(state) && target.getBlock() instanceof MagniaBlock && net.bunten.enderscape.util.MagniaUtil.isMatchingPolarity(state, target);
+    }
+
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, POWERED, OVERHEATED, WATERLOGGED);
     }
@@ -167,7 +187,7 @@ public abstract class MagniaSproutBlock extends DirectionalPlantBlock implements
         FluidState fluid = level.getFluidState(pos);
         boolean shouldOverheat = shouldOverheat(level, pos);
 
-        return state.setValue(POWERED, getNeighborSignal(level, pos, state.getValue(FACING)) && !shouldOverheat).setValue(OVERHEATED, shouldOverheat).setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
+        return state.setValue(POWERED, getNeighborSignal(state, level, pos, state.getValue(FACING)) && !shouldOverheat).setValue(OVERHEATED, shouldOverheat).setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
     }
 
     @Override
@@ -182,7 +202,8 @@ public abstract class MagniaSproutBlock extends DirectionalPlantBlock implements
         return super.getFluidState(state);
     }
 
-    private boolean getNeighborSignal(SignalGetter getter, BlockPos pos, Direction facing) {
+    private boolean getNeighborSignal(BlockState state, SignalGetter getter, BlockPos pos, Direction facing) {
+        if (net.bunten.enderscape.util.MagniaUtil.getStrongestPowerSignal(state, getter, pos, facing.getOpposite()) > 0) return true;
         for (Direction direction : Direction.values()) {
             if (direction != facing && getter.hasSignal(pos.relative(direction), direction)) return true;
         }
@@ -205,7 +226,7 @@ public abstract class MagniaSproutBlock extends DirectionalPlantBlock implements
     private void updateState(BlockState state, Level level, BlockPos pos, boolean schedule) {
         if (level.isClientSide()) return;
 
-        boolean hasSignal = getNeighborSignal(level, pos, state.getValue(FACING));
+        boolean hasSignal = getNeighborSignal(state, level, pos, state.getValue(FACING));
         boolean shouldOverheat = shouldOverheat(level, pos);
         boolean overheated = isOverheated(state);
         boolean powered = isPowered(state);

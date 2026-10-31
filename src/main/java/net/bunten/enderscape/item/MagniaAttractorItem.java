@@ -105,17 +105,31 @@ public class MagniaAttractorItem extends NebuliteToolItem {
         return 0;
     }
 
-    public static boolean shouldReduceFuel(ItemStack stack) {
-        return getEntitiesPulled(stack) >= getEntitiesPulledToUseFuel(stack);
+    public static int getEntitiesPulledToUseFuel(ItemStack stack, Level level) {
+        int base = getEntitiesPulledToUseFuel(stack);
+        if (!(level instanceof net.minecraft.server.level.ServerLevel server)) return base;
+        org.apache.commons.lang3.mutable.MutableFloat value = new org.apache.commons.lang3.mutable.MutableFloat(base);
+        net.minecraft.world.item.enchantment.EnchantmentHelper.runIterationOnItem(stack, (holder, enchantmentLevel) -> holder.value().modifyItemFilteredCount(net.bunten.enderscape.registry.EnderscapeEnchantmentEffectComponents.INTEGER_COUNTER_THRESHOLD.get(), server, enchantmentLevel, stack, value));
+        return (int) value.floatValue();
+    }
+
+    public static boolean shouldReduceFuel(ItemStack stack, Level level) {
+        return getEntitiesPulled(stack) >= getEntitiesPulledToUseFuel(stack, level);
+    }
+
+    public static boolean canDepositIntoBundles(ItemStack stack) {
+        org.apache.commons.lang3.mutable.MutableFloat value = new org.apache.commons.lang3.mutable.MutableFloat(0);
+        net.minecraft.world.item.enchantment.EnchantmentHelper.runIterationOnItem(stack, (holder, enchantmentLevel) -> holder.value().modifyUnfilteredValue(net.bunten.enderscape.registry.EnderscapeEnchantmentEffectComponents.MAGNET_ENABLE_DEPOSIT_INTO_BUNDLES.get(), net.minecraft.util.RandomSource.create(), enchantmentLevel, value));
+        return value.floatValue() > 0;
     }
 
     public static boolean tryUseFuel(NebuliteToolContext context, int count) {
         ItemStack stack = context.stack();
         LivingEntity user = context.user();
 
-        if (MagniaAttractorItem.shouldReduceFuel(stack)) {
+        if (MagniaAttractorItem.shouldReduceFuel(stack, user.level())) {
             NebuliteToolItem.useFuel(context);
-            MagniaAttractorItem.setEntitiesPulled(stack, Math.max(0, count - MagniaAttractorItem.getEntitiesPulledToUseFuel(stack)));
+            MagniaAttractorItem.setEntitiesPulled(stack, Math.max(0, count - MagniaAttractorItem.getEntitiesPulledToUseFuel(stack, user.level())));
             MagniaAttractorItem.setEnabled(stack, true);
 
             user.level().playSound(null, user.getX(), user.getY(), user.getZ(), EnderscapeItemSounds.MAGNIA_ATTRACTOR_USE_FUEL.get(), SoundSource.PLAYERS, 1, 1);

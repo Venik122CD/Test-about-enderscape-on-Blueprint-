@@ -47,6 +47,8 @@ public class RubblemiteAI {
             EnderscapeMemory.PATH,
             EnderscapeMemory.RUBBLEMITE_DASH_ON_COOLDOWN.get(),
             EnderscapeMemory.RUBBLEMITE_HIDING_DURATION.get(),
+            EnderscapeMemory.RUBBLEMITE_PREPARING_DASH.get(),
+            EnderscapeMemory.RUBBLEMITE_PREPARING_DASH_TIME.get(),
             EnderscapeMemory.RUBBLEMITE_HIDING_ON_COOLDOWN.get(),
             EnderscapeMemory.WALK_TARGET
     ));
@@ -89,6 +91,7 @@ public class RubblemiteAI {
     private static void initCoreActivity(Brain<Rubblemite> brain) {
         brain.addActivity(Activity.CORE, 0, ImmutableList.of(
                 new MoveToTargetSink(),
+                new net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks(EnderscapeMemory.RUBBLEMITE_PREPARING_DASH_TIME.get()),
                 new LookAtTargetSink(45, 90),
                 new RubblemiteShellCooldown(),
                 new RubblemiteManageFlags(),
@@ -115,9 +118,10 @@ public class RubblemiteAI {
 
     private static void initFightActivity(Brain<Rubblemite> brain) {
         brain.addActivityAndRemoveMemoryWhenStopped(Activity.FIGHT, 10, ImmutableList.of(
+            new net.bunten.enderscape.entity.ai.behavior.RubblemiteDashAfterPreparing(),
             new RubblemiteDashDuringCombat(),
             SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(1),
-            BehaviorBuilder.triggerIf(Predicate.not(Rubblemite::isDashing), MeleeAttack.create(15)),
+            BehaviorBuilder.triggerIf(mob -> mob.getFlags() == Rubblemite.DEFAULT_FLAG, MeleeAttack.create(15)),
             StopAttackingIfTargetInvalid.create()
         ), EnderscapeMemory.ATTACK_TARGET);
     }

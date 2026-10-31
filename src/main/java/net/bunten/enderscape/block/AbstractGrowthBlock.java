@@ -25,7 +25,7 @@ public abstract class AbstractGrowthBlock extends DirectionalPlantBlock implemen
 
     public AbstractGrowthBlock(DirectionProperties properties, Properties settings) {
         super(properties, settings);
-        registerDefaultState(defaultBlockState().setValue(GROWTH, Part.TOP));
+        registerDefaultState(defaultBlockState().setValue(GROWTH, Part.SINGLE));
     }
 
     public static Part getPart(BlockState state) {
@@ -43,7 +43,7 @@ public abstract class AbstractGrowthBlock extends DirectionalPlantBlock implemen
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        int i = getPart(state) == Part.TOP ? 15 : 16;
+        int i = isTopOrSinglePart(state) ? 15 : 16;
         return BlockUtil.createRotatedShape(1, 0, 1, 15, i, 15, state.getValue(FACING));
     }
 
@@ -67,13 +67,17 @@ public abstract class AbstractGrowthBlock extends DirectionalPlantBlock implemen
         if (down.is(this)) {
             return state.setValue(GROWTH, up.is(this) && getFacing(up) == plantDirection ? Part.MIDDLE : Part.TOP);
         } else {
-            return state.setValue(GROWTH, up.is(this) && getFacing(up) == plantDirection ? Part.BOTTOM : Part.TOP);
+            return state.setValue(GROWTH, up.is(this) && getFacing(up) == plantDirection ? Part.BOTTOM : Part.SINGLE);
         }
     }
 
     @Override
     public boolean isValidBonemealTarget(LevelReader world, BlockPos origin, BlockState state) {
-        return getPart(state) == Part.TOP && world.getBlockState(origin.relative(getFacing(state))).isAir();
+        return isTopOrSinglePart(state) && world.getBlockState(origin.relative(getFacing(state))).isAir();
+    }
+
+    private static boolean isTopOrSinglePart(BlockState state) {
+        return getPart(state) == Part.SINGLE || getPart(state) == Part.TOP;
     }
 
     @Override
@@ -110,7 +114,7 @@ public abstract class AbstractGrowthBlock extends DirectionalPlantBlock implemen
         int i = 0;
 
         while (totalHeight > i) {
-            Part part = i == totalHeight - 1 ? Part.TOP : (i == 0 ? Part.BOTTOM : Part.MIDDLE);
+            Part part = i == totalHeight - 1 ? (totalHeight == 1 ? Part.SINGLE : Part.TOP) : (i == 0 ? Part.BOTTOM : Part.MIDDLE);
             BlockUtil.replace(world, mutable, state.setValue(StateProperties.GROWTH_PART, part));
             mutable.move(direction);
             i++;

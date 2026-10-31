@@ -321,6 +321,7 @@ public class EnderscapeBlocks {
     public static final Supplier<Block> ALLURING_MAGNIA_SPROUT = register(true, "alluring_magnia_sprout", AlluringMagniaSproutBlock::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.METAL)
             .lightLevel(state -> state.getValue(MagniaSproutBlock.POWERED) ? 12 : 0)
+            .randomTicks()
             .requiresCorrectToolForDrops()
             .noOcclusion()
             .strength(1.0F, 6.0F)
@@ -328,7 +329,39 @@ public class EnderscapeBlocks {
             .sound(EnderscapeSoundTypes.ALLURING_MAGNIA)
     );
 
-    public static final Supplier<Block> ETCHED_ALLURING_MAGNIA = register(true, "etched_alluring_magnia", Block::new, legacyCopyOf(ALLURING_MAGNIA));
+    public static final Supplier<Block> BLISTERED_MAGNIA = register(true, "blistered_magnia", net.bunten.enderscape.block.BlisteredMagniaBlock::new, BlockBehaviour.Properties.of()
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .lightLevel(net.bunten.enderscape.block.BlisteredMagniaBlock.getLightLevel())
+            .mapColor(net.bunten.enderscape.block.BlisteredMagniaBlock::getMapColor)
+            .requiresCorrectToolForDrops()
+            .sound(EnderscapeSoundTypes.BLISTERED_MAGNIA)
+            .strength(4.5F, 6.0F)
+    );
+
+    public static final Supplier<Block> POLARIZED_MAGNIA = register(true, "polarized_magnia", net.bunten.enderscape.block.PolarizedMagniaBlock::new, BlockBehaviour.Properties.of()
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .isRedstoneConductor((state, level, pos) -> false)
+            .lightLevel(net.bunten.enderscape.block.PolarizedMagniaBlock.getLightLevel())
+            .mapColor(net.bunten.enderscape.block.PolarizedMagniaBlock::getMapColor)
+            .requiresCorrectToolForDrops()
+            .sound(EnderscapeSoundTypes.POLARIZED_MAGNIA)
+            .strength(4.5F, 6.0F)
+    );
+
+    public static final Supplier<Block> MAGNIA_RADIO = register(true, "magnia_radio", net.bunten.enderscape.block.MagniaRadioBlock::new, BlockBehaviour.Properties.of()
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .lightLevel(state -> state.getValue(net.bunten.enderscape.block.MagniaRadioBlock.ENABLED) ? 4 : 0)
+            .mapColor(MapColor.METAL)
+            .requiresCorrectToolForDrops()
+            .sound(EnderscapeSoundTypes.MAGNIA_RADIO)
+            .strength(1.5F)
+            .randomTicks()
+    );
+
+    public static final Supplier<Block> ETCHED_ALLURING_MAGNIA = register(true, "etched_alluring_magnia", Block::new, legacyCopyOf(ALLURING_MAGNIA, p -> p.sound(EnderscapeSoundTypes.ETCHED_MAGNIA)));
+    public static final Supplier<Block> ETCHED_ALLURING_MAGNIA_STAIRS = registerStair("etched_alluring_magnia_stairs", ETCHED_ALLURING_MAGNIA);
+    public static final Supplier<Block> ETCHED_ALLURING_MAGNIA_SLAB = register(true, "etched_alluring_magnia_slab", SlabBlock::new, legacyCopyOf(ETCHED_ALLURING_MAGNIA));
+    public static final Supplier<Block> ETCHED_ALLURING_MAGNIA_WALL = register(true, "etched_alluring_magnia_wall", WallBlock::new, legacyCopyOf(ETCHED_ALLURING_MAGNIA));
 
     public static final Supplier<Block> REPULSIVE_MAGNIA = register(true, "repulsive_magnia", RepulsiveMagniaBlock::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_GRAY)
@@ -341,6 +374,7 @@ public class EnderscapeBlocks {
     public static final Supplier<Block> REPULSIVE_MAGNIA_SPROUT = register(true, "repulsive_magnia_sprout", RepulsiveMagniaSproutBlock::new, BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_GRAY)
             .lightLevel(state -> state.getValue(MagniaSproutBlock.POWERED) ? 12 : 0)
+            .randomTicks()
             .requiresCorrectToolForDrops()
             .noOcclusion()
             .strength(1.0F, 6.0F)
@@ -348,7 +382,10 @@ public class EnderscapeBlocks {
             .sound(EnderscapeSoundTypes.REPULSIVE_MAGNIA)
     );
 
-    public static final Supplier<Block> ETCHED_REPULSIVE_MAGNIA = register(true, "etched_repulsive_magnia", Block::new, legacyCopyOf(REPULSIVE_MAGNIA));
+    public static final Supplier<Block> ETCHED_REPULSIVE_MAGNIA = register(true, "etched_repulsive_magnia", Block::new, legacyCopyOf(REPULSIVE_MAGNIA, p -> p.sound(EnderscapeSoundTypes.ETCHED_MAGNIA)));
+    public static final Supplier<Block> ETCHED_REPULSIVE_MAGNIA_STAIRS = registerStair("etched_repulsive_magnia_stairs", ETCHED_REPULSIVE_MAGNIA);
+    public static final Supplier<Block> ETCHED_REPULSIVE_MAGNIA_SLAB = register(true, "etched_repulsive_magnia_slab", SlabBlock::new, legacyCopyOf(ETCHED_REPULSIVE_MAGNIA));
+    public static final Supplier<Block> ETCHED_REPULSIVE_MAGNIA_WALL = register(true, "etched_repulsive_magnia_wall", WallBlock::new, legacyCopyOf(ETCHED_REPULSIVE_MAGNIA));
 
     public static final Supplier<Block> SHADOLINE_ORE = register(true, "shadoline_ore", properties -> new DropExperienceBlock(ConstantInt.of(0), properties), fullCopyOf(END_STONE, p -> p.sound(EnderscapeSoundTypes.SHADOLINE_ORE)));
     public static final Supplier<Block> MIRESTONE_SHADOLINE_ORE = register(true, "mirestone_shadoline_ore", properties -> new DropExperienceBlock(ConstantInt.of(0), properties), fullCopyOf(MIRESTONE, p -> p.sound(EnderscapeSoundTypes.MIRESTONE_SHADOLINE_ORE)));
@@ -372,7 +409,7 @@ public class EnderscapeBlocks {
     public static final Supplier<Block> SHADOLINE_BLOCK_SLAB = register(true, "shadoline_block_slab", SlabBlock::new, legacyCopyOf(SHADOLINE_BLOCK));
     public static final Supplier<Block> SHADOLINE_BLOCK_WALL = register(true, "shadoline_block_wall", WallBlock::new, legacyCopyOf(SHADOLINE_BLOCK));
 
-    public static final Supplier<Block> CUT_SHADOLINE = register(true, "cut_shadoline", Block::new, legacyCopyOf(SHADOLINE_BLOCK, p -> p.sound(EnderscapeSoundTypes.CUT_SHADOLINE)));
+    public static final Supplier<Block> CUT_SHADOLINE = register(true, "cut_shadoline", Block::new, legacyCopyOf(SHADOLINE_BLOCK, p -> p.sound(EnderscapeSoundTypes.SHADOLINE)));
     public static final Supplier<Block> CUT_SHADOLINE_STAIRS = registerStair("cut_shadoline_stairs", CUT_SHADOLINE);
     public static final Supplier<Block> CUT_SHADOLINE_SLAB = register(true, "cut_shadoline_slab", SlabBlock::new, legacyCopyOf(CUT_SHADOLINE));
     public static final Supplier<Block> CUT_SHADOLINE_WALL = register(true, "cut_shadoline_wall", WallBlock::new, legacyCopyOf(CUT_SHADOLINE));
@@ -380,10 +417,18 @@ public class EnderscapeBlocks {
     public static final Supplier<Block> CHISELED_SHADOLINE = register(true, "chiseled_shadoline", Block::new, legacyCopyOf(CUT_SHADOLINE));
     public static final Supplier<Block> SHADOLINE_PILLAR = register(true, "shadoline_pillar", RotatedPillarBlock::new, legacyCopyOf(SHADOLINE_BLOCK));
 
+    public static final Supplier<Block> SHADOLINE_BARS = register(true, "shadoline_bars", net.minecraft.world.level.block.IronBarsBlock::new, BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(6.0F, 9.0F).sound(EnderscapeSoundTypes.SHADOLINE).noOcclusion());
+    public static final Supplier<Block> SHADOLINE_CHAIN = register(true, "shadoline_chain", net.minecraft.world.level.block.ChainBlock::new, BlockBehaviour.Properties.of().forceSolidOn().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.CHAIN).noOcclusion());
+
+    public static final Supplier<Block> VOID_TORCH = register(false, "void_torch", properties -> new net.minecraft.world.level.block.TorchBlock(EnderscapeParticles.VOID_FIRE_FLAME.get(), properties), BlockBehaviour.Properties.of().noCollision().instabreak().lightLevel(state -> 12).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY));
+    public static final Supplier<Block> VOID_WALL_TORCH = register(false, "void_wall_torch", properties -> new net.minecraft.world.level.block.WallTorchBlock(EnderscapeParticles.VOID_FIRE_FLAME.get(), properties), () -> BlockBehaviour.Properties.of().noCollision().instabreak().lightLevel(state -> 12).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY).dropsLike(VOID_TORCH.get()));
+    public static final Supplier<Block> VOID_LANTERN = register(true, "void_lantern", net.minecraft.world.level.block.LanternBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).forceSolidOn().strength(3.5F).sound(SoundType.LANTERN).lightLevel(state -> 12).noOcclusion().pushReaction(PushReaction.DESTROY));
+    public static final Supplier<Block> VOID_CAMPFIRE = register(true, "void_campfire", properties -> new net.minecraft.world.level.block.CampfireBlock(false, 1, properties), BlockBehaviour.Properties.of().mapColor(MapColor.PODZOL).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).lightLevel(state -> state.getValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.LIT) ? 12 : 0).noOcclusion().ignitedByLava());
+
     public static final Supplier<Block> NEBULITE_ORE = register(true, "nebulite_ore", NebuliteOreBlock::new, fullCopyOf(END_STONE, p -> p.sound(EnderscapeSoundTypes.NEBULITE_ORE).randomTicks()));
     public static final Supplier<Block> MIRESTONE_NEBULITE_ORE = register(true, "mirestone_nebulite_ore", NebuliteOreBlock::new, fullCopyOf(MIRESTONE, p -> p.sound(EnderscapeSoundTypes.MIRESTONE_NEBULITE_ORE).randomTicks()));
 
-    public static final Supplier<Block> NEBULITE_BLOCK = register(true, "nebulite_block", Block::new, Properties.of()
+    public static final Supplier<Block> NEBULITE_BLOCK = register(true, "nebulite_block", net.bunten.enderscape.block.NebuliteBlock::new, Properties.of()
             .mapColor(MapColor.COLOR_MAGENTA)
             .requiresCorrectToolForDrops()
             .strength(2, 6)
@@ -415,12 +460,12 @@ public class EnderscapeBlocks {
     public static final Supplier<Block> PURPUR_WALL = register(true, "purpur_wall", WallBlock::new, legacyCopyOf(PURPUR_BLOCK));
     public static final Supplier<Block> CHISELED_PURPUR = register(true, "chiseled_purpur", Block::new, legacyCopyOf(PURPUR_BLOCK));
 
-    public static final Supplier<Block> DUSK_PURPUR_BLOCK = register(true, "dusk_purpur_block", Block::new, fullCopyOf(PURPUR_BLOCK, p -> p.mapColor(MapColor.COLOR_BLACK)));
+    public static final Supplier<Block> DUSK_PURPUR_BLOCK = register(true, "dusk_purpur_block", Block::new, fullCopyOf(PURPUR_BLOCK, p -> p.mapColor(MapColor.COLOR_BLACK).sound(EnderscapeSoundTypes.DUSK_PURPUR)));
     public static final Supplier<Block> DUSK_PURPUR_STAIRS = registerStair("dusk_purpur_stairs", DUSK_PURPUR_BLOCK);
-    public static final Supplier<Block> DUSK_PURPUR_SLAB = register(true, "dusk_purpur_slab", SlabBlock::new, fullCopyOf(PURPUR_SLAB, p -> p.mapColor(MapColor.COLOR_BLACK)));
-    public static final Supplier<Block> DUSK_PURPUR_WALL = register(true, "dusk_purpur_wall", WallBlock::new, fullCopyOf(PURPUR_WALL, p -> p.mapColor(MapColor.COLOR_BLACK)));
-    public static final Supplier<Block> CHISELED_DUSK_PURPUR = register(true, "chiseled_dusk_purpur", Block::new, fullCopyOf(CHISELED_PURPUR, p -> p.mapColor(MapColor.COLOR_BLACK)));
-    public static final Supplier<Block> DUSK_PURPUR_PILLAR = register(true, "dusk_purpur_pillar", RotatedPillarBlock::new, fullCopyOf(PURPUR_PILLAR, p -> p.mapColor(MapColor.COLOR_BLACK)));
+    public static final Supplier<Block> DUSK_PURPUR_SLAB = register(true, "dusk_purpur_slab", SlabBlock::new, fullCopyOf(PURPUR_SLAB, p -> p.mapColor(MapColor.COLOR_BLACK).sound(EnderscapeSoundTypes.DUSK_PURPUR)));
+    public static final Supplier<Block> DUSK_PURPUR_WALL = register(true, "dusk_purpur_wall", WallBlock::new, fullCopyOf(PURPUR_WALL, p -> p.mapColor(MapColor.COLOR_BLACK).sound(EnderscapeSoundTypes.DUSK_PURPUR)));
+    public static final Supplier<Block> CHISELED_DUSK_PURPUR = register(true, "chiseled_dusk_purpur", Block::new, fullCopyOf(CHISELED_PURPUR, p -> p.mapColor(MapColor.COLOR_BLACK).sound(EnderscapeSoundTypes.DUSK_PURPUR)));
+    public static final Supplier<Block> DUSK_PURPUR_PILLAR = register(true, "dusk_purpur_pillar", RotatedPillarBlock::new, fullCopyOf(PURPUR_PILLAR, p -> p.mapColor(MapColor.COLOR_BLACK).sound(EnderscapeSoundTypes.DUSK_PURPUR)));
 
     public static final Supplier<Block> PURPUR_TILES = register(true, "purpur_tiles", Block::new, fullCopyOf(PURPUR_BLOCK));
     public static final Supplier<Block> PURPUR_TILE_STAIRS = registerStair("purpur_tile_stairs", PURPUR_TILES);
@@ -591,7 +636,7 @@ public class EnderscapeBlocks {
             .ignitedByLava()
     ));
 
-    public static final Supplier<Block> CELESTIAL_PATH_BLOCK = register(true, "celestial_path_block", CelestialPathBlock::new, Properties.of()
+    public static final Supplier<Block> CELESTIAL_PATH = register(true, "celestial_path", CelestialPathBlock::new, Properties.of()
             .mapColor(MapColor.TERRACOTTA_WHITE)
             .requiresCorrectToolForDrops()
             .strength(3, 9)
@@ -766,7 +811,7 @@ public class EnderscapeBlocks {
             .ignitedByLava()
     ));
 
-    public static final Supplier<Block> CORRUPT_PATH_BLOCK = register(true, "corrupt_path_block", CorruptPathBlock::new, Properties.of()
+    public static final Supplier<Block> CORRUPT_PATH = register(true, "corrupt_path", CorruptPathBlock::new, Properties.of()
             .mapColor(MapColor.COLOR_PURPLE)
             .requiresCorrectToolForDrops()
             .strength(3, 9)
@@ -815,11 +860,11 @@ public class EnderscapeBlocks {
             .sound(EnderscapeSoundTypes.BLINKLAMP)
     );
 
-    public static final Supplier<Block> MURUBLIGHT_SHELF = register(false, "murublight_shelf", MurublightShelfBlock::new, Properties.of()
+    public static final Supplier<Block> MURUBLIGHT_BRACKET = register(false, "murublight_bracket", MurublightShelfBlock::new, Properties.of()
             .mapColor(MapColor.TERRACOTTA_LIGHT_BLUE)
             .noCollission()
             .instabreak()
-            .sound(EnderscapeSoundTypes.MURUBLIGHT_SHELF)
+            .sound(EnderscapeSoundTypes.MURUBLIGHT_BRACKET)
             .noOcclusion()
     );
 

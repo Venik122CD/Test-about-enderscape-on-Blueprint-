@@ -33,4 +33,11 @@ public abstract class EndermiteMixin extends Monster {
     public void Enderscape$getDeathSound(CallbackInfoReturnable<SoundEvent> info) {
         if (EnderscapeConfig.getInstance().endermiteUpdateSounds) info.setReturnValue(EnderscapeEntitySounds.ENDERMITE_DEATH.get());
     }
+
+    @org.spongepowered.asm.mixin.injection.Inject(method = "checkEndermiteSpawnRules", at = @org.spongepowered.asm.mixin.injection.At("RETURN"), cancellable = true)
+    private static void Enderscape$adjustEndermiteSpawnRules(net.minecraft.world.entity.EntityType<net.minecraft.world.entity.monster.Endermite> type, net.minecraft.world.level.LevelAccessor level, net.minecraft.world.entity.MobSpawnType reason, net.minecraft.core.BlockPos pos, net.minecraft.util.RandomSource random, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<Boolean> info) {
+        if (EnderscapeConfig.getInstance().endermiteNaturalSpawnsObeyLightLevel && reason != net.minecraft.world.entity.MobSpawnType.SPAWNER && level instanceof net.minecraft.world.level.ServerLevelAccessor server) {
+            if (!isDarkEnoughToSpawn(server, pos, random)) info.setReturnValue(false);
+        }
+    }
 }

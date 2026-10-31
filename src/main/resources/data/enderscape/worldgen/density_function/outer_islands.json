@@ -1,7 +1,6 @@
 {
-  "type":"add",
-  "argument1": 
-  {
+  "type": "add",
+  "argument1": {
     "type": "minecraft:spline",
     "spline": {
       "coordinate": {
@@ -69,6 +68,5 @@
       ]
     }
   },
-"argument2": "enderscape:center_distance"
-
+  "argument2": "enderscape:center_distance"
 }

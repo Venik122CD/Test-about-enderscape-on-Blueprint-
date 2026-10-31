@@ -128,7 +128,9 @@ public class MagniaTowerFeature extends Feature<MagniaTowerConfig> {
 
     private void generateSprouts(WorldGenLevel level, RandomSource random, List<BlockPos> placedBlocks, MagniaTowerConfig config) {
         for (BlockPos pos : placedBlocks) {
-            if (random.nextFloat() <= config.sprout_placement_chance().sample(random)) {
+            BlockState chanceState = level.getBlockState(pos);
+            float chance = chanceState.is(EnderscapeBlocks.ALLURING_MAGNIA.get()) ? config.alluring_magnia_sprout_placement_chance().sample(random) : config.repulsive_magnia_sprout_placement_chance().sample(random);
+            if (random.nextFloat() <= chance) {
                 for (Direction direction : Direction.values()) {
                     BlockState currentState = level.getBlockState(pos);
                     BlockPos adjacentPos = pos.relative(direction);
@@ -156,9 +158,9 @@ public class MagniaTowerFeature extends Feature<MagniaTowerConfig> {
     }
 
     private int getPillarHeight(RandomSource random, int x, int z, boolean corner, boolean edge, MagniaTowerConfig config) {
-        int height = config.pillar_height().sample(random);
+        int height = config.height().sample(random);
 
-        if (height <= config.pillar_height().getMaxValue() - 2 && random.nextInt(10) == 0) height *= 2;
+        if (height <= config.height().getMaxValue() - 2 && random.nextInt(10) == 0) height *= 2;
 
         if (corner && edge) {
             height /= Mth.nextInt(random, 4, 6);

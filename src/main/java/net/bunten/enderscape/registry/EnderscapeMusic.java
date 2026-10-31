@@ -15,10 +15,11 @@ public class EnderscapeMusic {
     public static final List<ResourceLocation> STRUCTURE_TRACKS = new ArrayList<>();
 
     public static final Music MUSIC_END_CITY = createStructureMusic("end_city");
+    public static final Music MUSIC_STRONGHOLD = createStructureMusic("stronghold");
 
     @NotNull
     private static Music createStructureMusic(String name) {
-        Music music = new Music(Enderscape.registerSoundEventHolder("music.the_end.structure." + name), 0, 6000, false);
+        Music music = new Music(Enderscape.registerSoundEventHolder("music.enderscape.structure." + name), 0, 6000, false);
         STRUCTURE_TRACKS.add(music.getEvent().unwrapKey().orElseThrow().location());
         return music;
     }

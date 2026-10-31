@@ -117,7 +117,7 @@ public class EnderscapeChestLootSubProvider implements LootTableSubProvider {
 
                                             .add(createItem(BREAD, 8).apply(countBetween(2, 4)))
                                             .add(createItem(ENDER_PEARL, 8).apply(countBetween(1, 6)))
-                                            .add(createItem(MURUBLIGHT_SHELF_ITEM.get(), 8).apply(countBetween(1, 2)))
+                                            .add(createItem(MURUBLIGHT_BRACKET_ITEM.get(), 8).apply(countBetween(1, 2)))
 
                                             .add(createItem(GUNPOWDER, 6).apply(countBetween(4, 8)))
                                             .add(createItem(LEATHER, 6).apply(countBetween(4, 8)))

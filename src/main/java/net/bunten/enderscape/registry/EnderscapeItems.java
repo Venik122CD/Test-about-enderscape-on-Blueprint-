@@ -93,6 +93,22 @@ public class EnderscapeItems {
             () -> Ingredient.of(EnderscapeItemTags.REPAIRS_DRIFT_LEGGINGS)
     );
 
+    public static final Holder<ArmorMaterial> SHADOLINE_ARMOR_MATERIAL = registerArmorMaterial(
+            Enderscape.id("shadoline"),
+            Util.make(new EnumMap(ArmorItem.Type.class), enumMap -> {
+                enumMap.put(ArmorItem.Type.BOOTS, 2);
+                enumMap.put(ArmorItem.Type.LEGGINGS, 5);
+                enumMap.put(ArmorItem.Type.CHESTPLATE, 6);
+                enumMap.put(ArmorItem.Type.HELMET, 2);
+                enumMap.put(ArmorItem.Type.BODY, 6);
+            }),
+            15,
+            EnderscapeItemSounds.SHADOLINE_ARMOR_EQUIP,
+            0.0F,
+            0.0F,
+            () -> Ingredient.of(EnderscapeItemTags.REPAIRS_SHADOLINE_ARMOR)
+    );
+
     private static Holder<ArmorMaterial> registerArmorMaterial(ResourceLocation location, EnumMap<ArmorItem.Type, Integer> enumMap, int i, Holder<SoundEvent> holder, float f, float g, Supplier<Ingredient> supplier) {
         List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(location));
         return RegistryHelper.registerForHolder(BuiltInRegistries.ARMOR_MATERIAL, location, () -> new ArmorMaterial(enumMap, i, holder, supplier, list, f, g));
@@ -123,7 +139,7 @@ public class EnderscapeItems {
             .stacksTo(16)
     );
     public static final Supplier<Item> FLANGER_BERRY = registerItem("flanger_berry", properties -> new ItemNameBlockItem(EnderscapeBlocks.FLANGER_BERRY_VINE.get(), properties), new Properties().food(new FoodProperties.Builder().nutrition(5).saturationModifier(1.2F).build()));
-    public static final Supplier<Item> MURUBLIGHT_SHELF_ITEM = registerItem("murublight_shelf", properties -> new BlockItem(EnderscapeBlocks.MURUBLIGHT_SHELF.get(), properties), new Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(4).saturationModifier(0.3F).effect(new MobEffectInstance(MobEffects.POISON, 200), 1.0F).build()));
+    public static final Supplier<Item> MURUBLIGHT_BRACKET_ITEM = registerItem("murublight_bracket", properties -> new BlockItem(EnderscapeBlocks.MURUBLIGHT_BRACKET.get(), properties), new Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(4).saturationModifier(0.3F).effect(new MobEffectInstance(MobEffects.POISON, 200), 1.0F).build()));
 
     public static final Supplier<Item> END_CITY_KEY = registerItem("end_city_key");
     public static final Supplier<Item> RUBBLE_CHITIN = registerItem("rubble_chitin");
@@ -131,6 +147,7 @@ public class EnderscapeItems {
     public static final Supplier<Item> NEBULITE_SHARDS = registerItem("nebulite_shards");
     public static final Supplier<Item> RAW_SHADOLINE = registerItem("raw_shadoline");
     public static final Supplier<Item> SHADOLINE_INGOT = registerItem("shadoline_ingot");
+    public static final Supplier<Item> SHADOLINE_NUGGET = registerItem("shadoline_nugget");
 
     public static final Properties RUBBLE_SHIELD_PROPERTIES = new Properties()
             .component(EnderscapeDataComponents.DASH_JUMP, new DashJump(60, 2.35F, 0.35F, 0.7F, EnderscapeItemSounds.RUBBLE_SHIELD_DASH, true))
@@ -144,6 +161,22 @@ public class EnderscapeItems {
  //   public static final ResourceKey<EquipmentAsset> DRIFT_LEGGINGS_ASSET = ResourceKey.create(ROOT_ID, Enderscape.id("drift_leggings"));
 
     public static final Supplier<Item> DRIFT_LEGGINGS = registerItem("drift_leggings", DriftLeggingsItem::new, new Properties().attributes(DRIFT_LEGGINGS_ATTRIBUTES).durability(495));
+
+    public static final Supplier<Item> SHADOLINE_HELMET = registerItem("shadoline_helmet", properties -> new net.bunten.enderscape.item.ShadolineArmorItem(SHADOLINE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, properties), new Properties().durability(ArmorItem.Type.HELMET.getDurability(25)));
+    public static final Supplier<Item> SHADOLINE_CHESTPLATE = registerItem("shadoline_chestplate", properties -> new net.bunten.enderscape.item.ShadolineArmorItem(SHADOLINE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, properties), new Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(25)));
+    public static final Supplier<Item> SHADOLINE_LEGGINGS = registerItem("shadoline_leggings", properties -> new net.bunten.enderscape.item.ShadolineArmorItem(SHADOLINE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, properties), new Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(25)));
+    public static final Supplier<Item> SHADOLINE_BOOTS = registerItem("shadoline_boots", properties -> new net.bunten.enderscape.item.ShadolineArmorItem(SHADOLINE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, properties), new Properties().durability(ArmorItem.Type.BOOTS.getDurability(25)));
+
+    public static final Supplier<Item> DAGGER = registerItem("dagger", net.bunten.enderscape.item.DaggerItem::new, new Properties()
+            .stacksTo(1)
+            .attributes(ItemAttributeModifiers.builder()
+                    .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"), 3.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                    .add(EnderscapeAttributes.BACKSTAB_DAMAGE, new AttributeModifier(EnderscapeAttributes.BASE_BACKSTAB_DAMAGE_ID, 3.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                    .add(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_speed"), -1.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                    .build())
+            .component(DataComponents.TOOL, new net.minecraft.world.item.component.Tool(List.of(net.minecraft.world.item.component.Tool.Rule.minesAndDrops(net.minecraft.core.HolderSet.direct(net.minecraft.world.level.block.Blocks.COBWEB.builtInRegistryHolder()), 7.5F)), 1.0F, 2)));
+
+    public static final Supplier<Item> VOID_TORCH_ITEM = registerItem("void_torch", properties -> new net.minecraft.world.item.StandingAndWallBlockItem(EnderscapeBlocks.VOID_TORCH.get(), EnderscapeBlocks.VOID_WALL_TORCH.get(), net.minecraft.core.Direction.DOWN, properties), new Properties());
 
     public static final Supplier<Item> MAGNIA_ATTRACTOR = registerItem("magnia_attractor", MagniaAttractorItem::new, new Properties()
             .component(EnderscapeDataComponents.ENABLED, true)

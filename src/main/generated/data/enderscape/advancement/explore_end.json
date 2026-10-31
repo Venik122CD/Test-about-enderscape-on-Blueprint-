@@ -33,7 +33,7 @@
       },
       "trigger": "minecraft:location"
     },
-    "enderscape:magnia_crags": {
+    "enderscape:magnia_fields": {
       "conditions": {
         "player": [
           {
@@ -41,7 +41,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biomes": "enderscape:magnia_crags"
+                "biomes": "enderscape:magnia_fields"
               }
             }
           }
@@ -185,7 +185,7 @@
     "frame": "challenge",
     "icon": {
       "count": 1,
-      "id": "enderscape:celestial_overgrowth"
+      "id": "enderscape:shadoline_boots"
     },
     "title": {
       "translate": "advancement.enderscape.explore_end"
@@ -208,7 +208,7 @@
       "enderscape:veiled_woodlands"
     ],
     [
-      "enderscape:magnia_crags"
+      "enderscape:magnia_fields"
     ],
     [
       "enderscape:celestial_grove"

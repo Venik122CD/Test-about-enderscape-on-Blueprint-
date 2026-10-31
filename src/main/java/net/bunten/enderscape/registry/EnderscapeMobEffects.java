@@ -2,6 +2,7 @@ package net.bunten.enderscape.registry;
 
 import net.bunten.enderscape.Enderscape;
 import net.bunten.enderscape.effect.LowGravityEffect;
+import net.bunten.enderscape.effect.StunnedEffect;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -17,6 +18,12 @@ public class EnderscapeMobEffects {
             .addAttributeModifier(Attributes.GRAVITY, Enderscape.id("effect.drift.gravity"), -0.4, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
             .addAttributeModifier(Attributes.SAFE_FALL_DISTANCE, Enderscape.id("effect.drift.fall_damage_multiplier"), 0.6, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
     );
+
+    public static final Holder<MobEffect> STUNNED = register("stunned", StunnedEffect::new);
+
+    public static boolean isStunned(net.minecraft.world.entity.Entity entity) {
+        return entity instanceof net.minecraft.world.entity.LivingEntity living && !living.isSpectator() && living.hasEffect(STUNNED);
+    }
 
     private static Holder<MobEffect> register(String name, Supplier<MobEffect> effect) {
         return RegistryHelper.registerForHolder(BuiltInRegistries.MOB_EFFECT, Enderscape.id(name), effect);

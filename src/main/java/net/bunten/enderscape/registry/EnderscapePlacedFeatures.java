@@ -49,11 +49,11 @@ public class EnderscapePlacedFeatures {
     public static final ResourceKey<PlacedFeature> KURODITE = register("kurodite");
     public static final ResourceKey<PlacedFeature> LARGE_CELESTIAL_CHANTERELLES = register("large_celestial_chanterelles");
     public static final ResourceKey<PlacedFeature> LARGE_MURUBLIGHT_CHANTERELLES = register("large_murublight_chanterelles");
-    public static final ResourceKey<PlacedFeature> MAGNIA_ARCH = register("magnia_arch");
-    public static final ResourceKey<PlacedFeature> MAGNIA_TOWER = register("magnia_tower");
+    public static final ResourceKey<PlacedFeature> MAGNIA_ARCH = register("magnia_arches");
+    public static final ResourceKey<PlacedFeature> MAGNIA_TOWER = register("magnia_towers");
     public static final ResourceKey<PlacedFeature> MIRESTONE_BLOBS = register("mirestone_blobs");
     public static final ResourceKey<PlacedFeature> MIRESTONE_PILLARS = register("mirestone_pillars");
-    public static final ResourceKey<PlacedFeature> MURUBLIGHT_SHELF = register("murublight_shelf");
+    public static final ResourceKey<PlacedFeature> MURUBLIGHT_BRACKET = register("murublight_bracket");
     public static final ResourceKey<PlacedFeature> NEBULITE_ORE = register("nebulite_ore");
     public static final ResourceKey<PlacedFeature> SCATTERED_SHADOLINE_ORE = register("scattered_shadoline_ore");
     public static final ResourceKey<PlacedFeature> SHADOLINE_ORE = register("shadoline_ore");
@@ -61,7 +61,7 @@ public class EnderscapePlacedFeatures {
     public static final ResourceKey<PlacedFeature> SMALL_SKY_ISLANDS = register("small_sky_islands");
     public static final ResourceKey<PlacedFeature> UNCOMMON_CHORUS_PLANTS = register("uncommon_chorus_plants");
     public static final ResourceKey<PlacedFeature> UNCOMMON_CHORUS_SPROUTS = register("uncommon_chorus_sprouts");
-    public static final ResourceKey<PlacedFeature> UNCOMMON_MURUBLIGHT_SHELF = register("uncommon_murublight_shelf");
+    public static final ResourceKey<PlacedFeature> UNCOMMON_MURUBLIGHT_BRACKET = register("uncommon_murublight_bracket");
     public static final ResourceKey<PlacedFeature> UPWARD_ALLURING_MAGNIA_SPROUTS = register("upward_alluring_magnia_sprouts");
     public static final ResourceKey<PlacedFeature> UPWARD_CORRUPT_GROWTH = register("upward_corrupt_growth");
     public static final ResourceKey<PlacedFeature> UPWARD_TALL_CORRUPT_GROWTH = register("upward_tall_corrupt_growth");
@@ -76,7 +76,7 @@ public class EnderscapePlacedFeatures {
     
     public void bootstrap(BootstrapContext<PlacedFeature> context) {
         registerVeiledWoodlands(context);
-        registerMagniaCrags(context);
+        registerMagniaFields(context);
         registerCelestialGrove(context);
         registerCorruptBarrens(context);
 
@@ -154,7 +154,7 @@ public class EnderscapePlacedFeatures {
                 BiomeFilter.biome()
         );
 
-        PlacementUtils.register(context, MURUBLIGHT_SHELF, get(context, EnderscapeConfiguredFeatures.MURUBLIGHT_SHELF),
+        PlacementUtils.register(context, MURUBLIGHT_BRACKET, get(context, EnderscapeConfiguredFeatures.MURUBLIGHT_BRACKET),
                 FULL_RANGE,
                 CountPlacement.of(30),
                 BiomeFilter.biome(),
@@ -272,7 +272,7 @@ public class EnderscapePlacedFeatures {
         );
     }
 
-    private void registerMagniaCrags(BootstrapContext<PlacedFeature> context) {
+    private void registerMagniaFields(BootstrapContext<PlacedFeature> context) {
         PlacementUtils.register(context, UPWARD_ALLURING_MAGNIA_SPROUTS, get(context, EnderscapeConfiguredFeatures.UPWARD_ALLURING_MAGNIA_SPROUT),
                 aboveDepthsRange,
                 CountOnEveryLayerPlacement.of(12),
@@ -439,7 +439,7 @@ public class EnderscapePlacedFeatures {
                 RandomOffsetPlacement.vertical(ConstantInt.of(1))
         );
 
-        PlacementUtils.register(context, UNCOMMON_MURUBLIGHT_SHELF, get(context, EnderscapeConfiguredFeatures.MURUBLIGHT_SHELF),
+        PlacementUtils.register(context, UNCOMMON_MURUBLIGHT_BRACKET, get(context, EnderscapeConfiguredFeatures.MURUBLIGHT_BRACKET),
                 aboveDepthsRange,
                 CountPlacement.of(15),
                 BiomeFilter.biome(),

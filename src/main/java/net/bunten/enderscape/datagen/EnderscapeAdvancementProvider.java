@@ -45,7 +45,7 @@ public class EnderscapeAdvancementProvider extends AdvancementProvider {
 
     public static final List<ResourceKey<Biome>> EXPLORE_END_BIOMES = List.of(
             Biomes.THE_END, Biomes.END_HIGHLANDS, Biomes.END_MIDLANDS, Biomes.SMALL_END_ISLANDS,
-            EnderscapeBiomes.VEILED_WOODLANDS, EnderscapeBiomes.MAGNIA_CRAGS,
+            EnderscapeBiomes.VEILED_WOODLANDS, EnderscapeBiomes.MAGNIA_FIELDS,
             EnderscapeBiomes.CELESTIAL_GROVE, EnderscapeBiomes.CORRUPT_BARRENS,
             EnderscapeBiomes.VOID_DEPTHS, EnderscapeBiomes.VOID_SKIES, EnderscapeBiomes.VOID_SKY_ISLANDS
     );

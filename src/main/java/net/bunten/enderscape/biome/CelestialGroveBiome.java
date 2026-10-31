@@ -45,7 +45,7 @@ public class CelestialGroveBiome {
                 .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.CELESTIAL_GROVE_VEGETATION)
                 .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.BULB_FLOWER)
                 .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.COMMON_DRY_END_GROWTH)
-                .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.UNCOMMON_MURUBLIGHT_SHELF);
+                .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.UNCOMMON_MURUBLIGHT_BRACKET);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)

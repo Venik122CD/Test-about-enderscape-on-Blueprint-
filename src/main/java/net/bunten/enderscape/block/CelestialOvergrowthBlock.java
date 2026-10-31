@@ -20,7 +20,7 @@ public class CelestialOvergrowthBlock extends AbstractOvergrowthBlock {
     public static final MapCodec<CelestialOvergrowthBlock> CODEC = simpleCodec(CelestialOvergrowthBlock::new);
 
     public CelestialOvergrowthBlock(Properties settings) {
-        super(true, Blocks.END_STONE, EnderscapeBlocks.CELESTIAL_PATH_BLOCK.get(), EnderscapeBlockSounds.CELESTIAL_OVERGROWTH_FLATTEN, DirectionProperties.create().up(), settings);
+        super(true, Blocks.END_STONE, EnderscapeBlocks.CELESTIAL_PATH.get(), EnderscapeBlockSounds.CELESTIAL_OVERGROWTH_FLATTEN, DirectionProperties.create().up(), settings);
     }
 
     @Override

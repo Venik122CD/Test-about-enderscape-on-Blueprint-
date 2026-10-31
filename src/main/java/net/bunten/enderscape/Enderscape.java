@@ -1,5 +1,6 @@
 package net.bunten.enderscape;
 
+import net.bunten.enderscape.registry.EnderscapeBlocks;
 import com.google.common.reflect.Reflection;
 import net.bunten.enderscape.compat.EnderscapeTerrablender;
 import net.bunten.enderscape.datagen.EnderscapeBiomeModifiers;
@@ -66,6 +67,9 @@ public class Enderscape {
                 EnderscapePoi.class,
                 EnderscapeParticles.class,
                 EnderscapeEnchantmentEffectComponents.class,
+                EnderscapeRecipeSerializers.class,
+                net.bunten.enderscape.registry.EnderscapeAttributes.class,
+                net.bunten.enderscape.registry.EnderscapeEventSounds.class,
                 EnderscapeMobEffects.class,
                 EnderscapeEntities.class,
                 EnderscapeSubEntityPredicates.class,
@@ -87,10 +91,18 @@ public class Enderscape {
             EnderscapeTerrablender.initialize();
         }
 
+        modBus.addListener(net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent.class, event -> event.getTypes().forEach(type -> {
+            if (!event.has(type, net.bunten.enderscape.registry.EnderscapeAttributes.BACKSTAB_DAMAGE)) event.add(type, net.bunten.enderscape.registry.EnderscapeAttributes.BACKSTAB_DAMAGE);
+            if (!event.has(type, net.bunten.enderscape.registry.EnderscapeAttributes.STEALTH)) event.add(type, net.bunten.enderscape.registry.EnderscapeAttributes.STEALTH);
+        }));
+
+        modBus.addListener(net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent.class, event -> event.modify(net.minecraft.world.level.block.entity.BlockEntityType.CAMPFIRE, EnderscapeBlocks.VOID_CAMPFIRE.get()));
+
         modBus.addListener(AddPackFindersEvent.class, event -> {
             registerClientResourcePack(event, Enderscape.id("fix_levitation_advancement"), Component.translatable("pack.enderscape.fix_levitation_advancement"));
             registerClientResourcePack(event, Enderscape.id("fix_vanilla_recipes"), Component.translatable("pack.enderscape.fix_vanilla_recipes"));
             registerClientResourcePack(event, Enderscape.id("new_end_cities"), Component.translatable("pack.enderscape.new_end_cities"));
+            if (EnderscapeConfig.getInstance().defaultDataPackNewStrongholds) registerClientResourcePack(event, Enderscape.id("new_strongholds"), Component.translatable("pack.enderscape.new_strongholds"));
             registerClientResourcePack(event, Enderscape.id("new_terrain"), Component.translatable("pack.enderscape.new_terrain"));
         });
 

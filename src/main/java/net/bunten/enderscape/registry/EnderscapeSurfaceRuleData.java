@@ -38,7 +38,7 @@ public class EnderscapeSurfaceRuleData {
                                                 )
                                         ),
                                         ifTrue(
-                                                isBiome(MAGNIA_CRAGS),
+                                                isBiome(MAGNIA_FIELDS),
                                                 sequence(
                                                         ifTrue(
                                                                 noiseCondition(Noises.SURFACE, -WIDE_MAGNIA_SURFACE_NOISE_MAXIMUM, WIDE_MAGNIA_SURFACE_NOISE_MAXIMUM),
@@ -101,7 +101,7 @@ public class EnderscapeSurfaceRuleData {
                         )
                 ),
                 ifTrue(
-                        isBiome(MAGNIA_CRAGS),
+                        isBiome(MAGNIA_FIELDS),
                         sequence(
                                 ifTrue(
                                         noiseCondition(Noises.SURFACE, -WIDE_MAGNIA_SURFACE_NOISE_MAXIMUM, WIDE_MAGNIA_SURFACE_NOISE_MAXIMUM),

@@ -18,6 +18,6 @@ public class EnderscapeEnchantmentTagProvider extends EnchantmentTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider lookup) {
         tag(IN_ENCHANTING_TABLE).add(REBOUND);
-        tag(TREASURE).add(LIGHTSPEED, TRANSDIMENSIONAL);
+        tag(TREASURE).add(RESONANCE, TRANSDIMENSIONAL);
     }
 }

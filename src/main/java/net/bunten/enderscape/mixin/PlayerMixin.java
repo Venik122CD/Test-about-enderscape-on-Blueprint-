@@ -120,6 +120,7 @@ public abstract class PlayerMixin extends LivingEntity {
         Vec3 speed = position().subtract(entity.position()).normalize().scale(entity.isUnderWater() ? 0.04 : 0.2);
         entity.setDeltaMovement(entity.getDeltaMovement().add(speed));
         MagniaMovingData.setMovedByMagnia(entity, true);
+        if (level() instanceof net.minecraft.server.level.ServerLevel serverLevel && level().random.nextInt(6) == 0) serverLevel.sendParticles(net.bunten.enderscape.registry.EnderscapeParticles.ENTITY_EFFECTED_BY_MAGNIA.get(), entity.getX(), entity.getY() + entity.getBbHeight() / 2, entity.getZ(), 1, 0.2, 0.2, 0.2, 0);
 
         if (abuseCost > 0) {
             if (MagniaMovingData.wasMovedByMagnia(entity)) {
@@ -127,7 +128,7 @@ public abstract class PlayerMixin extends LivingEntity {
 
                 if (ticks >= 40) {
                     MagniaAttractorItem.incrementEntitiesPulled(stack, abuseCost);
-                    MagniaAttractorItem.tryUseFuel(context, abuseCost - MagniaAttractorItem.getEntitiesPulledToUseFuel(stack));
+                    MagniaAttractorItem.tryUseFuel(context, abuseCost - MagniaAttractorItem.getEntitiesPulledToUseFuel(stack, level()));
                     ticks = 0;
                 }
 

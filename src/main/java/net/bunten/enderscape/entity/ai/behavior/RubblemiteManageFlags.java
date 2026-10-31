@@ -22,7 +22,7 @@ public class RubblemiteManageFlags extends Behavior<Rubblemite> {
                 int i = brain.getMemory(EnderscapeMemory.RUBBLEMITE_HIDING_DURATION.get()).get();
                 if (i == 2) mob.playSound(EnderscapeEntitySounds.RUBBLEMITE_EXTRUDE.get(), 1, 1);
             } else {
-                if (mob.isInsideShell() || mob.shouldStopDashing()) mob.setFlags(Rubblemite.DEFAULT_FLAG);
+                if (!mob.isPreparingToDash() && (mob.isInsideShell() || mob.shouldStopDashing())) mob.setFlags(Rubblemite.DEFAULT_FLAG);
             }
         } else {
             brain.eraseMemory(EnderscapeMemory.RUBBLEMITE_HIDING_DURATION.get());

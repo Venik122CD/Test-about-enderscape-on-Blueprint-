@@ -3,7 +3,7 @@ package net.bunten.enderscape.block.properties;
 import net.minecraft.util.StringRepresentable;
 
 public enum Part implements StringRepresentable {
-    BOTTOM("bottom"), MIDDLE("middle"), TOP("top");
+    SINGLE("single"), BOTTOM("bottom"), MIDDLE("middle"), TOP("top");
 
     String name;
 

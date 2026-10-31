@@ -44,7 +44,7 @@ public class VeiledWoodlandsBiome {
                 .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.VEILED_TREES)
                 .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.VEILED_WOODLANDS_VEGETATION)
                 .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.WISP_FLOWER_PATCHES)
-                .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.MURUBLIGHT_SHELF);
+                .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.MURUBLIGHT_BRACKET);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)

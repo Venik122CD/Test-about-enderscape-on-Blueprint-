@@ -41,7 +41,7 @@ public class EnderscapeItemTagProvider extends ItemTagsProvider {
         tag(REPAIRS_DRIFT_LEGGINGS).add(DRIFT_JELLY_BOTTLE.get());
         tag(REPAIRS_RUBBLE_SHIELDS).add(RUBBLE_CHITIN.get());
         tag(RUBBLE_SHIELDS).add(END_STONE_RUBBLE_SHIELD.get(), MIRESTONE_RUBBLE_SHIELD.get(), VERADITE_RUBBLE_SHIELD.get(), KURODITE_RUBBLE_SHIELD.get());
-        tag(RUSTLE_FOOD).add(MURUBLIGHT_SHELF_ITEM.get());
+        tag(RUSTLE_FOOD).add(MURUBLIGHT_BRACKET_ITEM.get());
 
         tag(CELESTIAL_BRICK_BLOCKS).add(CELESTIAL_BRICKS.get().asItem(), CELESTIAL_BRICK_SLAB.get().asItem(), CELESTIAL_BRICK_STAIRS.get().asItem(), CELESTIAL_BRICK_WALL.get().asItem());
         tag(CELESTIAL_STEMS).add(CELESTIAL_STEM.get().asItem(), STRIPPED_CELESTIAL_STEM.get().asItem(), CELESTIAL_HYPHAE.get().asItem(), STRIPPED_CELESTIAL_HYPHAE.get().asItem());

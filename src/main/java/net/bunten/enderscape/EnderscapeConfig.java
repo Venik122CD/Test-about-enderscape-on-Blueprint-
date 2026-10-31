@@ -20,6 +20,18 @@ public class EnderscapeConfig {
         return HANDLER.instance();
     }
 
+    @SerialEntry public boolean creativeTabEnabled = true;
+    @SerialEntry public boolean includeItemsInVanillaCreativeTabs = true;
+    @SerialEntry public boolean defaultDataPackNewStrongholds = true;
+    @SerialEntry public boolean supplementVanillaEndCityTreasureLoot = true;
+    @SerialEntry public boolean supplementVanillaStrongholdLibraryLoot = true;
+    @SerialEntry public boolean endermiteNaturalSpawnsObeyLightLevel = true;
+    @SerialEntry public boolean silverfishDelayBeforeInfestingStone = true;
+    @SerialEntry public boolean silverfishNaturalSpawnsObeyLightLevel = true;
+    @SerialEntry public boolean flashEnabled = true;
+    @SerialEntry public boolean flashInfluencesSkybox = true;
+    @SerialEntry public boolean flashUpdatedVisuals = true;
+    @SerialEntry public boolean structureMusicFadingEnabled = true;
     @SerialEntry public boolean ambienceUpdateDefaultAdditions = true;
     @SerialEntry public boolean ambienceUpdateDefaultFogColor = true;
     @SerialEntry public boolean ambienceUpdateDefaultFoliageColor = true;
@@ -86,7 +98,7 @@ public class EnderscapeConfig {
     @SerialEntry public int elytraFovEffectIntensity = 100;
     @SerialEntry public int mirrorScreenEffectOverlayIntensity = 50;
     @SerialEntry public int mirrorScreenEffectVignetteIntensity = 50;
-    @SerialEntry public int nebuliteToolHudOffset = 0;
+    @SerialEntry public int nebuliteToolHudOffset = 13;
     @SerialEntry public int nebuliteToolHudOpacity = 100;
     @SerialEntry public int shulkerBulletEnforceCountLimit = 3;
     @SerialEntry public int shulkerBulletEnforceDistanceLimit = 30;

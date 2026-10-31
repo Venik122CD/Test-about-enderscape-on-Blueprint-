@@ -1,0 +1,103 @@
+package net.bunten.enderscape.block;
+
+import net.bunten.enderscape.block.properties.MagniaType;
+import net.bunten.enderscape.block.properties.OptionalMagniaPolarityProperty;
+import net.bunten.enderscape.block.properties.StateProperties;
+import net.bunten.enderscape.registry.EnderscapeBlockSounds;
+import net.bunten.enderscape.util.MagniaUtil;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.MapColor;
+
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.ToIntFunction;
+
+/** Takes the polarity of the surrounding magnia and powers matching neighbours. */
+public class BlisteredMagniaBlock extends Block implements HasMagniaPolarity, HasMagniaPowerSignal {
+    public static final EnumProperty<OptionalMagniaPolarityProperty> POLARITY = StateProperties.OPTIONAL_MAGNIA_POLARITY;
+
+    public BlisteredMagniaBlock(Properties properties) {
+        super(properties);
+        registerDefaultState(getStateDefinition().any().setValue(POLARITY, OptionalMagniaPolarityProperty.NONE));
+    }
+
+    public static OptionalMagniaPolarityProperty getOptionalPolarityProperty(BlockState state) {
+        return state.getValue(POLARITY);
+    }
+
+    public static ToIntFunction<BlockState> getLightLevel() {
+        return state -> getOptionalPolarityProperty(state).equals(OptionalMagniaPolarityProperty.NONE) ? 0 : 14;
+    }
+
+    public static MapColor getMapColor(BlockState state) {
+        return getOptionalPolarityProperty(state).getMapColor();
+    }
+
+    public static OptionalMagniaPolarityProperty selectPolarity(LevelReader level, BlockPos pos) {
+        EnumMap<MagniaType, Integer> counts = new EnumMap<>(MagniaType.class);
+        for (Direction dir : Direction.values()) {
+            BlockState state = level.getBlockState(pos.relative(dir));
+            if (state.getBlock() instanceof MagniaBlock) {
+                HasMagniaPolarity.optional(state).ifPresent(polarity -> counts.merge(polarity, 1, Integer::sum));
+            }
+        }
+        if (counts.isEmpty()) return OptionalMagniaPolarityProperty.NONE;
+        return OptionalMagniaPolarityProperty.of(counts.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey());
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(POLARITY);
+    }
+
+    @Override
+    public Optional<MagniaType> getPolarity(BlockState state) {
+        return getOptionalPolarityProperty(state).optional();
+    }
+
+    @Override
+    public int getMagniaPowerSignal(BlockState state, BlockState neighbor) {
+        return MagniaUtil.isMatchingPolarity(state, neighbor) ? 15 : 0;
+    }
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return defaultBlockState().setValue(POLARITY, selectPolarity(context.getLevel(), context.getClickedPos()));
+    }
+
+    @Override
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean moved) {
+        super.onPlace(state, level, pos, oldState, moved);
+        level.playSound(null, pos, getOptionalPolarityProperty(state) == OptionalMagniaPolarityProperty.NONE ? EnderscapeBlockSounds.BLISTERED_MAGNIA_POWER_OFF : EnderscapeBlockSounds.BLISTERED_MAGNIA_POWER_ON, SoundSource.BLOCKS, 1, 1);
+    }
+
+    @Override
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        OptionalMagniaPolarityProperty property = selectPolarity(level, pos);
+        if (!property.equals(getOptionalPolarityProperty(state))) {
+            level.playSound(null, pos, property == OptionalMagniaPolarityProperty.NONE ? EnderscapeBlockSounds.BLISTERED_MAGNIA_POWER_OFF : EnderscapeBlockSounds.BLISTERED_MAGNIA_POWER_ON, SoundSource.BLOCKS, 1, 1);
+            level.setBlockAndUpdate(pos, state.setValue(POLARITY, property));
+        }
+        level.updateNeighborsAt(pos, this);
+    }
+
+    @Override
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        OptionalMagniaPolarityProperty property = selectPolarity(level, pos);
+        if (!property.equals(getOptionalPolarityProperty(state))) level.scheduleTick(pos, this, 5);
+        return state;
+    }
+}

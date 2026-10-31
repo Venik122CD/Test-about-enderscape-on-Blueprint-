@@ -19,6 +19,9 @@ public class EnderscapeLootTables {
     public static final ResourceKey<LootTable> END_CITY_ELYTRA_VAULT = register("end_city/elytra_vault");
 
     public static final ResourceKey<LootTable> END_CITY_CHEST = register("end_city/chest");
+    public static final ResourceKey<LootTable> END_CITY_TREASURE_SUPPLEMENTS = register("supplements/end_city_treasure");
+    public static final ResourceKey<LootTable> STRONGHOLD_LIBRARY_CHEST_SUPPLEMENTS = register("supplements/stronghold_library");
+    public static final ResourceKey<LootTable> END_CITY_TREASURE_POST_SUPPLEMENTS = register("post_supplements/end_city_treasure");
 
     public static final ResourceKey<LootTable> MIRESTONE_RUINS_CHEST = register("mirestone_ruins/chest");
 

@@ -1,6 +1,8 @@
 package net.bunten.enderscape.registry;
 
 import net.bunten.enderscape.Enderscape;
+import net.bunten.enderscape.feature.MagniaSpikeConfig;
+import net.bunten.enderscape.feature.MagniaSpikeFeature;
 import net.bunten.enderscape.feature.CeilingOreConfig;
 import net.bunten.enderscape.feature.CeilingOreFeature;
 import net.bunten.enderscape.feature.EnderscapeIslandFeature;
@@ -35,8 +37,9 @@ public abstract class EnderscapeFeatures {
     public static final Supplier<Feature<GrowthConfig>> GROWTH = register("growth", () -> new GrowthFeature(GrowthConfig.CODEC));
     public static final Supplier<Feature<LargeCelestialChanterelleConfig>> LARGE_CELESTIAL_CHANTERELLE = register("large_celestial_chanterelle", () -> new LargeCelestialChanterelleFeature(LargeCelestialChanterelleConfig.CODEC));
     public static final Supplier<Feature<LargeMurublightChanterelleConfig>> LARGE_MURUBLIGHT_CHANTERELLE = register("large_murublight_chanterelle", () -> new LargeMurublightChanterelleFeature(LargeMurublightChanterelleConfig.CODEC));
-    public static final Supplier<Feature<NoneFeatureConfiguration>> MURUBLIGHT_SHELF = register("murublight_shelf", () -> new MurublightShelfFeature(NoneFeatureConfiguration.CODEC));
+    public static final Supplier<Feature<NoneFeatureConfiguration>> MURUBLIGHT_BRACKET = register("murublight_bracket", () -> new MurublightShelfFeature(NoneFeatureConfiguration.CODEC));
     public static final Supplier<Feature<NoneFeatureConfiguration>> MAGNIA_ARCH = register("magnia_arch", () -> new MagniaArchFeature());
+    public static final Supplier<Feature<MagniaSpikeConfig>> MAGNIA_SPIKE = register("magnia_spike", () -> new MagniaSpikeFeature(MagniaSpikeConfig.CODEC));
     public static final Supplier<Feature<MagniaTowerConfig>> MAGNIA_TOWER = register("magnia_tower", () -> new MagniaTowerFeature(MagniaTowerConfig.CODEC));
     public static final Supplier<Feature<ScatteredOreConfig>> SCATTERED_ORE = register("scattered_ore", () -> new ScatteredOreFeature(ScatteredOreConfig.CODEC));
     public static final Supplier<Feature<VeiledLeafPileConfig>> VEILED_LEAF_PILE = register("veiled_leaf_pile", () -> new VeiledLeafPileFeature(VeiledLeafPileConfig.CODEC));

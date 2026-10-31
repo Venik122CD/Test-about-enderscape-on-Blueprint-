@@ -96,7 +96,7 @@ public class EnderscapeBiomeModifiers {
                 biomeLookup.getOrThrow(EnderscapeBiomeTags.INCLUDES_NEW_BARRENS_CONTENT),
                 HolderSet.direct(
                         placedFeatureLookup.getOrThrow(EnderscapePlacedFeatures.DRY_END_GROWTH),
-                        placedFeatureLookup.getOrThrow(EnderscapePlacedFeatures.MURUBLIGHT_SHELF)
+                        placedFeatureLookup.getOrThrow(EnderscapePlacedFeatures.MURUBLIGHT_BRACKET)
                 ),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));

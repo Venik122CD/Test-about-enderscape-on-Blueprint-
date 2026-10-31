@@ -132,7 +132,7 @@ public abstract class LivingEntityMixin extends Entity implements MagniaMoveable
                 NebuliteToolContext context = new NebuliteToolContext(stack, level(), player);
                 if (stack.getItem() instanceof MagniaAttractorItem && NebuliteToolItem.fuelExceedsCost(context)) {
                     MagniaAttractorItem.incrementEntitiesPulled(stack, 1);
-                    MagniaAttractorItem.tryUseFuel(context, 1 - MagniaAttractorItem.getEntitiesPulledToUseFuel(stack));
+                    MagniaAttractorItem.tryUseFuel(context, 1 - MagniaAttractorItem.getEntitiesPulledToUseFuel(stack, level()));
                 }
             }
         }

@@ -44,7 +44,7 @@ public class CorruptBarrensBiome {
                 .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.UPWARD_CORRUPT_GROWTH)
                 .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.UPWARD_TALL_CORRUPT_GROWTH)
                 .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.CORRUPT_BARRENS_VEGETATION)
-                .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.MURUBLIGHT_SHELF);
+                .addFeature(VEGETAL_DECORATION, EnderscapePlacedFeatures.MURUBLIGHT_BRACKET);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)

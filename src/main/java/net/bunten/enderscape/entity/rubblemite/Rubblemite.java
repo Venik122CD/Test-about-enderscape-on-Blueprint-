@@ -44,6 +44,7 @@ public class Rubblemite extends Monster {
     public static final int DEFAULT_FLAG = 0;
     public static final int INSIDE_SHELL_FLAG = 1;
     public static final int DASHING_FLAG = 2;
+    public static final int PREPARING_DASH_FLAG = 3;
 
     private static final EntityDataAccessor<Integer> RUBBLEMITE_FLAGS = SynchedEntityData.defineId(Rubblemite.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Integer> VARIANT_DATA = SynchedEntityData.defineId(Rubblemite.class, EntityDataSerializers.INT);
@@ -141,6 +142,17 @@ public class Rubblemite extends Monster {
         return getFlags() == INSIDE_SHELL_FLAG || brain.hasMemoryValue(EnderscapeMemory.RUBBLEMITE_HIDING_DURATION.get());
     }
 
+    public boolean isPreparingToDash() {
+        return getFlags() == PREPARING_DASH_FLAG;
+    }
+
+    public void prepareDash() {
+        setFlags(PREPARING_DASH_FLAG);
+        brain.setMemory(EnderscapeMemory.RUBBLEMITE_PREPARING_DASH.get(), true);
+        brain.setMemory(EnderscapeMemory.RUBBLEMITE_PREPARING_DASH_TIME.get(), 5);
+        playSound(EnderscapeEntitySounds.RUBBLEMITE_PREPARE_DASH.get(), 1, 1);
+    }
+
     public boolean isDashing() {
         return getFlags() == DASHING_FLAG && !brain.hasMemoryValue(EnderscapeMemory.RUBBLEMITE_DASH_ON_COOLDOWN.get());
     }
@@ -166,6 +178,8 @@ public class Rubblemite extends Monster {
     }
 
     public void dash() {
+        brain.eraseMemory(EnderscapeMemory.RUBBLEMITE_PREPARING_DASH.get());
+        brain.setMemoryWithExpiry(EnderscapeMemory.RUBBLEMITE_DASH_ON_COOLDOWN.get(), true, 40);
         Vec3 vec = getLookAngle();
         vec = vec.multiply(1.4, 0, 1.4).add(0, 0.33F, 0);
         setDeltaMovement(vec);

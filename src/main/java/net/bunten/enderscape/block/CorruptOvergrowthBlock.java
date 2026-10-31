@@ -17,7 +17,7 @@ public class CorruptOvergrowthBlock extends AbstractOvergrowthBlock {
     public static final MapCodec<CorruptOvergrowthBlock> CODEC = simpleCodec(CorruptOvergrowthBlock::new);
 
     public CorruptOvergrowthBlock(BlockBehaviour.Properties settings) {
-        super(false, EnderscapeBlocks.MIRESTONE.get(), EnderscapeBlocks.CORRUPT_PATH_BLOCK.get(), EnderscapeBlockSounds.CORRUPT_OVERGROWTH_FLATTEN, DirectionProperties.create().all(), settings);
+        super(false, EnderscapeBlocks.MIRESTONE.get(), EnderscapeBlocks.CORRUPT_PATH.get(), EnderscapeBlockSounds.CORRUPT_OVERGROWTH_FLATTEN, DirectionProperties.create().all(), settings);
     }
 
     @Override

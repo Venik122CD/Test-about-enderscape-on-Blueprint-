@@ -62,8 +62,8 @@ public class EnderscapeBlockLootSubProvider extends BlockLootSubProvider {
         add(CELESTIAL_OVERGROWTH.get(), block -> createSingleItemTableWithSilkTouch(block, END_STONE));
         add(CORRUPT_OVERGROWTH.get(), block -> createSingleItemTableWithSilkTouch(block, MIRESTONE.get()));
 
-        dropOther(CELESTIAL_PATH_BLOCK.get(), END_STONE);
-        dropOther(CORRUPT_PATH_BLOCK.get(), END_STONE);
+        dropOther(CELESTIAL_PATH.get(), END_STONE);
+        dropOther(CORRUPT_PATH.get(), END_STONE);
 
         add(DRY_END_GROWTH.get(), BlockLootSubProvider::createShearsOnlyDrop);
         dropPottedContents(POTTED_DRY_END_GROWTH.get());
@@ -168,7 +168,7 @@ public class EnderscapeBlockLootSubProvider extends BlockLootSubProvider {
         dropOther(CELESTIAL_HANGING_SIGN.get(), CELESTIAL_HANGING_SIGN_ITEM.get());
         dropOther(CELESTIAL_WALL_HANGING_SIGN.get(), CELESTIAL_HANGING_SIGN_ITEM.get());
 
-        dropOther(MURUBLIGHT_SHELF.get(), MURUBLIGHT_SHELF_ITEM.get());
+        dropOther(MURUBLIGHT_BRACKET.get(), MURUBLIGHT_BRACKET_ITEM.get());
 
         dropSelf(MURUBLIGHT_CHANTERELLE.get());
         dropPottedContents(POTTED_MURUBLIGHT_CHANTERELLE.get());

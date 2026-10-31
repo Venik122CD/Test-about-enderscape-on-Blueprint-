@@ -133,7 +133,7 @@ public class EnderscapeVaultLootSubProvider implements LootTableSubProvider {
                                             )
                                     )
 
-                                    .add(createEnchantedBook(LIGHTSPEED, 10))
+                                    .add(createEnchantedBook(RESONANCE, 10))
 
                                     .add(createItem(BOOK, 10).apply(
                                                     new EnchantRandomlyFunction.Builder()

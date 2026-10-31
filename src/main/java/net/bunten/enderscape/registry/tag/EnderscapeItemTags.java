@@ -30,6 +30,7 @@ public class EnderscapeItemTags {
     public static final TagKey<Item> NEBULITE_TOOLS = register("nebulite_tools");
     public static final TagKey<Item> POWERS_MAGNIA_WHEN_MINED_WITH = register("powers_magnia_when_mined_with");
     public static final TagKey<Item> REPAIRS_DRIFT_LEGGINGS = register("repairs_drift_leggings");
+    public static final TagKey<Item> REPAIRS_SHADOLINE_ARMOR = register("repairs_shadoline_armor");
     public static final TagKey<Item> REPAIRS_RUBBLE_SHIELDS = register("repairs_rubble_shields");
     public static final TagKey<Item> RUBBLE_SHIELDS = register("rubble_shields");
     public static final TagKey<Item> RUSTLE_FOOD = register("rustle_food");

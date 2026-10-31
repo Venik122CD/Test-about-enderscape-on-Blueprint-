@@ -14,6 +14,12 @@ public class EnderscapeBlockSounds {
     public static final SoundEvent ALLURING_MAGNIA_SPROUT_OVERHEAT = register("alluring_magnia_sprout.overheat");
     public static final SoundEvent ALLURING_MAGNIA_SPROUT_POWER_OFF = register("alluring_magnia_sprout.power_off");
     public static final SoundEvent ALLURING_MAGNIA_SPROUT_POWER_ON = register("alluring_magnia_sprout.power_on");
+    public static final SoundEvent BLISTERED_MAGNIA_POWER_OFF = register("blistered_magnia.power_off");
+    public static final SoundEvent BLISTERED_MAGNIA_POWER_ON = register("blistered_magnia.power_on");
+    public static final SoundEvent MAGNIA_RADIO_AMBIENT = register("magnia_radio.ambient");
+    public static final SoundEvent MAGNIA_RADIO_POWER_OFF = register("magnia_radio.power_off");
+    public static final SoundEvent MAGNIA_RADIO_POWER_ON = register("magnia_radio.power_on");
+    public static final SoundEvent POLARIZED_MAGNIA_SWAP_POLARITY = register("polarized_magnia.swap_polarity");
     public static final SoundEvent BLINKLAMP_DECREASE = register("blinklamp.decrease");
     public static final SoundEvent BLINKLAMP_INCREASE = register("blinklamp.increase");
     public static final SoundEvent BLINKLIGHT_VINES_BLINK = register("blinklight_vines.blink");

@@ -78,7 +78,7 @@ public class MurublightShelfBlock extends DirectionalPlantBlock implements Bonem
     }
 
     private static BlockState stateForGeneration(Direction direction) {
-        return EnderscapeBlocks.MURUBLIGHT_SHELF.get().defaultBlockState().setValue(MurublightShelfBlock.FACING, direction).setValue(MurublightShelfBlock.AGE, MurublightShelfBlock.MAX_AGE);
+        return EnderscapeBlocks.MURUBLIGHT_BRACKET.get().defaultBlockState().setValue(MurublightShelfBlock.FACING, direction).setValue(MurublightShelfBlock.AGE, MurublightShelfBlock.MAX_AGE);
     }
 
     public static boolean canGenerate(LevelAccessor world, BlockPos pos, Direction direction) {

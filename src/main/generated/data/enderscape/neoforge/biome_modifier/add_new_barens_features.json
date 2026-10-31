@@ -3,7 +3,7 @@
   "biomes": "#enderscape:includes_new_barrens_content",
   "features": [
     "enderscape:dry_end_growth",
-    "enderscape:murublight_shelf"
+    "enderscape:murublight_bracket"
   ],
   "step": "vegetal_decoration"
 }
