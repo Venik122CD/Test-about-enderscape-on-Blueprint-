@@ -125,6 +125,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_authors            : mod_authors,
             mod_description        : mod_description,
             blueprint_version_range: blueprint_version_range,
+            lithostitched_version  : lithostitched_version,
             yacl_version           : yacl_version,
             terrablender_version   : terrablender_version,
     ]
