@@ -1,6 +1,6 @@
 <div align="center">
   <img src="https://cdn.modrinth.com/data/cached_images/1449d27b604d9d8fd7fa9c5225ea15500501c43f.webp">
-  <h4>🔹 Requires <a href="https://modrinth.com/mod/fabric-api">Fabric API</a>, <a href="https://modrinth.com/mod/yacl">YetAnotherConfigLib</a>, and <a href="https://modrinth.com/mod/lithostitched">Lithostitched</a>🔹
+  <h4>🔹 Requires <a href="https://modrinth.com/mod/blueprint">Blueprint</a>, <a href="https://modrinth.com/mod/yacl">YetAnotherConfigLib</a>, and <a href="https://modrinth.com/mod/lithostitched">Lithostitched</a>🔹
   <br><br>💖 In active development, features subject to change. <a href="https://github.com/lunarbunten/enderscape/issues">Please report any issues.</a> 💖
   <br><br>🏙️ Join the <a href="https://discord.gg/bksj9aqqgb"><strong>Penumbra</strong></a> Discord server for development updates! 🏙️</h4>
   <h2>🔹There's <i>far</i> more waiting for you beyond "The End"🔹</h2>
