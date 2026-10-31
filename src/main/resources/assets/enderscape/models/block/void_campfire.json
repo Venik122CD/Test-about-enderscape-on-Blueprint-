@@ -3,5 +3,6 @@
   "textures": {
     "fire": "enderscape:block/void_campfire_fire",
     "lit_log": "enderscape:block/void_campfire_log_lit"
-  }
+  },
+  "render_type": "minecraft:cutout"
 }
