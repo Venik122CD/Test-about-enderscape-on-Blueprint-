@@ -80,9 +80,7 @@ public class MagniaRadioBlock extends Block implements SimpleWaterloggedBlock {
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         VoxelShape base = box(0, 0, 3, 16, 12, 13);
         return switch (state.getValue(FACING)) {
-            case EAST -> Shapes.rotate(base, Rotation.CLOCKWISE_90.rotation());
-            case SOUTH -> Shapes.rotate(base, Rotation.CLOCKWISE_180.rotation());
-            case WEST -> Shapes.rotate(base, Rotation.COUNTERCLOCKWISE_90.rotation());
+            case EAST, WEST -> Shapes.box(3, 0, 0, 13, 12, 16);
             default -> base;
         };
     }
