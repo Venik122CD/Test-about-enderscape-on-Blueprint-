@@ -1,18 +1,23 @@
-# Enderscape Backport
+# Enderscape [Backport to 1.21.1 NEOFORGE]
 
-This is an **unofficial backport** of the **Enderscape** mod.
+This is an **unofficial backport** of the **Enderscape** mod, bringing its features to Minecraft `1.21.1 NEOFOFRGE`.
 
 **Original Mod:** 
 - [Enderscape on Modrinth](https://modrinth.com/mod/enderscape)
 - [Enderscape on GitHub](https://github.com/Penumbra-MC/Enderscape)
 - Created by **Penumbra** and **bunten**.
 
-## ⚠️ Important Licensing Information
-- **Code:** The original code is licensed under the **MIT License**. You are free to use, modify, and distribute the code as long as the original copyright notice is retained.
-- **Assets (Textures, Sounds, Models):** The original assets are licensed under **All Rights Reserved (ARR)** and belong to Penumbra. 
+## ⚠️ Current Status: Asset Replacement in Progress
+The original Enderscape mod has an **All Rights Reserved** license for its textures, models, and sounds. **I am currently in the process of creating brand new, custom assets to replace the originals.** 
+
+Please do not worry! The gameplay and code are fully functional. I am actively working on the visual and audio replacements. Until the new assets are finished, please do not redistribute the assets found in this development build.
+
+## Licensing
+- **Code:** The original code is licensed under the **MIT License**. 
+- **Assets:** The original assets belong to Penumbra (ARR). Newly created assets for this backport will be licensed under their own separate open license (to be updated soon).
 
 ## Requirements
-- Minecraft `1.21.1 neoforge`
+- Minecraft `1.21.1 NEOFORGE`
 - [Blueprint](https://modrinth.com/mod/blueprint)
 - [YetAnotherConfigLib](https://modrinth.com/mod/yacl)
 - [Lithostitched](https://modrinth.com/mod/lithostitched)
