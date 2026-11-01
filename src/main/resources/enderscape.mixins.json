@@ -55,7 +55,15 @@
     "VaultStateEjectingMixin",
     "VaultStateMixin",
     "VaultStateUnlockingMixin",
-    "WorldGenRegionMixin"
+    "WorldGenRegionMixin",
+    "DaggerEnchantmentHelperMixin",
+    "ItemBackstabDamageMixin",
+    "PlayerAttackSoundsMixin",
+    "StunBrainMixin",
+    "StunEntityMixin",
+    "StunLivingEntityMixin",
+    "StunMobMixin",
+    "StunServerGamePacketListenerMixin"
   ],
   "server": [],
   "injectors": {
