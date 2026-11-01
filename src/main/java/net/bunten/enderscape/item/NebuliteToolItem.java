@@ -24,12 +24,6 @@ public abstract class NebuliteToolItem extends Item {
         super(properties.stacksTo(1));
     }
 
-    public abstract boolean displayHudWhen(NebuliteToolContext context);
-
-    public boolean hideInvalidOutlineWhen(NebuliteToolContext context) {
-        return fuelExceedsCost(context);
-    }
-
     @Override
     public boolean overrideOtherStackedOnMe(ItemStack stack, ItemStack other, Slot slot, ClickAction action, Player player, SlotAccess access) {
         if (action == ClickAction.PRIMARY && other.is(EnderscapeItems.NEBULITE.get())) {
