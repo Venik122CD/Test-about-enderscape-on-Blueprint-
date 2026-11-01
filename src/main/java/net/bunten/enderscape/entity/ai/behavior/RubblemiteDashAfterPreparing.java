@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ai.behavior.Behavior;
 import net.minecraft.world.entity.ai.memory.MemoryStatus;
 
-/** Performs the dash once the wind-up timer has run out. */
+                                                            
 public class RubblemiteDashAfterPreparing extends Behavior<Rubblemite> {
     public RubblemiteDashAfterPreparing() {
         super(ImmutableMap.of(

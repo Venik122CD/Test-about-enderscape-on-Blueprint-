@@ -10,6 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
@@ -227,51 +228,54 @@ public class MirrorItem extends NebuliteToolItem {
     }
 
     private MutableComponent tooltip(String name, Object... objects) {
-        return Component.translatable("item." + Enderscape.MOD_ID + ".mirror.desc." + name, objects);
+        return Component.translatable("item." + Enderscape.MOD_ID + ".lodestone_teleportation.desc." + name, objects);
     }
-    
+
     private class HoverTextHandler {
         public void appendHoverText(ItemStack stack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag flag) {
             Minecraft client = Minecraft.getInstance();
             EnderscapeConfig config = EnderscapeConfig.getInstance();
 
+            if (!config.mirrorTooltipEnabled || !isLinked(stack) || client.level == null || client.player == null) {
+                return;
+            }
+
             MirrorContext context = new MirrorContext(stack, client.level, client.player);
+            ChatFormatting headerColor = ChatFormatting.GRAY;
+            ChatFormatting infoColor = ChatFormatting.DARK_GRAY;
+            ChatFormatting valueColor = ChatFormatting.BLUE;
 
-            if (isLinked(stack) && config.mirrorTooltipEnabled) {
+            if (!config.mirrorTooltipShiftToDisplay || Screen.hasShiftDown()) {
+                BlockPos user = context.user().blockPosition();
+                BlockPos linkedPos = context.linkedPos();
+                ResourceKey<Level> linkedDimension = context.linkedDimension();
 
-                ChatFormatting typeColor = ChatFormatting.GRAY;
-                ChatFormatting valueColor = ChatFormatting.BLUE;
+                list.add(tooltip("header").withStyle(headerColor));
 
-                if (!config.mirrorTooltipShiftToDisplay || Screen.hasShiftDown()) {
-                    BlockPos user = context.user().blockPosition();
-                    BlockPos linkedPos = context.linkedPos();
-                    ResourceKey<Level> linkedDimension = context.linkedDimension();
-
-                    if (config.mirrorTooltipDisplayCoordinates) {
-                        MutableComponent position = tooltip("position.coordinates", linkedPos.getX(), linkedPos.getY(), linkedPos.getZ()).withStyle(valueColor);
-                        MutableComponent unknown = tooltip("position.unknown").withStyle(valueColor);
-
-                        list.add(tooltip("position", isSameDimension(context, linkedDimension) ? position : unknown).withStyle(typeColor));
-                    }
-
-                    if (config.mirrorTooltipDisplayDistance) {
-                        float step = getDistanceForCostIncrease(stack) / 2.0F;
-                        int roundedDistance = (int) (Math.round(distanceBetweenPoints(user, linkedPos) / step) * step);
-
-                        MutableComponent approximate = tooltip("distance.approximate_value", roundedDistance).withStyle(valueColor);
-                        MutableComponent unknown = tooltip("distance.unknown").withStyle(valueColor);
-
-                        list.add(tooltip("distance", isSameDimension(context, linkedDimension) ? approximate : unknown).withStyle(typeColor));
-                    }
-
-                    if (config.mirrorTooltipDisplayDimension) {
-                        MutableComponent dimension = Component.translatable(Util.makeDescriptionId("dimension", linkedDimension.location())).withStyle(valueColor);;
-                        list.add(tooltip("dimension", dimension).withStyle(typeColor));
-                    }
-
-                } else {
-                    list.add(tooltip("unshifted").withStyle(typeColor));
+                if (config.mirrorTooltipDisplayCoordinates) {
+                    MutableComponent position = tooltip("position.coordinates", linkedPos.getX(), linkedPos.getY(), linkedPos.getZ()).withStyle(valueColor);
+                    MutableComponent unknown = tooltip("position.unknown").withStyle(valueColor);
+                    MutableComponent component = tooltip("position", isSameDimension(context, linkedDimension) ? position : unknown);
+                    list.add(CommonComponents.space().append(component.withStyle(infoColor)));
                 }
+
+                if (config.mirrorTooltipDisplayDistance) {
+                    float step = Math.max(1.0F, getDistanceForCostIncrease(stack) / 2.0F);
+                    int roundedDistance = (int) (Math.round(distanceBetweenPoints(user, linkedPos) / step) * step);
+
+                    MutableComponent approximate = tooltip("distance.approximate_value", roundedDistance).withStyle(valueColor);
+                    MutableComponent unknown = tooltip("distance.unknown").withStyle(valueColor);
+                    MutableComponent component = tooltip("distance", isSameDimension(context, linkedDimension) ? approximate : unknown);
+                    list.add(CommonComponents.space().append(component.withStyle(infoColor)));
+                }
+
+                if (config.mirrorTooltipDisplayDimension) {
+                    MutableComponent dimension = Component.translatable(Util.makeDescriptionId("dimension", linkedDimension.location())).withStyle(valueColor);
+                    MutableComponent component = tooltip("dimension", dimension);
+                    list.add(CommonComponents.space().append(component.withStyle(infoColor)));
+                }
+            } else {
+                list.add(tooltip("unshifted").withStyle(headerColor));
             }
         }
     }

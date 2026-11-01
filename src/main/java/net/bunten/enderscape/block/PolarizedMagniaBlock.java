@@ -21,7 +21,7 @@ import net.minecraft.world.level.material.MapColor;
 import java.util.Optional;
 import java.util.function.ToIntFunction;
 
-/** Flips its polarity every time it receives a fresh redstone signal. */
+                                                                         
 public class PolarizedMagniaBlock extends Block implements HasMagniaPolarity, HasMagniaPowerSignal {
     public static final MapCodec<PolarizedMagniaBlock> CODEC = simpleCodec(PolarizedMagniaBlock::new);
     public static final BooleanProperty POWERED = StateProperties.POWERED;

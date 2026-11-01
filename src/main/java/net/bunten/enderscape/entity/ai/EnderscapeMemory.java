@@ -19,19 +19,19 @@ public class EnderscapeMemory extends MemoryModuleType<Object> {
         super(Optional.empty());
     }
 
-    // General
+              
 
     public static final Supplier<MemoryModuleType<List<LivingEntity>>> NEAREST_ENEMIES = register("rubblemite_nearest_enemies");
     public static final Supplier<MemoryModuleType<LivingEntity>> NEAREST_INTIMIDATOR = register("drifter_nearest_intimidator");
     public static final Supplier<MemoryModuleType<LivingEntity>> NEAREST_VISIBLE_ATTACKABLE_ENEMY = register("rubblemite_nearest_visible_targetable_enemy");
     public static final Supplier<MemoryModuleType<LivingEntity>> NEAREST_VISIBLE_ENEMY = register("rubblemite_nearest_visible_enemy");
 
-    // Drifter
+              
 
     public static final Supplier<MemoryModuleType<Integer>> DRIFTER_FIND_HOME_COOLDOWN = register("drifter_find_home_cooldown", Codec.INT);
     public static final Supplier<MemoryModuleType<Integer>> DRIFTER_JELLY_CHANGE_COOLDOWN = register("drifter_jelly_change_cooldown", Codec.INT);
 
-    // Rubblemite
+                 
 
     public static final Supplier<MemoryModuleType<Boolean>> RUBBLEMITE_DASH_ON_COOLDOWN = register("rubblemite_dash_on_cooldown", Codec.BOOL);
     public static final Supplier<MemoryModuleType<Boolean>> RUBBLEMITE_PREPARING_DASH = register("rubblemite_preparing_dash", Codec.BOOL);
@@ -39,7 +39,7 @@ public class EnderscapeMemory extends MemoryModuleType<Object> {
     public static final Supplier<MemoryModuleType<Boolean>> RUBBLEMITE_HIDING_ON_COOLDOWN = register("rubblemite_hiding_on_cooldown", Codec.BOOL);
     public static final Supplier<MemoryModuleType<Integer>> RUBBLEMITE_HIDING_DURATION = register("rubblemite_hiding_duration", Codec.INT);
 
-    // Rustle
+             
 
     public static final Supplier<MemoryModuleType<BlockPos>> RUSTLE_FOOD = register("rustle_food");
     public static final Supplier<MemoryModuleType<BlockPos>> RUSTLE_SLEEPING_SPOT = register("rustle_sleeping_spot");

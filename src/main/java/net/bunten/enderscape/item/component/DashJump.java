@@ -69,7 +69,7 @@ public record DashJump(int dashTime, float horizontalPower, float verticalPower,
 
             player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
 
-            // not a big fan of 1.21.1
+                                      
             int cooldown = 60;
             player.getCooldowns().addCooldown(EnderscapeItems.END_STONE_RUBBLE_SHIELD.get(), cooldown);
             player.getCooldowns().addCooldown(EnderscapeItems.MIRESTONE_RUBBLE_SHIELD.get(), cooldown);

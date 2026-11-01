@@ -9,7 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
 
-/** Adds Enderscape loot to the vanilla stronghold library chests. */
+                                                                     
 @EventBusSubscriber(modid = Enderscape.MOD_ID)
 public class LootSupplementEvents {
 

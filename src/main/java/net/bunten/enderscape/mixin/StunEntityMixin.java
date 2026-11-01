@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-/** Stunned entities cannot turn (including the camera of a stunned player) and do not kick up sprint particles. */
+                                                                                                                   
 @Mixin(Entity.class)
 public abstract class StunEntityMixin {
     @Unique

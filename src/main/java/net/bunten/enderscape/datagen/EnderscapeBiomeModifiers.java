@@ -68,7 +68,7 @@ public class EnderscapeBiomeModifiers {
         context.register(ADD_GLOBAL_FEATURES, new BiomeModifiers.AddFeaturesBiomeModifier(
                 new AndHolderSet<>(
                         biomeLookup.getOrThrow(BiomeTags.IS_END),
-                        // This is null. Hopefully it will not break stuff
+                                                                          
                         new NotHolderSet<>(null, biomeLookup.getOrThrow(EnderscapeBiomeTags.EXCLUDED_FROM_GLOBAL_FEATURE_ADDITIONS))
                 ),
                 HolderSet.direct(

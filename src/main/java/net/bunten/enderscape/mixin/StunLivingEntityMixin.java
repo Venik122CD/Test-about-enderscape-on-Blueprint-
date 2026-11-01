@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-/** Stunned living entities cannot attack or walk. */
+                                                     
 @Mixin(LivingEntity.class)
 public abstract class StunLivingEntityMixin {
     @Unique

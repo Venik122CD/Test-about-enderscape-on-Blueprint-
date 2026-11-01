@@ -33,6 +33,9 @@ jobs:
       - name: Make Gradle wrapper executable
         run: chmod +x gradlew
 
+      - name: Fix legacy structure attribute IDs
+        run: python3 .github/scripts/fix_legacy_attribute_ids.py
+
       - name: Build mod
         run: ./gradlew build --no-daemon
 

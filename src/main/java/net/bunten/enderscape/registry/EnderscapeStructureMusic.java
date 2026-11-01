@@ -22,10 +22,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-/*
-    Credit to FusionSwarly for developing the original functionality
-    https://github.com/FusionSwarly/structure-music
- */
+  
+                                                                    
+                                                   
+   
 @EventBusSubscriber(modid = Enderscape.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class EnderscapeStructureMusic {
 

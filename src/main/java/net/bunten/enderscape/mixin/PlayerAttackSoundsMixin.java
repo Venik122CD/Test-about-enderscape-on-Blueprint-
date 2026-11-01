@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
-/** Swaps the vanilla player attack sounds for the ones defined by the held item's attack sounds component. */
+                                                                                                              
 @Mixin(Player.class)
 public abstract class PlayerAttackSoundsMixin {
     @Unique

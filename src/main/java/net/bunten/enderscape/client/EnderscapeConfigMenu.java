@@ -778,7 +778,7 @@ public class EnderscapeConfigMenu {
 
         Option<?> nebuliteToolHudOffset = intOption(
                 "nebulite_tool_hud_offset",
-                0,
+                13,
                 () -> config.nebuliteToolHudOffset,
                 value -> config.nebuliteToolHudOffset = value,
                 0,

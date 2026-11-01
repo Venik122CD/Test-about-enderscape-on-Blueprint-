@@ -9,7 +9,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 
-/** Shadoline armor: normal armor stats plus a stealth bonus that makes the wearer harder for mobs to notice. */
+                                                                                                                
 public class ShadolineArmorItem extends ArmorItem {
     private ItemAttributeModifiers cachedModifiers;
 

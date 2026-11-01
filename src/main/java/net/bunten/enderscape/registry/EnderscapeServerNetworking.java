@@ -37,7 +37,7 @@ public class EnderscapeServerNetworking {
     @SubscribeEvent
     public static void register(final RegisterPayloadHandlersEvent event) {
         var registrar = event.registrar("1");
-        // Use lambdas instead of method refs, as method refs will load methods in the target class that cannot be safely loaded
+                                                                                                                                
         registrar.playToClient(ClientboundDashJumpSoundPayload.TYPE, ClientboundDashJumpSoundPayload.STREAM_CODEC, (payload, ctx) -> EnderscapeClientNetworking.receiveDashJumpSoundPayload(payload, ctx));
         registrar.playToClient(ClientboundDashJumpPayload.TYPE, ClientboundDashJumpPayload.STREAM_CODEC, (payload, ctx) -> EnderscapeClientNetworking.receiveDashJumpPayload(payload, ctx));
         registrar.playToClient(ClientboundMirrorTeleportInfoPayload.TYPE, ClientboundMirrorTeleportInfoPayload.STREAM_CODEC, (payload, ctx) -> EnderscapeClientNetworking.receiveMirrorTeleportPayload(payload, ctx));

@@ -23,9 +23,9 @@ public abstract class BlockMixin extends BlockBehaviour {
         super(settings);
     }
 
-    /*
-     * Chorus Humming and Pollen
-     */
+      
+                                
+       
     @Inject(method = "animateTick", at = @At("HEAD"), cancellable = true)
     public void Enderscape$animateTick(BlockState state, Level level, BlockPos pos, RandomSource random, CallbackInfo info) {
         if (state.getBlock() instanceof ChorusFlowerBlock && state.getValue(ChorusFlowerBlock.AGE) == 5) {

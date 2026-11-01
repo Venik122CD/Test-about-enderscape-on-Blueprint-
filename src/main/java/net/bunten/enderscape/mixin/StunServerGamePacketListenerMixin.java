@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Stunned players cannot interact with or attack entities. */
+                                                               
 @Mixin(ServerGamePacketListenerImpl.class)
 public abstract class StunServerGamePacketListenerMixin {
     @Shadow public ServerPlayer player;

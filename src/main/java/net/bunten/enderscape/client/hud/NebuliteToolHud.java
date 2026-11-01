@@ -154,7 +154,11 @@ public class NebuliteToolHud extends HudElement {
         if (displayUI) {
             fuel = NebuliteToolItem.currentFuel(stack);
             maxFuel = NebuliteToolItem.maxFuel(stack);
-            cost = NebuliteToolItem.of(stack).fuelCost(context);
+            try {
+                cost = NebuliteToolItem.of(stack).fuelCost(context);
+            } catch (RuntimeException exception) {
+                cost = maxFuel;
+            }
 
             totalAlpha = Mth.lerp(0.5F, totalAlpha, 1);
             heightOffset = Mth.lerp(0.5F, heightOffset, -3);

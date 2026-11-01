@@ -114,10 +114,9 @@ public class EnderscapeItems {
         return RegistryHelper.registerForHolder(BuiltInRegistries.ARMOR_MATERIAL, location, () -> new ArmorMaterial(enumMap, i, holder, supplier, list, f, g));
     }
 
-    //public static final Properties SHULKER_SHELL_PROPERTIES = new Item.Properties().component(DataComponents.EQUIPPABLE, Equippable.builder(ArmorType.HELMET.getSlot()).setEquipSound(EnderscapeItemSounds.SHULKER_SHELL_EQUIP).setAsset(ResourceKey.create(ROOT_ID, Enderscape.id("shulker_shell"))).build());
+                                                                                                                                                                                                                                                                                                                 
 
     public static final Supplier<Item> DRIFTER_SPAWN_EGG = registerSpawnEgg(EnderscapeEntities.DRIFTER, 0xE97FFF, 0x7554A8);
-    public static final Supplier<Item> DRIFTLET_SPAWN_EGG = registerSpawnEgg(EnderscapeEntities.DRIFTLET, 0xFFAAF9, 0xE97FFF);
     public static final Supplier<Item> RUBBLEMITE_SPAWN_EGG = registerSpawnEgg(EnderscapeEntities.RUBBLEMITE, 0xF2FDBE, 0xC1B687);
     public static final Supplier<Item> RUSTLE_SPAWN_EGG = registerSpawnEgg(EnderscapeEntities.RUSTLE, 15131119, 11905990);
 
@@ -158,7 +157,7 @@ public class EnderscapeItems {
     public static final Supplier<Item> MIRESTONE_RUBBLE_SHIELD = registerItem("mirestone_rubble_shield", RubbleShieldItem::new, RUBBLE_SHIELD_PROPERTIES);
     public static final Supplier<Item> KURODITE_RUBBLE_SHIELD = registerItem("kurodite_rubble_shield", RubbleShieldItem::new, RUBBLE_SHIELD_PROPERTIES);
 
- //   public static final ResourceKey<EquipmentAsset> DRIFT_LEGGINGS_ASSET = ResourceKey.create(ROOT_ID, Enderscape.id("drift_leggings"));
+                                                                                                                                          
 
     public static final Supplier<Item> DRIFT_LEGGINGS = registerItem("drift_leggings", DriftLeggingsItem::new, new Properties().attributes(DRIFT_LEGGINGS_ATTRIBUTES).durability(495));
 
@@ -173,7 +172,7 @@ public class EnderscapeItems {
                     .add(EnderscapeAttributes.BACKSTAB_DAMAGE, new AttributeModifier(EnderscapeAttributes.BASE_BACKSTAB_DAMAGE_ID, 3.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                     .add(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_speed"), -1.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                     .build())
-            .component(DataComponents.TOOL, new net.minecraft.world.item.component.Tool(List.of(net.minecraft.world.item.component.Tool.Rule.minesAndDrops(net.minecraft.core.HolderSet.direct(net.minecraft.world.level.block.Blocks.COBWEB.builtInRegistryHolder()), 7.5F)), 1.0F, 2))
+            .component(DataComponents.TOOL, new net.minecraft.world.item.component.Tool(List.of(net.minecraft.world.item.component.Tool.Rule.minesAndDrops(List.of(net.minecraft.world.level.block.Blocks.COBWEB), 7.5F)), 1.0F, 2))
             .component(EnderscapeDataComponents.ATTACK_SOUNDS, net.bunten.enderscape.item.component.AttackSounds.Builder.create()
                     .strong(EnderscapeItemSounds.DAGGER_ATTACK_STRONG)
                     .crit(EnderscapeItemSounds.DAGGER_ATTACK_CRIT)
@@ -187,7 +186,7 @@ public class EnderscapeItems {
             .component(EnderscapeDataComponents.STUN_ATTACK, net.bunten.enderscape.item.component.StunAttack.DEFAULT)
     );
 
-    public static final Supplier<Item> VOID_TORCH_ITEM = registerItem("void_torch", properties -> new net.minecraft.world.item.StandingAndWallBlockItem(EnderscapeBlocks.VOID_TORCH.get(), EnderscapeBlocks.VOID_WALL_TORCH.get(), net.minecraft.core.Direction.DOWN, properties), new Properties());
+    public static final Supplier<Item> VOID_TORCH_ITEM = registerItem("void_torch", properties -> new net.minecraft.world.item.StandingAndWallBlockItem(EnderscapeBlocks.VOID_TORCH.get(), EnderscapeBlocks.VOID_WALL_TORCH.get(), properties, net.minecraft.core.Direction.DOWN), new Properties());
 
     public static final Supplier<Item> MAGNIA_ATTRACTOR = registerItem("magnia_attractor", MagniaAttractorItem::new, new Properties()
             .component(EnderscapeDataComponents.ENABLED, true)

@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-/** Items in the enderscape:incompatible/sweeping_edge tag (the dagger) cannot get Sweeping Edge. */
+                                                                                                    
 @Mixin(Enchantment.class)
 public abstract class EnchantmentSweepingEdgeMixin {
     @Unique

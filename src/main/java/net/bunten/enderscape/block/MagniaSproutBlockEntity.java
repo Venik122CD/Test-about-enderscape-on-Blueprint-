@@ -88,7 +88,7 @@ public class MagniaSproutBlockEntity extends BlockEntity {
 
         if (MagniaSproutBlock.isRepulsive(state)) {
 
-            // Repels the entity away from the Magnia Sprout in the direction it's facing
+                                                                                         
 
             float factor = properties.repelStrength().apply(entity);
             Vec3 velocity = new Vec3(facing.getStepX(), facing.getStepY(), facing.getStepZ()).normalize().multiply(factor, factor, factor);
@@ -110,11 +110,11 @@ public class MagniaSproutBlockEntity extends BlockEntity {
 
             if (distance > 0.1F) {
 
-                // Pulls the entity towards the Magnia Sprout
+                                                             
 
                 Vec3 velocity = moveTarget.subtract(pos).normalize().scale(properties.attractStrength().apply(entity) * (float)Math.min(distance / 5.0, 1.0));
 
-                // As it gets close, the speed will slow down
+                                                             
 
                 if (distance < 1.5F) velocity = velocity.scale((float) (0.75F + (distance / 2.0F) * 0.25F));
 
@@ -125,7 +125,7 @@ public class MagniaSproutBlockEntity extends BlockEntity {
                 MagniaMovingData.setMovedByMagnia(entity, true);
             } else {
 
-                // When it's very close, momentum will be canceled to avoid jittering
+                                                                                     
 
                 move(entity, Vec3.ZERO);
                 entity.hasImpulse = true;

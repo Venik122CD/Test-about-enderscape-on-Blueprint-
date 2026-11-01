@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import org.apache.commons.lang3.mutable.MutableFloat;
 
-/** Counts uses of an item; once the (enchantment-modifiable) threshold is reached the owner spends fuel and the counter resets. */
+                                                                                                                                   
 public record ThresholdCounter(int value, int threshold) {
     public static final Codec<ThresholdCounter> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             ExtraCodecs.NON_NEGATIVE_INT.optionalFieldOf("value", 0).forGetter(ThresholdCounter::value),
@@ -68,10 +68,10 @@ public record ThresholdCounter(int value, int threshold) {
         return Math.max(0, (int) mutable.floatValue());
     }
 
-    /**
-     * Registers one use of a nebulite tool. The counter goes up every time; fuel is only spent (and the counter reset)
-     * once the counter has passed its threshold. Same behaviour as FueledTool.useFuel in the Fabric version.
-     */
+       
+                                                                                                                       
+                                                                                                             
+       
     public static boolean useFuel(ServerLevel level, LivingEntity user, ItemStack stack) {
         if (!NebuliteToolItem.is(stack)) return false;
 

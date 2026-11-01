@@ -11,7 +11,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
 
-/** Magnia attractors with the Bundling enchantment put picked-up items straight into bundles in the player's inventory. */
+                                                                                                                           
 @EventBusSubscriber(modid = Enderscape.MOD_ID)
 public class MagnetBundlingEvents {
 

@@ -14,9 +14,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/*
- *  Tridents returning from void
- */
+  
+                                
+   
 @Mixin(ThrownTrident.class)
 public abstract class ThrownTridentMixin extends AbstractArrow {
     protected ThrownTridentMixin(EntityType<? extends AbstractArrow> entityType, Level world) {

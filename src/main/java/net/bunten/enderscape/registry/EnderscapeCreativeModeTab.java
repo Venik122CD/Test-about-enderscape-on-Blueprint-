@@ -42,7 +42,6 @@ public class EnderscapeCreativeModeTab {
         output.accept(SHULKER_SPAWN_EGG);
         output.accept(RUSTLE_SPAWN_EGG.get());
         output.accept(DRIFTER_SPAWN_EGG.get());
-        output.accept(DRIFTLET_SPAWN_EGG.get());
 
         output.accept(DRAGON_BREATH);
         output.accept(RUBBLE_CHITIN.get());
@@ -158,7 +157,6 @@ public class EnderscapeCreativeModeTab {
         output.accept(ALLURING_MAGNIA.get());
         output.accept(POLARIZED_MAGNIA.get());
         output.accept(BLISTERED_MAGNIA.get());
-        output.accept(MAGNIA_RADIO.get());
         output.accept(ETCHED_ALLURING_MAGNIA.get());
         output.accept(ETCHED_ALLURING_MAGNIA_STAIRS.get());
         output.accept(ETCHED_ALLURING_MAGNIA_SLAB.get());
@@ -552,7 +550,7 @@ public class EnderscapeCreativeModeTab {
             addBefore(event, ANGLER_POTTERY_SHERD, CRESCENT_BANNER_PATTERN);
         } else if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
             addBefore(event, ALLAY_SPAWN_EGG, END_TRIAL_SPAWNER);
-            addAfter(event, DONKEY_SPAWN_EGG, DRIFTER_SPAWN_EGG, DRIFTLET_SPAWN_EGG);
+            addAfter(event, DONKEY_SPAWN_EGG, DRIFTER_SPAWN_EGG);
             addAfter(event, RAVAGER_SPAWN_EGG, RUBBLEMITE_SPAWN_EGG, RUSTLE_SPAWN_EGG);
         } else if (event.getTabKey() == CreativeModeTabs.OP_BLOCKS) {
             event.accept(HEALING.get().asItem().getDefaultInstance());

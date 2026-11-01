@@ -1,6 +1,8 @@
 MIT License
 
-Copyright (c) 2021 bunten
+Copyright (c) 2021 bunten (Original Author)
+Copyright (c) 2026 Penumbra (Original Project Team)
+Copyright (c) 2026 Venik (Backport modifications)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +21,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+# Assets License (All Rights Reserved)
+
+The original textures, models, sounds, and music created for Enderscape 
+are the intellectual property of Penumbra and the original Enderscape developers.
+
+Copyright (c) 2026 Penumbra
+All Rights Reserved.
+
+These original assets may NOT be redistributed, copied, or modified outside 
+of the original Enderscape project without explicit permission from Penumbra.
+
+[Note: The backport team (Venik) is currently in the process of replacing all 
+original assets with newly created ones under a separate license. Until this 
+process is complete, any original assets present in this repository are for 
+development/testing purposes only.]
+
