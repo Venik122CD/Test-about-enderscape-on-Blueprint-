@@ -14,7 +14,7 @@ This is an **unofficial backport** of the **Enderscape** mod, bringing its featu
 *(Note to the backporter: If you are using the original textures and sounds, you MUST have explicit permission from Penumbra to redistribute them. If you do not have permission, you must create your own replacements).*
 
 ## Requirements
-- Minecraft `<YOUR_MINECRAFT_VERSION>`
+- Minecraft `<1.21.1 neoforge>`
 - [Blueprint](https://modrinth.com/mod/blueprint)
 - [YetAnotherConfigLib](https://modrinth.com/mod/yacl)
 - [Lithostitched](https://modrinth.com/mod/lithostitched)
