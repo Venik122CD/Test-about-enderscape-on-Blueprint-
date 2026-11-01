@@ -15,6 +15,10 @@ public class EnderscapeDataComponents {
 
     public static final DataComponentType<DashJump> DASH_JUMP = register("dash_jump", builder -> builder.persistent(DashJump.CODEC).networkSynchronized(DashJump.STREAM_CODEC).cacheEncoding());
 
+    public static final DataComponentType<net.bunten.enderscape.item.component.AttackSounds> ATTACK_SOUNDS = register("attack_sounds", builder -> builder.persistent(net.bunten.enderscape.item.component.AttackSounds.CODEC).networkSynchronized(net.bunten.enderscape.item.component.AttackSounds.STREAM_CODEC).cacheEncoding());
+    public static final DataComponentType<Integer> BACKSTAB_ANGLE = register("backstab_angle", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.VAR_INT));
+    public static final DataComponentType<net.bunten.enderscape.item.component.StunAttack> STUN_ATTACK = register("stun_attack", builder -> builder.persistent(net.bunten.enderscape.item.component.StunAttack.CODEC).networkSynchronized(net.bunten.enderscape.item.component.StunAttack.STREAM_CODEC));
+    public static final DataComponentType<net.bunten.enderscape.item.component.ThresholdCounter> THRESHOLD_COUNTER = register("threshold_counter", builder -> builder.persistent(net.bunten.enderscape.item.component.ThresholdCounter.CODEC).networkSynchronized(net.bunten.enderscape.item.component.ThresholdCounter.STREAM_CODEC));
     public static final DataComponentType<Boolean> ENABLED = register("enabled", builder -> builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL));
     public static final DataComponentType<Integer> ENTITIES_PULLED = register("entities_pulled", builder -> builder.persistent(ExtraCodecs.NON_NEGATIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));
     public static final DataComponentType<Integer> ENTITIES_PULLED_TO_USE_FUEL = register("entities_pulled_to_use_fuel", builder -> builder.persistent(ExtraCodecs.POSITIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));

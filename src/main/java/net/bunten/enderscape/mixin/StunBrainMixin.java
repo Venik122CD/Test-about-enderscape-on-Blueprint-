@@ -1,0 +1,19 @@
+package net.bunten.enderscape.mixin;
+
+import net.bunten.enderscape.registry.EnderscapeMobEffects;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.Brain;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+/** Stunned mobs do not think. */
+@Mixin(Brain.class)
+public abstract class StunBrainMixin<E extends LivingEntity> {
+    @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
+    public void Enderscape$stunBrainTick(ServerLevel level, E mob, CallbackInfo info) {
+        if (EnderscapeMobEffects.isStunned(mob)) info.cancel();
+    }
+}

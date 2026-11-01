@@ -19,11 +19,11 @@ public class EnderscapeItemSounds {
 
     public static final Supplier<SoundEvent> CRACKED_MIRROR_TRY_LINK = register("cracked_mirror.try_link");
     public static final Supplier<SoundEvent> CRACKED_MIRROR_TRY_TELEPORT = register("cracked_mirror.try_teleport");
-    public static final Supplier<SoundEvent> DAGGER_ATTACK_CRIT = register("dagger.attack.crit");
-    public static final Supplier<SoundEvent> DAGGER_ATTACK_KNOCKBACK = register("dagger.attack.knockback");
-    public static final Supplier<SoundEvent> DAGGER_ATTACK_STRONG = register("dagger.attack.strong");
-    public static final Supplier<SoundEvent> DAGGER_BACKSTAB = register("dagger.backstab");
-    public static final Supplier<SoundEvent> DAGGER_STUN = register("dagger.stun");
+    public static final Holder<SoundEvent> DAGGER_ATTACK_CRIT = registerHolder("dagger.attack.crit");
+    public static final Holder<SoundEvent> DAGGER_ATTACK_KNOCKBACK = registerHolder("dagger.attack.knockback");
+    public static final Holder<SoundEvent> DAGGER_ATTACK_STRONG = registerHolder("dagger.attack.strong");
+    public static final Holder<SoundEvent> DAGGER_BACKSTAB = registerHolder("dagger.backstab");
+    public static final Holder<SoundEvent> DAGGER_STUN = registerHolder("dagger.stun");
     public static final Supplier<SoundEvent> ELYTRA_BREAK = register("elytra.break");
     public static final Supplier<SoundEvent> ELYTRA_GLIDING = register("elytra.gliding");
     public static final Supplier<SoundEvent> ELYTRA_LAND = register("elytra.land");

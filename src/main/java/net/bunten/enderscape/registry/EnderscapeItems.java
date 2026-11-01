@@ -168,15 +168,26 @@ public class EnderscapeItems {
     public static final Supplier<Item> SHADOLINE_BOOTS = registerItem("shadoline_boots", properties -> new net.bunten.enderscape.item.ShadolineArmorItem(SHADOLINE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, properties), new Properties().durability(ArmorItem.Type.BOOTS.getDurability(25)));
 
     public static final Supplier<Item> DAGGER = registerItem("dagger", net.bunten.enderscape.item.DaggerItem::new, new Properties()
-            .stacksTo(1)
             .attributes(ItemAttributeModifiers.builder()
                     .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"), 3.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                     .add(EnderscapeAttributes.BACKSTAB_DAMAGE, new AttributeModifier(EnderscapeAttributes.BASE_BACKSTAB_DAMAGE_ID, 3.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                     .add(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_speed"), -1.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                     .build())
-            .component(DataComponents.TOOL, new net.minecraft.world.item.component.Tool(List.of(net.minecraft.world.item.component.Tool.Rule.minesAndDrops(List.of(net.minecraft.world.level.block.Blocks.COBWEB), 7.5F)), 1.0F, 2)));
+            .component(DataComponents.TOOL, new net.minecraft.world.item.component.Tool(List.of(net.minecraft.world.item.component.Tool.Rule.minesAndDrops(net.minecraft.core.HolderSet.direct(net.minecraft.world.level.block.Blocks.COBWEB.builtInRegistryHolder()), 7.5F)), 1.0F, 2))
+            .component(EnderscapeDataComponents.ATTACK_SOUNDS, net.bunten.enderscape.item.component.AttackSounds.Builder.create()
+                    .strong(EnderscapeItemSounds.DAGGER_ATTACK_STRONG)
+                    .crit(EnderscapeItemSounds.DAGGER_ATTACK_CRIT)
+                    .knockback(EnderscapeItemSounds.DAGGER_ATTACK_KNOCKBACK)
+                    .backstab(EnderscapeItemSounds.DAGGER_BACKSTAB)
+                    .build())
+            .component(EnderscapeDataComponents.THRESHOLD_COUNTER, net.bunten.enderscape.item.component.ThresholdCounter.of(4))
+            .component(EnderscapeDataComponents.BACKSTAB_ANGLE, EnderscapeAttributes.DEFAULT_BACKSTAB_ANGLE)
+            .component(EnderscapeDataComponents.MAXIMUM_NEBULITE_FUEL, 5)
+            .component(EnderscapeDataComponents.NEBULITE_FUEL_PER_USE, 1)
+            .component(EnderscapeDataComponents.STUN_ATTACK, net.bunten.enderscape.item.component.StunAttack.DEFAULT)
+    );
 
-    public static final Supplier<Item> VOID_TORCH_ITEM = registerItem("void_torch", properties -> new net.minecraft.world.item.StandingAndWallBlockItem(EnderscapeBlocks.VOID_TORCH.get(), EnderscapeBlocks.VOID_WALL_TORCH.get(), properties, net.minecraft.core.Direction.DOWN), new Properties());
+    public static final Supplier<Item> VOID_TORCH_ITEM = registerItem("void_torch", properties -> new net.minecraft.world.item.StandingAndWallBlockItem(EnderscapeBlocks.VOID_TORCH.get(), EnderscapeBlocks.VOID_WALL_TORCH.get(), net.minecraft.core.Direction.DOWN, properties), new Properties());
 
     public static final Supplier<Item> MAGNIA_ATTRACTOR = registerItem("magnia_attractor", MagniaAttractorItem::new, new Properties()
             .component(EnderscapeDataComponents.ENABLED, true)
