@@ -1,15 +1,16 @@
 package net.bunten.enderscape.client.hud;
 
 import net.bunten.enderscape.Enderscape;
-import net.bunten.enderscape.item.DaggerItem;
 import net.bunten.enderscape.item.MagniaAttractorItem;
 import net.bunten.enderscape.item.MirrorContext;
 import net.bunten.enderscape.item.MirrorItem;
 import net.bunten.enderscape.item.NebuliteToolContext;
 import net.bunten.enderscape.item.NebuliteToolItem;
+import net.bunten.enderscape.util.NineSliceBlitUtil;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
@@ -17,12 +18,30 @@ import net.minecraft.world.item.ItemStack;
 
 public class NebuliteToolHud extends HudElement {
 
+    public NebuliteToolHud() {
+        super(Enderscape.id("nebulite_tool"), RenderPhase.AFTER_HUD);
+    }
+
     private static final ResourceLocation[] EMPTY_SEGMENTS = {
-            Enderscape.id("nebulite_tool/tooltip/empty_segments/start"),
-            Enderscape.id("nebulite_tool/tooltip/empty_segments/loop"),
-            Enderscape.id("nebulite_tool/tooltip/empty_segments/end")
+            Enderscape.id("nebulite_tool/hud/empty_segments/start"),
+            Enderscape.id("nebulite_tool/hud/empty_segments/loop"),
+            Enderscape.id("nebulite_tool/hud/empty_segments/end")
     };
-    private static final ResourceLocation FUELED_SEGMENT = Enderscape.id("nebulite_tool/tooltip/fueled_segment");
+
+    private static final ResourceLocation[] FUELED_SEGMENTS = {
+            Enderscape.id("nebulite_tool/hud/fueled_segments/start"),
+            Enderscape.id("nebulite_tool/hud/fueled_segments/loop"),
+            Enderscape.id("nebulite_tool/hud/fueled_segments/end")
+    };
+
+    private static final ResourceLocation[] INVALID_OVERLAY_SEGMENTS = {
+            Enderscape.id("nebulite_tool/hud/invalid_overlay_segments/start"),
+            Enderscape.id("nebulite_tool/hud/invalid_overlay_segments/loop"),
+            Enderscape.id("nebulite_tool/hud/invalid_overlay_segments/end")
+    };
+
+    private static final ResourceLocation TRANSDIMENSIONAL_OUTLINE = Enderscape.id("nebulite_tool/hud/transdimensional_outline");
+    private static final ResourceLocation COST_OVERLAY_SEGMENT = Enderscape.id("nebulite_tool/hud/cost_overlay_segment");
 
     private float heightOffset;
     private float totalAlpha;
@@ -32,22 +51,17 @@ public class NebuliteToolHud extends HudElement {
     private int invalidDisplayTicks;
     private float transdimensionalAlpha;
     private int transdimensionalDisplayTicks;
+    private int costOverlayPosition = -1;
     private int fuel;
     private int maxFuel;
     private int cost;
-    private boolean invalid;
-    private boolean transdimensional;
-    private int costOverlayPosition = -1;
-
-    public NebuliteToolHud() {
-        super(Enderscape.id("nebulite_tool"), RenderPhase.AFTER_HUD);
-    }
 
     @Override
     public void render(GuiGraphics graphics, DeltaTracker delta) {
         Minecraft minecraft = Minecraft.getInstance();
-        if (!config.nebuliteToolHudEnabled || minecraft.player == null || minecraft.options.hideGui ||
-                totalAlpha <= 0.01F || !minecraft.options.getCameraType().isFirstPerson() || minecraft.player.isSpectator()) {
+        Player player = minecraft.player;
+        if (!config.nebuliteToolHudEnabled || player == null || minecraft.options.hideGui || totalAlpha <= 0.01F ||
+                !minecraft.options.getCameraType().isFirstPerson() || player.isSpectator()) {
             return;
         }
 
@@ -58,7 +72,7 @@ public class NebuliteToolHud extends HudElement {
         int x = graphics.guiWidth() / 2 - (((11 * maxFuel) + 1) / 2);
         int y = graphics.guiHeight() / 2 - 13 - config.nebuliteToolHudOffset;
 
-        renderFuelBar(graphics, x, y);
+        renderFuelBar(graphics, x, y, opacity);
         renderTransdimensionalOutline(graphics, x, y, opacity);
         renderInvalidOverlay(graphics, x, y, opacity);
         renderCostOverlay(graphics, y, opacity);
@@ -66,139 +80,102 @@ public class NebuliteToolHud extends HudElement {
         graphics.pose().popPose();
     }
 
-    private void renderFuelBar(GuiGraphics graphics, int x, int y) {
-        int rx = x;
+    private void renderFuelBar(GuiGraphics graphics, int x, int y, float opacity) {
         int lastFueled = -1;
+        int rx = x;
 
         for (int i = 0; i < maxFuel; i++) {
-            boolean fueled = i < fuel;
+            boolean isFueled = i < fuel;
             if (i > 0) rx += 11;
-            if (fueled) lastFueled = rx;
+            if (isFueled) lastFueled = rx;
 
+            ResourceLocation[] segments = isFueled ? FUELED_SEGMENTS : EMPTY_SEGMENTS;
             int index = i == 0 ? 0 : i == maxFuel - 1 ? 2 : 1;
             int width = i == maxFuel - 1 ? 12 : 11;
-            graphics.blitSprite(EMPTY_SEGMENTS[index], rx, y, width, 5);
-
-            if (fueled) {
-                graphics.blitSprite(FUELED_SEGMENT, rx + 1, y + 1, width - 2, 3);
-            }
+            TextureAtlasSprite sprite = Minecraft.getInstance().getGuiSprites().getSprite(segments[index]);
+            graphics.blit(rx, y, 0, width, 5, sprite, 1.0F, 1.0F, 1.0F, opacity);
         }
 
         costOverlayPosition = lastFueled;
     }
 
     private void renderTransdimensionalOutline(GuiGraphics graphics, int x, int y, float opacity) {
-        if (transdimensionalAlpha <= 0.01F) return;
-        int alpha = Mth.clamp(Mth.floor(transdimensionalAlpha * opacity * 150.0F), 0, 255);
-        int color = (alpha << 24) | 0x0047D7FF;
-        int width = maxFuel * 11 + 1;
-        graphics.fill(x - 3, y - 3, x + width + 3, y - 2, color);
-        graphics.fill(x - 3, y + 5, x + width + 3, y + 6, color);
-        graphics.fill(x - 3, y - 2, x - 2, y + 5, color);
-        graphics.fill(x + width + 2, y - 2, x + width + 3, y + 5, color);
+        NineSliceBlitUtil nineSliceBlit = new NineSliceBlitUtil(Minecraft.getInstance().getGuiSprites(), graphics, transdimensionalAlpha * opacity);
+        nineSliceBlit.blitSprite(TRANSDIMENSIONAL_OUTLINE, x - 6, y - 6, 0, maxFuel * 11 + 13, 17);
     }
 
     private void renderInvalidOverlay(GuiGraphics graphics, int x, int y, float opacity) {
-        if (invalidAlpha <= 0.01F) return;
-        int alpha = Mth.clamp(Mth.floor(invalidAlpha * opacity * 105.0F), 0, 255);
-        int color = (alpha << 24) | 0x00D62F3D;
-        graphics.fill(x, y, x + maxFuel * 11 + 1, y + 5, color);
+        int rx = x;
+        for (int i = 0; i < maxFuel; i++) {
+            if (i > 0) rx += 11;
+            int index = i == 0 ? 0 : i == maxFuel - 1 ? 2 : 1;
+            int width = i == maxFuel - 1 ? 12 : 11;
+            TextureAtlasSprite sprite = Minecraft.getInstance().getGuiSprites().getSprite(INVALID_OVERLAY_SEGMENTS[index]);
+            graphics.blit(rx, y, 0, width, 5, sprite, 1.0F, 1.0F, 1.0F, invalidAlpha * opacity);
+        }
     }
 
     private void renderCostOverlay(GuiGraphics graphics, int y, float opacity) {
-        if (costAlpha <= 0.01F || costOverlayPosition < 0 || fuel < cost) return;
-        int alpha = Mth.clamp(Mth.floor(costAlpha * opacity * 180.0F), 0, 255);
-        int color = (alpha << 24) | 0x00E6B5FF;
-        for (int i = 0; i < cost; i++) {
-            int x = costOverlayPosition - i * 11;
-            graphics.fill(x + 1, y + 1, x + 10, y + 4, color);
+        if (costAlpha > 0.0F && costOverlayPosition >= 0 && fuel >= cost) {
+            TextureAtlasSprite sprite = Minecraft.getInstance().getGuiSprites().getSprite(COST_OVERLAY_SEGMENT);
+            for (int i = 0; i < cost; i++) {
+                graphics.blit(costOverlayPosition - i * 11, y, 0, 11, 5, sprite, 1.0F, 1.0F, 1.0F, costAlpha * opacity);
+            }
         }
     }
 
     @Override
     public void tick() {
         Player player = Minecraft.getInstance().player;
-        if (player == null || player.isSpectator() || !player.getUseItem().isEmpty()) {
-            updateFade();
-            updateAnimations();
-            return;
-        }
+        if (player == null) return;
 
         ItemStack mainHand = player.getMainHandItem();
-        ItemStack stack = isSupportedTool(mainHand) ? mainHand : player.getOffhandItem();
-        if (!isSupportedTool(stack)) {
-            updateFade();
-            updateAnimations();
-            return;
-        }
-
+        ItemStack stack = NebuliteToolItem.is(mainHand) ? mainHand : player.getOffhandItem();
         NebuliteToolContext context = new NebuliteToolContext(stack, player.level(), player);
-        invalid = false;
-        transdimensional = false;
 
-        if (MirrorItem.is(stack)) {
-            MirrorContext mirror = MirrorContext.of(context);
-            boolean linked = MirrorItem.isLinked(stack);
-            boolean sameDimension = linked && MirrorItem.isSameDimension(mirror, mirror.linkedDimension());
-            boolean transdimensionalAllowed = linked && MirrorItem.hasTransdimensional(mirror) &&
-                    MirrorItem.isSameCoordinateScale(mirror);
-            boolean enoughFuel = linked && NebuliteToolItem.fuelExceedsCost(context);
+        boolean displayUI = NebuliteToolItem.is(stack) && !player.isSpectator() && player.getUseItem().isEmpty();
+        boolean displayOutline = false;
+        boolean displayTransdimensional = false;
+        boolean enoughFuel = false;
 
-            invalid = !linked || !enoughFuel || !(sameDimension || transdimensionalAllowed);
-            transdimensional = !invalid && !sameDimension && transdimensionalAllowed;
-            updateDisplay(stack, context, true);
-        } else if (MagniaAttractorItem.is(stack)) {
-            boolean active = MagniaAttractorItem.isEnabled(stack) && NebuliteToolItem.fuelExceedsCost(context);
-            updateDisplay(stack, context, active);
-        } else {
-            invalid = !NebuliteToolItem.fuelExceedsCost(context);
-            updateDisplay(stack, context, true);
+        if (displayUI) {
+            enoughFuel = NebuliteToolItem.fuelExceedsCost(context);
+            displayOutline = !enoughFuel;
+
+            if (MirrorItem.is(stack)) {
+                MirrorContext mirror = MirrorContext.of(context);
+                boolean linked = MirrorItem.isLinked(stack);
+                boolean sameDimension = linked && MirrorItem.isSameDimension(mirror, mirror.linkedDimension());
+                boolean hasTransdimensional = linked && MirrorItem.hasTransdimensional(mirror);
+                boolean validDestination = sameDimension || (hasTransdimensional && MirrorItem.isSameCoordinateScale(mirror));
+                displayOutline = !(linked && enoughFuel && validDestination);
+                displayTransdimensional = hasTransdimensional && !sameDimension && !displayOutline;
+            } else if (MagniaAttractorItem.is(stack)) {
+                displayUI = enoughFuel && MagniaAttractorItem.isEnabled(stack);
+                displayOutline = !enoughFuel;
+            }
         }
 
-        updateAnimations();
-    }
-
-    private void updateDisplay(ItemStack stack, NebuliteToolContext context, boolean show) {
-        if (!show) {
-            updateFade();
-            return;
-        }
-
-        fuel = NebuliteToolItem.currentFuel(stack);
-        maxFuel = NebuliteToolItem.maxFuel(stack);
-        try {
+        if (displayUI) {
+            fuel = NebuliteToolItem.currentFuel(stack);
+            maxFuel = NebuliteToolItem.maxFuel(stack);
             cost = NebuliteToolItem.of(stack).fuelCost(context);
-        } catch (RuntimeException exception) {
-            cost = maxFuel;
-            invalid = true;
+            totalAlpha = Mth.lerp(0.5F, totalAlpha, 1.0F);
+            heightOffset = Mth.lerp(0.5F, heightOffset, -3.0F);
+        } else {
+            totalAlpha = Mth.lerp(0.5F, totalAlpha, 0.0F);
+            heightOffset = Mth.lerp(0.5F, heightOffset, 0.0F);
         }
 
-        totalAlpha = Mth.lerp(0.5F, totalAlpha, 1.0F);
-        heightOffset = Mth.lerp(0.5F, heightOffset, -3.0F);
-    }
+        invalidAlpha = Mth.lerp(0.35F, invalidAlpha, displayUI && displayOutline
+                ? Mth.clamp(Mth.sin(invalidDisplayTicks * 0.4F) * 0.5F + 0.5F, 0.75F, 1.0F) : 0.0F);
+        costAlpha = Mth.lerp(0.35F, costAlpha, displayUI && !displayOutline
+                ? Mth.clamp(Mth.sin(costDisplayTicks * 0.25F) * 0.2F + 0.5F, 0.75F, 1.0F) : 0.0F);
+        transdimensionalAlpha = Mth.lerp(0.35F, transdimensionalAlpha, displayUI && displayTransdimensional
+                ? Mth.clamp(Mth.sin(transdimensionalDisplayTicks * 0.1F) * 0.5F + 0.5F, 0.4F, 1.0F) : 0.0F);
 
-    private void updateFade() {
-        totalAlpha = Mth.lerp(0.5F, totalAlpha, 0.0F);
-        heightOffset = Mth.lerp(0.5F, heightOffset, 0.0F);
-        invalidAlpha = Mth.lerp(0.35F, invalidAlpha, 0.0F);
-        costAlpha = Mth.lerp(0.35F, costAlpha, 0.0F);
-        transdimensionalAlpha = Mth.lerp(0.35F, transdimensionalAlpha, 0.0F);
-    }
-
-    private void updateAnimations() {
-        invalidAlpha = Mth.lerp(0.35F, invalidAlpha, invalid ?
-                Mth.clamp((Mth.sin(invalidDisplayTicks * 0.4F) * 0.5F) + 0.5F, 0.75F, 1.0F) : 0.0F);
-        costAlpha = Mth.lerp(0.35F, costAlpha, totalAlpha > 0.01F && !invalid ?
-                Mth.clamp((Mth.sin(costDisplayTicks * 0.25F) * 0.2F) + 0.5F, 0.75F, 1.0F) : 0.0F);
-        transdimensionalAlpha = Mth.lerp(0.35F, transdimensionalAlpha, transdimensional ?
-                Mth.clamp((Mth.sin(transdimensionalDisplayTicks * 0.1F) * 0.5F) + 0.5F, 0.4F, 1.0F) : 0.0F);
-
-        invalidDisplayTicks = invalidAlpha > 0.01F ? invalidDisplayTicks + 1 : 0;
-        costDisplayTicks = costAlpha > 0.01F ? costDisplayTicks + 1 : 0;
-        transdimensionalDisplayTicks = transdimensionalAlpha > 0.01F ? transdimensionalDisplayTicks + 1 : 0;
-    }
-
-    private static boolean isSupportedTool(ItemStack stack) {
-        return stack.getItem() instanceof DaggerItem || MirrorItem.is(stack) || MagniaAttractorItem.is(stack);
+        invalidDisplayTicks = invalidAlpha > 0.0F ? invalidDisplayTicks + 1 : 0;
+        costDisplayTicks = costAlpha > 0.0F ? costDisplayTicks + 1 : 0;
+        transdimensionalDisplayTicks = transdimensionalAlpha > 0.0F ? transdimensionalDisplayTicks + 1 : 0;
     }
 }
