@@ -22,6 +22,11 @@ public class DaggerItem extends NebuliteToolItem {
     }
 
     @Override
+    public boolean displayHudWhen(NebuliteToolContext context) {
+        return true;
+    }
+
+    @Override
     public boolean canAttackBlock(BlockState state, Level level, BlockPos pos, Player player) {
         return !player.isCreative();
     }

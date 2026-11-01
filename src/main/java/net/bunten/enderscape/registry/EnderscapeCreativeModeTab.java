@@ -157,7 +157,6 @@ public class EnderscapeCreativeModeTab {
         output.accept(ALLURING_MAGNIA.get());
         output.accept(POLARIZED_MAGNIA.get());
         output.accept(BLISTERED_MAGNIA.get());
-        output.accept(MAGNIA_RADIO.get());
         output.accept(ETCHED_ALLURING_MAGNIA.get());
         output.accept(ETCHED_ALLURING_MAGNIA_STAIRS.get());
         output.accept(ETCHED_ALLURING_MAGNIA_SLAB.get());
