@@ -745,9 +745,17 @@
   "trim_material.enderscape.shadoline": "Тенелитовая",
   "trim_pattern.enderscape.stasis": "Отделка «Стазис»",
   "option.enderscape.nebulite_tool_hud_enabled": "Индикатор топлива небулитовых инструментов",
-  "option.enderscape.nebulite_tool_hud_enabled.desc": "Показывать шкалу топлива над прицелом при удержании Зеркала или Магниевого аттрактора.",
+  "option.enderscape.nebulite_tool_hud_enabled.desc": "Показывать шкалу топлива над прицелом при удержании кинжала, зеркала или магниевого аттрактора.",
   "option.enderscape.nebulite_tool_hud_offset": "Вертикальное смещение индикатора",
   "option.enderscape.nebulite_tool_hud_offset.desc": "Настраивает расстояние между шкалой топлива и прицелом.",
   "option.enderscape.nebulite_tool_hud_opacity": "Непрозрачность индикатора",
-  "option.enderscape.nebulite_tool_hud_opacity.desc": "Настраивает непрозрачность шкалы топлива."
+  "option.enderscape.nebulite_tool_hud_opacity.desc": "Настраивает непрозрачность шкалы топлива.",
+  "item.enderscape.lodestone_teleportation.desc.dimension": "Измерение: %s",
+  "item.enderscape.lodestone_teleportation.desc.distance": "Расстояние: %s",
+  "item.enderscape.lodestone_teleportation.desc.distance.approximate_value": "~%s м",
+  "item.enderscape.lodestone_teleportation.desc.distance.unknown": "???",
+  "item.enderscape.lodestone_teleportation.desc.position": "Координаты: %s",
+  "item.enderscape.lodestone_teleportation.desc.position.coordinates": "%s, %s, %s",
+  "item.enderscape.lodestone_teleportation.desc.position.unknown": "???",
+  "item.enderscape.lodestone_teleportation.desc.unshifted": "Нажмите SHIFT для просмотра информации..."
 }
