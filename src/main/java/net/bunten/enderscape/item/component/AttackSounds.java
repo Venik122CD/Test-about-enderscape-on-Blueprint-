@@ -39,15 +39,25 @@ public record AttackSounds(
             SoundEvent.CODEC.optionalFieldOf("backstab", DEFAULT_BACKSTAB).forGetter(AttackSounds::backstab)
     ).apply(instance, AttackSounds::new));
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, AttackSounds> STREAM_CODEC = StreamCodec.composite(
-            SoundEvent.STREAM_CODEC, AttackSounds::noDamage,
-            SoundEvent.STREAM_CODEC, AttackSounds::weak,
-            SoundEvent.STREAM_CODEC, AttackSounds::strong,
-            SoundEvent.STREAM_CODEC, AttackSounds::crit,
-            SoundEvent.STREAM_CODEC, AttackSounds::knockback,
-            SoundEvent.STREAM_CODEC, AttackSounds::sweep,
-            SoundEvent.STREAM_CODEC, AttackSounds::backstab,
-            AttackSounds::new
+    public static final StreamCodec<RegistryFriendlyByteBuf, AttackSounds> STREAM_CODEC = StreamCodec.of(
+            (buffer, sounds) -> {
+                SoundEvent.STREAM_CODEC.encode(buffer, sounds.noDamage());
+                SoundEvent.STREAM_CODEC.encode(buffer, sounds.weak());
+                SoundEvent.STREAM_CODEC.encode(buffer, sounds.strong());
+                SoundEvent.STREAM_CODEC.encode(buffer, sounds.crit());
+                SoundEvent.STREAM_CODEC.encode(buffer, sounds.knockback());
+                SoundEvent.STREAM_CODEC.encode(buffer, sounds.sweep());
+                SoundEvent.STREAM_CODEC.encode(buffer, sounds.backstab());
+            },
+            buffer -> new AttackSounds(
+                    SoundEvent.STREAM_CODEC.decode(buffer),
+                    SoundEvent.STREAM_CODEC.decode(buffer),
+                    SoundEvent.STREAM_CODEC.decode(buffer),
+                    SoundEvent.STREAM_CODEC.decode(buffer),
+                    SoundEvent.STREAM_CODEC.decode(buffer),
+                    SoundEvent.STREAM_CODEC.decode(buffer),
+                    SoundEvent.STREAM_CODEC.decode(buffer)
+            )
     );
 
     public static boolean is(ItemStack stack) {
