@@ -23,7 +23,7 @@ public class DaggerItem extends NebuliteToolItem {
 
     @Override
     public boolean displayHudWhen(NebuliteToolContext context) {
-        return false;
+        return true;
     }
 
     @Override
