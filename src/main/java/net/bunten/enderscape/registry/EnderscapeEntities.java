@@ -14,15 +14,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Supplier;
 
-@EventBusSubscriber(modid = Enderscape.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class EnderscapeEntities {
 
     public static final DeferredHolder<EntityType<?>, EntityType<Drifter>> DRIFTER = register("drifter", () -> EntityType.Builder.of(Drifter::new, MobCategory.CREATURE)
@@ -65,7 +62,6 @@ public class EnderscapeEntities {
         return RegistryHelper.registerForHolder(BuiltInRegistries.ENTITY_TYPE, resourceKey, () -> builder.get().build(resourceKey.location().toString()));
     }
     
-    @SubscribeEvent
     public static void entityAttributeCreationListener(EntityAttributeCreationEvent event) {
         event.put(DRIFTER.get(), Drifter.createAttributes().build());
         event.put(DRIFTLET.get(), Driftlet.createAttributes().build());
@@ -73,7 +69,6 @@ public class EnderscapeEntities {
         event.put(RUSTLE.get(), Rustle.createAttributes().build());
     }
     
-    @SubscribeEvent
     public static void spawnPlacementsListener(RegisterSpawnPlacementsEvent event) {
         event.register(DRIFTER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractDrifter::canSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(DRIFTLET.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AbstractDrifter::canSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);

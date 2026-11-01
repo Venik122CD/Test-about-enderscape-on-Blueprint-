@@ -63,7 +63,7 @@
       "enderscape:murublight_bracket"
     ]
   ],
-  "carvers": [],
+  "carvers": {},
   "has_precipitation": false,
   "spawn_costs": {
     "enderscape:rubblemite": {

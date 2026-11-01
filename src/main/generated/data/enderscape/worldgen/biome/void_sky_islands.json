@@ -49,7 +49,7 @@
       "enderscape:ceiling_nebulite_ore"
     ]
   ],
-  "carvers": [],
+  "carvers": {},
   "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {

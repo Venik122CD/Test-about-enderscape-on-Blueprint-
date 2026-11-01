@@ -33,6 +33,7 @@ public class EnderscapeBlockRenderLayerMap {
                 END_VAULT,
                 FLANGER_BERRY_FLOWER,
                 FLANGER_BERRY_VINE,
+                MAGNIA_RADIO,
                 MIRESTONE_NEBULITE_ORE,
                 MURUBLIGHT_CHANTERELLE,
                 MURUBLIGHT_DOOR,
@@ -58,7 +59,10 @@ public class EnderscapeBlockRenderLayerMap {
                 VOID_SHALE,
                 WISP_FLOWER,
                 WISP_GROWTH,
-                WISP_SPROUTS
+                WISP_SPROUTS,
+                VOID_TORCH,
+                VOID_WALL_TORCH,
+                VOID_CAMPFIRE
         )) {
             ItemBlockRenderTypes.setRenderLayer(blockSupplier.get(), RenderType.cutout());
         }

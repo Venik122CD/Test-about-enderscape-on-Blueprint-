@@ -1,6 +1,7 @@
 {
-    "parent": "minecraft:block/template_torch",
-    "textures": {
-        "torch": "enderscape:block/void_torch"
-    }
+  "parent": "minecraft:block/template_torch",
+  "textures": {
+    "torch": "enderscape:block/void_torch"
+  },
+  "render_type": "minecraft:cutout"
 }

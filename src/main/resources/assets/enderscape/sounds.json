@@ -8986,5 +8986,98 @@
                 "stream": true
             }
         ]
+    },
+    "ambient.magnia_crags.loop": {
+        "sounds": [
+            {
+                "name": "enderscape:ambient/magnia_crags/loop",
+                "stream": true,
+                "volume": 0.3
+            }
+        ]
+    },
+    "ambient.magnia_crags.additions": {
+        "sounds": [
+            {
+                "name": "enderscape:ambient/magnia_crags/chatter",
+                "volume": 0.35,
+                "weight": 1
+            },
+            {
+                "name": "enderscape:ambient/magnia_crags/interference",
+                "volume": 0.35,
+                "weight": 1
+            },
+            {
+                "name": "enderscape:ambient/magnia_crags/miscommunication",
+                "volume": 0.35,
+                "weight": 1
+            },
+            {
+                "name": "enderscape:ambient/magnia_crags/tuning",
+                "volume": 0.35,
+                "weight": 1
+            }
+        ]
+    },
+    "ambient.magnia_crags.mood": {
+        "sounds": [
+            {
+                "name": "enderscape:ambient/magnia_crags/mood/mood1",
+                "volume": 1,
+                "weight": 1
+            },
+            {
+                "name": "enderscape:ambient/magnia_crags/mood/mood2",
+                "volume": 1,
+                "weight": 1
+            },
+            {
+                "name": "enderscape:ambient/magnia_crags/mood/mood3",
+                "volume": 1,
+                "weight": 1
+            },
+            {
+                "name": "enderscape:ambient/magnia_crags/mood/mood4",
+                "volume": 1,
+                "weight": 1
+            },
+            {
+                "name": "enderscape:ambient/magnia_crags/mood/mood5",
+                "volume": 1,
+                "weight": 1
+            },
+            {
+                "name": "enderscape:ambient/magnia_crags/mood/mood6",
+                "volume": 1,
+                "weight": 1
+            },
+            {
+                "name": "enderscape:ambient/magnia_crags/mood/mood7",
+                "volume": 1,
+                "weight": 1
+            }
+        ]
+    },
+    "music.enderscape.biome.magnia_crags": {
+        "sounds": [
+            {
+                "name": "enderscape:music/biome/magnia_crags/flutters",
+                "stream": true,
+                "weight": 5
+            },
+            {
+                "name": "minecraft:music.end",
+                "type": "event",
+                "weight": 1
+            }
+        ]
+    },
+    "item.drift_jelly_bottle.finish": {
+        "sounds": [
+            {
+                "name": "enderscape:item/drift_jelly_bottle/finish"
+            }
+        ]
     }
 }

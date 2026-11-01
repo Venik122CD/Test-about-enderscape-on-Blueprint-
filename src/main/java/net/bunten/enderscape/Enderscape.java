@@ -86,7 +86,10 @@ public class Enderscape {
                 EnderscapeBiomeModifiers.class,
                 EnderscapeDataAttachments.class
         );
-        
+
+        modBus.addListener(EnderscapeEntities::entityAttributeCreationListener);
+        modBus.addListener(EnderscapeEntities::spawnPlacementsListener);
+
         if (ModList.get().isLoaded("terrablender")) {
             EnderscapeTerrablender.initialize();
         }

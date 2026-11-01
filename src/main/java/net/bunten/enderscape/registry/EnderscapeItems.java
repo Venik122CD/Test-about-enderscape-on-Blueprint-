@@ -174,9 +174,9 @@ public class EnderscapeItems {
                     .add(EnderscapeAttributes.BACKSTAB_DAMAGE, new AttributeModifier(EnderscapeAttributes.BASE_BACKSTAB_DAMAGE_ID, 3.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                     .add(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_speed"), -1.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                     .build())
-            .component(DataComponents.TOOL, new net.minecraft.world.item.component.Tool(List.of(net.minecraft.world.item.component.Tool.Rule.minesAndDrops(net.minecraft.core.HolderSet.direct(net.minecraft.world.level.block.Blocks.COBWEB.builtInRegistryHolder()), 7.5F)), 1.0F, 2)));
+            .component(DataComponents.TOOL, new net.minecraft.world.item.component.Tool(List.of(net.minecraft.world.item.component.Tool.Rule.minesAndDrops(List.of(net.minecraft.world.level.block.Blocks.COBWEB), 7.5F)), 1.0F, 2)));
 
-    public static final Supplier<Item> VOID_TORCH_ITEM = registerItem("void_torch", properties -> new net.minecraft.world.item.StandingAndWallBlockItem(EnderscapeBlocks.VOID_TORCH.get(), EnderscapeBlocks.VOID_WALL_TORCH.get(), net.minecraft.core.Direction.DOWN, properties), new Properties());
+    public static final Supplier<Item> VOID_TORCH_ITEM = registerItem("void_torch", properties -> new net.minecraft.world.item.StandingAndWallBlockItem(EnderscapeBlocks.VOID_TORCH.get(), EnderscapeBlocks.VOID_WALL_TORCH.get(), properties, net.minecraft.core.Direction.DOWN), new Properties());
 
     public static final Supplier<Item> MAGNIA_ATTRACTOR = registerItem("magnia_attractor", MagniaAttractorItem::new, new Properties()
             .component(EnderscapeDataComponents.ENABLED, true)
