@@ -24,11 +24,6 @@ public class MagniaAttractorItem extends NebuliteToolItem {
     }
 
     @Override
-    public boolean displayHudWhen(NebuliteToolContext context) {
-        return is(context.stack()) && fuelExceedsCost(context) && isEnabled(context.stack());
-    }
-
-    @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         return tryCyclePower(new NebuliteToolContext(player.getItemInHand(hand), level, player)) ? InteractionResultHolder.consume(player.getItemInHand(hand)) : super.use(level, player, hand);
     }
