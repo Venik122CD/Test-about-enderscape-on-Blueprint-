@@ -745,7 +745,7 @@
   "trim_material.enderscape.shadoline": "Shadoline Material",
   "trim_pattern.enderscape.stasis": "Stasis Armor Trim",
   "option.enderscape.nebulite_tool_hud_enabled": "Nebulite tool HUD",
-  "option.enderscape.nebulite_tool_hud_enabled.desc": "Display the fuel bar above the crosshair when holding a Mirror or Magnia Attractor.",
+  "option.enderscape.nebulite_tool_hud_enabled.desc": "Display the fuel bar above the crosshair when holding a Dagger, Mirror or Magnia Attractor.",
   "option.enderscape.nebulite_tool_hud_offset": "Nebulite tool HUD offset",
   "option.enderscape.nebulite_tool_hud_offset.desc": "Adjust the vertical distance between the fuel bar and the crosshair.",
   "option.enderscape.nebulite_tool_hud_opacity": "Nebulite tool HUD opacity",
