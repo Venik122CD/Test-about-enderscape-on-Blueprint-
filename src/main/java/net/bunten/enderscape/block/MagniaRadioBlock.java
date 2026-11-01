@@ -30,10 +30,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-/**
- * Magnia radio. In 1.21.11 the radio can also play songs from a datapack registry, but that registry ships empty,
- * so this port only implements the part that is actually used: toggling it and its random ambient noise.
- */
+   
+                                                                                                                  
+                                                                                                         
+   
 public class MagniaRadioBlock extends Block implements SimpleWaterloggedBlock {
     public static final MapCodec<MagniaRadioBlock> CODEC = simpleCodec(MagniaRadioBlock::new);
     public static final BooleanProperty ENABLED = StateProperties.ENABLED;

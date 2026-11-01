@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Applies the backstab sound and the stun attack whenever a weapon with those components hurts something (players and mobs). */
+                                                                                                                                 
 @Mixin(EnchantmentHelper.class)
 public abstract class DaggerEnchantmentHelperMixin {
     @Inject(at = @At("HEAD"), method = "doPostAttackEffects")

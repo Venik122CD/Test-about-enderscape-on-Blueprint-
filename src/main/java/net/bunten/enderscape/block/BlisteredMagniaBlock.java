@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.ToIntFunction;
 
-/** Takes the polarity of the surrounding magnia and powers matching neighbours. */
+                                                                                   
 public class BlisteredMagniaBlock extends Block implements HasMagniaPolarity, HasMagniaPowerSignal {
     public static final EnumProperty<OptionalMagniaPolarityProperty> POLARITY = StateProperties.OPTIONAL_MAGNIA_POLARITY;
 

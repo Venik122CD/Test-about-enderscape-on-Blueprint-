@@ -18,7 +18,7 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
 import java.util.List;
 
-/** Hanging spike of repulsive magnia (ported from the 1.21.11 version). */
+                                                                           
 public class MagniaSpikeFeature extends Feature<MagniaSpikeConfig> {
 
     public MagniaSpikeFeature(Codec<MagniaSpikeConfig> codec) {

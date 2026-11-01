@@ -9,13 +9,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-/**
- * The dagger. It is a nebulite tool (fuel, fuel bar, refuelling by clicking nebulite onto it).
- * <p>
- * Stunning and the backstab sound are applied by {@code DaggerEnchantmentHelperMixin}, which hooks
- * {@code EnchantmentHelper.doPostAttackEffects} so that players and mobs are both covered. The backstab damage bonus comes
- * from {@code ItemBackstabDamageMixin}. Every hit counts towards the fuel threshold here; a stun counts once more.
- */
+   
+                                                                                               
+      
+                                                                                                   
+                                                                                                                           
+                                                                                                                   
+   
 public class DaggerItem extends NebuliteToolItem {
     public DaggerItem(Properties properties) {
         super(properties);

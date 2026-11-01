@@ -8,7 +8,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.behavior.Behavior;
 import net.minecraft.world.entity.ai.memory.MemoryStatus;
 
-/** Starts the wind-up that precedes a dash. */
+                                               
 public class RubblemiteDashDuringCombat extends Behavior<Rubblemite> {
     public RubblemiteDashDuringCombat() {
         super(ImmutableMap.of(

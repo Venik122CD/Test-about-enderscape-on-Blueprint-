@@ -19,10 +19,10 @@ import org.joml.*;
 
 import java.lang.Math;
 
-/**
- *  Based on BetterEnd and Eden Ring skybox renderers
- *  Credits to paulevs!
- */
+   
+                                                     
+                       
+   
 public class EnderscapeSkybox {
 
     public static final Axis SKY_ROTATION_AXIS = Axis.YP;
@@ -188,7 +188,7 @@ public class EnderscapeSkybox {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(color.x, color.y, color.z, color.w);
         RenderSystem.enableBlend();
-        //RenderSystem.setShaderFogShape(FogParameters.NO_FOG);
+                                                               
         RenderSystem.setShaderTexture(0, Enderscape.id("textures/environment/nebula1.png"));
 
         nebula1.bind();
@@ -257,7 +257,7 @@ public class EnderscapeSkybox {
         RenderSystem.setShader(GameRenderer::getPositionShader);
         RenderSystem.setShaderColor(color.x, color.y, color.z, color.w);
         RenderSystem.enableBlend();
-        //RenderSystem.setShaderFog(FogParameters.NO_FOG);
+                                                          
 
         stars.bind();
         stars.drawWithShader(matrix, RenderSystem.getProjectionMatrix(), RenderSystem.getShader());

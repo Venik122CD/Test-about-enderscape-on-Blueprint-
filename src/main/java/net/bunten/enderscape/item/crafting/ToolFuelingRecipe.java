@@ -11,7 +11,7 @@ import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 
-/** Refuels a nebulite tool (mirror, magnia attractor) in the crafting grid with nebulite. */
+                                                                                             
 public class ToolFuelingRecipe extends CustomRecipe {
     public ToolFuelingRecipe(CraftingBookCategory category) {
         super(category);

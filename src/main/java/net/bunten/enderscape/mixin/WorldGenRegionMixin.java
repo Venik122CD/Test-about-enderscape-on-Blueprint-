@@ -16,7 +16,7 @@ public class WorldGenRegionMixin {
 
     @Shadow private @Nullable Supplier<String> currentlyGenerating;
 
-    // this is probably a bad idea
+                                  
     @Redirect(method = "ensureCanWrite", at = @At(value = "INVOKE", target = "Lnet/minecraft/Util;logAndPauseIfInIde(Ljava/lang/String;)V"))
     private void Enderscape$redirectShieldCheck(String string) {
         if (currentlyGenerating != null && currentlyGenerating.get().contains("enderscape") && !Enderscape.IS_DEBUG) return;

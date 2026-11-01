@@ -10,7 +10,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ItemStack;
 
-/** Replaces the vanilla player attack sounds while the item is held. */
+                                                                        
 public record AttackSounds(
         Holder<SoundEvent> noDamage,
         Holder<SoundEvent> weak,
@@ -26,7 +26,7 @@ public record AttackSounds(
     public static final Holder<SoundEvent> DEFAULT_CRIT = Holder.direct(SoundEvents.PLAYER_ATTACK_CRIT);
     public static final Holder<SoundEvent> DEFAULT_KNOCKBACK = Holder.direct(SoundEvents.PLAYER_ATTACK_KNOCKBACK);
     public static final Holder<SoundEvent> DEFAULT_SWEEP = Holder.direct(SoundEvents.PLAYER_ATTACK_SWEEP);
-    /** Silent: used when an item has no dedicated backstab sound. */
+                                                                     
     public static final Holder<SoundEvent> DEFAULT_BACKSTAB = Holder.direct(SoundEvents.EMPTY);
 
     public static final Codec<AttackSounds> CODEC = RecordCodecBuilder.create(instance -> instance.group(

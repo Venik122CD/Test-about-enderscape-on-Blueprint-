@@ -33,7 +33,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
-/** What happens when an item with this component hits something: the victim is stunned, with a longer stun for backstabs. */
+                                                                                                                             
 public record StunAttack(
         float backstabEffectDurationMultiplier,
         Vec2 range,
@@ -45,7 +45,7 @@ public record StunAttack(
     public static final Vec2 DEFAULT_RANGE = new Vec2(4.0F, 0.5F);
     public static final Holder<SoundEvent> DEFAULT_NORMAL_SOUND = EnderscapeItemSounds.DAGGER_STUN;
     public static final ResourceLocation DEFAULT_PARTICLE = Enderscape.id("void_poof");
-    /** Cooldown applied to players after a stun attack (the 1.21.11 dagger uses a 7 second use cooldown). */
+                                                                                                             
     public static final int COOLDOWN_TICKS = 7 * 20;
 
     private static final Codec<Vec2> VEC2_CODEC = Codec.FLOAT.listOf().comapFlatMap(
@@ -97,7 +97,7 @@ public record StunAttack(
         return stack.get(EnderscapeDataComponents.STUN_ATTACK);
     }
 
-    /** Resolves the particle lazily, because the particle type is not registered yet when item properties are built. */
+                                                                                                                        
     public ParticleOptions particleOptions() {
         ParticleType<?> type = BuiltInRegistries.PARTICLE_TYPE.get(particle);
         return type instanceof SimpleParticleType simple ? simple : net.minecraft.core.particles.ParticleTypes.POOF;

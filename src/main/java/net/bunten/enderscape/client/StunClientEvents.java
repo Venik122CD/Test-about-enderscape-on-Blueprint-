@@ -12,10 +12,10 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.MovementInputUpdateEvent;
 
-/**
- * Client-side stun rules: a stunned player gets no movement input and cannot attack, use items or pick blocks,
- * and the dagger cannot be swung again until its attack strength has fully recharged.
- */
+   
+                                                                                                               
+                                                                                      
+   
 @EventBusSubscriber(modid = Enderscape.MOD_ID, value = Dist.CLIENT)
 public class StunClientEvents {
 

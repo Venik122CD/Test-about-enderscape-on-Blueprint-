@@ -11,10 +11,10 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 
-/**
- * Occasional End flashes (sound only; the 1.21.11 sky visuals rely on renderer features that 1.21.1 does not have)
- * and the low gravity apply sound.
- */
+   
+                                                                                                                   
+                                   
+   
 @EventBusSubscriber(modid = Enderscape.MOD_ID)
 public class EndFlashEvents {
 

@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-/** Backstab hits add the attacker's backstab damage attribute to the attack (works for any item that grants the attribute). */
+                                                                                                                               
 @Mixin(Item.class)
 public abstract class ItemBackstabDamageMixin {
     @Inject(method = "getAttackDamageBonus", at = @At("RETURN"), cancellable = true)

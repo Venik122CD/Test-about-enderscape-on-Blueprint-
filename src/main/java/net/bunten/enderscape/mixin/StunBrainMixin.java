@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Stunned mobs do not think. */
+                                 
 @Mixin(Brain.class)
 public abstract class StunBrainMixin<E extends LivingEntity> {
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)

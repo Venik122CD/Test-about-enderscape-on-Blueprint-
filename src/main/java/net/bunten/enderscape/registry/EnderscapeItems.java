@@ -114,7 +114,7 @@ public class EnderscapeItems {
         return RegistryHelper.registerForHolder(BuiltInRegistries.ARMOR_MATERIAL, location, () -> new ArmorMaterial(enumMap, i, holder, supplier, list, f, g));
     }
 
-    //public static final Properties SHULKER_SHELL_PROPERTIES = new Item.Properties().component(DataComponents.EQUIPPABLE, Equippable.builder(ArmorType.HELMET.getSlot()).setEquipSound(EnderscapeItemSounds.SHULKER_SHELL_EQUIP).setAsset(ResourceKey.create(ROOT_ID, Enderscape.id("shulker_shell"))).build());
+                                                                                                                                                                                                                                                                                                                 
 
     public static final Supplier<Item> DRIFTER_SPAWN_EGG = registerSpawnEgg(EnderscapeEntities.DRIFTER, 0xE97FFF, 0x7554A8);
     public static final Supplier<Item> RUBBLEMITE_SPAWN_EGG = registerSpawnEgg(EnderscapeEntities.RUBBLEMITE, 0xF2FDBE, 0xC1B687);
@@ -157,7 +157,7 @@ public class EnderscapeItems {
     public static final Supplier<Item> MIRESTONE_RUBBLE_SHIELD = registerItem("mirestone_rubble_shield", RubbleShieldItem::new, RUBBLE_SHIELD_PROPERTIES);
     public static final Supplier<Item> KURODITE_RUBBLE_SHIELD = registerItem("kurodite_rubble_shield", RubbleShieldItem::new, RUBBLE_SHIELD_PROPERTIES);
 
- //   public static final ResourceKey<EquipmentAsset> DRIFT_LEGGINGS_ASSET = ResourceKey.create(ROOT_ID, Enderscape.id("drift_leggings"));
+                                                                                                                                          
 
     public static final Supplier<Item> DRIFT_LEGGINGS = registerItem("drift_leggings", DriftLeggingsItem::new, new Properties().attributes(DRIFT_LEGGINGS_ATTRIBUTES).durability(495));
 

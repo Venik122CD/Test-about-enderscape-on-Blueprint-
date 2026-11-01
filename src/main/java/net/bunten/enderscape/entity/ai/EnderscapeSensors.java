@@ -21,17 +21,17 @@ public class EnderscapeSensors extends SensorType<DummySensor> {
         super(DummySensor::new);
     }
 
-    // Drifter
+              
 
     public static final Supplier<SensorType<AdultDrifterSensor>> NEAREST_ADULT_DRIFTER = register("nearest_adult_drifter", AdultDrifterSensor::new);
     public static final Supplier<SensorType<NearestIntimidatorSensor>> NEAREST_INTIMIDATOR = register("nearest_intimidator", NearestIntimidatorSensor::new);
     public static final Supplier<SensorType<TemptingSensor>> DRIFTER_TEMPTATIONS = register("drifter_temptations", () -> new TemptingSensor(DrifterAI.getTemptations()));
 
-    // Rubblemite
+                 
 
     public static final Supplier<SensorType<NearestEnemiesSensor>> RUBBLEMITE_NEAREST_ENEMIES = register("rubblemite_nearest_enemies", () -> new NearestEnemiesSensor(EnderscapeEntityTags.RUBBLEMITE_HOSTILE_TOWARDS));
 
-    // Rustle
+             
 
     public static final Supplier<SensorType<RustleNearestFoodSensor>> RUSTLE_NEAREST_FOOD = register("rustle_nearest_food", RustleNearestFoodSensor::new);
     public static final Supplier<SensorType<RustleNearestSleepingSpotSensor>> RUSTLE_NEAREST_SLEEPING_SPOT = register("rustle_nearest_sleeping_spot", RustleNearestSleepingSpotSensor::new);

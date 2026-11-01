@@ -8,7 +8,7 @@ import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 
-/** Server and client stun rules: stunned players can neither attack, break blocks nor use items. */
+                                                                                                    
 @EventBusSubscriber(modid = Enderscape.MOD_ID)
 public class StunEvents {
 

@@ -37,12 +37,12 @@ public class EnderscapeAttributes {
         return 1.0;
     }
 
-    /** Multiplier applied to how visible the entity is to mobs: more stealth means less visible. */
+                                                                                                    
     public static double getStealthMultiplier(Entity entity) {
         return 2 - getStealthValue(entity);
     }
 
-    /** True when the attacker stands behind the victim (the victim looks more than {@code angle} degrees away from the attacker). */
+                                                                                                                                     
     public static boolean isBackstab(net.minecraft.world.item.ItemStack stack, net.minecraft.world.phys.Vec3 sourcePos, Entity victim) {
         int angle = stack != null && !stack.isEmpty() ? stack.getOrDefault(EnderscapeDataComponents.BACKSTAB_ANGLE, DEFAULT_BACKSTAB_ANGLE) : DEFAULT_BACKSTAB_ANGLE;
         net.minecraft.world.phys.Vec3 offset = sourcePos.subtract(victim.position());

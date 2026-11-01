@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.Consumer;
 
-/** Shows the dagger's backstab damage as a total (its modifier + the base attack damage), like the attack damage line does. */
+                                                                                                                               
 @Mixin(ItemStack.class)
 public abstract class ItemStackBackstabTooltipMixin {
     @Unique
