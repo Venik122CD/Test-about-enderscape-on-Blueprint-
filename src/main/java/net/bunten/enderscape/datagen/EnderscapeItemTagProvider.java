@@ -32,6 +32,7 @@ public class EnderscapeItemTagProvider extends ItemTagsProvider {
         tag(POWERS_MAGNIA_WHEN_MINED_WITH);
         
         tag(TRIM_TEMPLATES).add(STASIS_ARMOR_TRIM_SMITHING_TEMPLATE.get());
+        tag(ItemTags.DYEABLE).add(MIRROR.get());
 
         tag(DRIFTER_FOOD).add(CHORUS_FRUIT, FLANGER_BERRY.get());
         tag(ELYTRA_ENCHANTABLE).add(ELYTRA);

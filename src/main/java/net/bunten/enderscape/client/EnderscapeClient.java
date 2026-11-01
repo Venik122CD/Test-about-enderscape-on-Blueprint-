@@ -23,6 +23,7 @@ import net.bunten.enderscape.registry.EnderscapeBlockEntities;
 import net.bunten.enderscape.registry.EnderscapeEntities;
 import net.bunten.enderscape.registry.EnderscapeItems;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Music;
@@ -87,6 +88,7 @@ public class EnderscapeClient {
         modBus.register(EnderscapeParticleProviders.class);
         modBus.register(EnderscapeBlockRenderLayerMap.class);
         modBus.register(EnderscapeBlockColorProviders.class);
+        modBus.register(EnderscapeItemColorProviders.class);
 
         modBus.addListener(EntityRenderersEvent.RegisterRenderers.class, event -> {
             event.registerBlockEntityRenderer(EnderscapeBlockEntities.MAGNIA_SPROUT.get(), MagniaSproutRenderer::new);
@@ -104,6 +106,7 @@ public class EnderscapeClient {
                 ItemProperties.register(EnderscapeItems.VERADITE_RUBBLE_SHIELD.get(), ResourceLocation.withDefaultNamespace("blocking"), shieldFunction);
                 ItemProperties.register(EnderscapeItems.KURODITE_RUBBLE_SHIELD.get(), ResourceLocation.withDefaultNamespace("blocking"), shieldFunction);
 
+                ItemProperties.register(EnderscapeItems.MIRROR.get(), Enderscape.id("dyed"), (stack, level, user, i) -> stack.has(DataComponents.DYED_COLOR) ? 1 : 0);
                 ItemProperties.register(EnderscapeItems.MAGNIA_ATTRACTOR.get(), Enderscape.id("enabled"), (stack, level, user, i) -> MagniaAttractorItem.isEnabled(stack) && NebuliteToolItem.fuelExceedsCost(new NebuliteToolContext(stack, level, user)) ? 1 : 0);
             });
         });
