@@ -1,6 +1,6 @@
 # Enderscape Backport
 
-This is an **unofficial backport** of the **Enderscape** mod, bringing its features to Minecraft `<YOUR_MINECRAFT_VERSION>`.
+This is an **unofficial backport** of the **Enderscape** mod.
 
 **Original Mod:** 
 - [Enderscape on Modrinth](https://modrinth.com/mod/enderscape)
@@ -11,10 +11,8 @@ This is an **unofficial backport** of the **Enderscape** mod, bringing its featu
 - **Code:** The original code is licensed under the **MIT License**. You are free to use, modify, and distribute the code as long as the original copyright notice is retained.
 - **Assets (Textures, Sounds, Models):** The original assets are licensed under **All Rights Reserved (ARR)** and belong to Penumbra. 
 
-*(Note to the backporter: If you are using the original textures and sounds, you MUST have explicit permission from Penumbra to redistribute them. If you do not have permission, you must create your own replacements).*
-
 ## Requirements
-- Minecraft `<1.21.1 neoforge>`
+- Minecraft `1.21.1 neoforge`
 - [Blueprint](https://modrinth.com/mod/blueprint)
 - [YetAnotherConfigLib](https://modrinth.com/mod/yacl)
 - [Lithostitched](https://modrinth.com/mod/lithostitched)
