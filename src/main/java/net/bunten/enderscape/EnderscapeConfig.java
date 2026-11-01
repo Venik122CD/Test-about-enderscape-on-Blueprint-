@@ -81,7 +81,6 @@ public class EnderscapeConfig {
     @SerialEntry public boolean mirrorTooltipDisplayDistance = true;
     @SerialEntry public boolean mirrorTooltipEnabled = true;
     @SerialEntry public boolean mirrorTooltipShiftToDisplay = false;
-    @SerialEntry public boolean nebuliteToolHudEnabled = true;
     @SerialEntry public boolean portalParticleEmissive = true;
     @SerialEntry public boolean rubblemiteExpandHitRange = true;
     @SerialEntry public boolean shulkerBulletEnforceOwnerLimit = true;
@@ -98,8 +97,6 @@ public class EnderscapeConfig {
     @SerialEntry public int elytraFovEffectIntensity = 100;
     @SerialEntry public int mirrorScreenEffectOverlayIntensity = 50;
     @SerialEntry public int mirrorScreenEffectVignetteIntensity = 50;
-    @SerialEntry public int nebuliteToolHudOffset = 13;
-    @SerialEntry public int nebuliteToolHudOpacity = 100;
     @SerialEntry public int shulkerBulletEnforceCountLimit = 3;
     @SerialEntry public int shulkerBulletEnforceDistanceLimit = 30;
     @SerialEntry public int shulkerBulletEnforceTimeLimit = 30;
