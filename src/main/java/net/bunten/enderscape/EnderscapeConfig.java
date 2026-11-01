@@ -81,6 +81,9 @@ public class EnderscapeConfig {
     @SerialEntry public boolean mirrorTooltipDisplayDistance = true;
     @SerialEntry public boolean mirrorTooltipEnabled = true;
     @SerialEntry public boolean mirrorTooltipShiftToDisplay = false;
+    @SerialEntry public boolean nebuliteToolHudEnabled = true;
+    @SerialEntry public int nebuliteToolHudOffset = 13;
+    @SerialEntry public int nebuliteToolHudOpacity = 100;
     @SerialEntry public boolean portalParticleEmissive = true;
     @SerialEntry public boolean rubblemiteExpandHitRange = true;
     @SerialEntry public boolean shulkerBulletEnforceOwnerLimit = true;

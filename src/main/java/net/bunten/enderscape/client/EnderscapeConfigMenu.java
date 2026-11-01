@@ -768,6 +768,34 @@ public class EnderscapeConfigMenu {
                 1
         );
 
+        Option<?> nebuliteToolHudEnabled = boolOption(
+                "nebulite_tool_hud_enabled",
+                true,
+                () -> config.nebuliteToolHudEnabled,
+                value -> config.nebuliteToolHudEnabled = value,
+                TickBoxControllerBuilder::create
+        );
+
+        Option<?> nebuliteToolHudOffset = intOption(
+                "nebulite_tool_hud_offset",
+                13,
+                () -> config.nebuliteToolHudOffset,
+                value -> config.nebuliteToolHudOffset = value,
+                0,
+                50,
+                1
+        );
+
+        Option<?> nebuliteToolHudOpacity = intOption(
+                "nebulite_tool_hud_opacity",
+                100,
+                () -> config.nebuliteToolHudOpacity,
+                value -> config.nebuliteToolHudOpacity = value,
+                10,
+                100,
+                1
+        );
+
         builder.group(OptionGroup.createBuilder()
                 .name(Component.translatable("option.group.enderscape.item"))
 
@@ -783,6 +811,9 @@ public class EnderscapeConfigMenu {
                 .option(mirrorScreenEffectEnabled)
                 .option(mirrorScreenEffectOverlayIntensity)
                 .option(mirrorScreenEffectVignetteIntensity)
+                .option(nebuliteToolHudEnabled)
+                .option(nebuliteToolHudOffset)
+                .option(nebuliteToolHudOpacity)
 
                 .build()
         );

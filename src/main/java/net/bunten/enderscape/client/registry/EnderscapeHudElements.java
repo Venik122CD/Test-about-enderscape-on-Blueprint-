@@ -19,6 +19,7 @@ public class EnderscapeHudElements {
     static {
         EnderscapeHudElements.register(new DebugHud());
         EnderscapeHudElements.register(new MirrorScreenEffect());
+        EnderscapeHudElements.register(new NebuliteToolHud());
         EnderscapeHudElements.register(new StareScreenEffect());
     }
 }
