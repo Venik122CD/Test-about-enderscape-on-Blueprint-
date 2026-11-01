@@ -44,7 +44,6 @@ public record StunAttack(
     public static final float DEFAULT_BACKSTAB_EFFECT_DURATION_MULTIPLIER = 4.0F;
     public static final Vec2 DEFAULT_RANGE = new Vec2(4.0F, 0.5F);
     public static final Holder<SoundEvent> DEFAULT_NORMAL_SOUND = EnderscapeItemSounds.DAGGER_STUN;
-    public static final MobEffectInstance DEFAULT_EFFECT = new MobEffectInstance(EnderscapeMobEffects.STUNNED, 20);
     public static final ResourceLocation DEFAULT_PARTICLE = Enderscape.id("void_poof");
     /** Cooldown applied to players after a stun attack (the 1.21.11 dagger uses a 7 second use cooldown). */
     public static final int COOLDOWN_TICKS = 7 * 20;
@@ -64,9 +63,9 @@ public record StunAttack(
             Codec.FLOAT.optionalFieldOf("backstab_effect_duration_multiplier", DEFAULT_BACKSTAB_EFFECT_DURATION_MULTIPLIER).forGetter(StunAttack::backstabEffectDurationMultiplier),
             VEC2_CODEC.optionalFieldOf("range", DEFAULT_RANGE).forGetter(StunAttack::range),
             SoundEvent.CODEC.optionalFieldOf("normal_sound", DEFAULT_NORMAL_SOUND).forGetter(StunAttack::normalSound),
-            MobEffectInstance.CODEC.optionalFieldOf("effect", DEFAULT_EFFECT).forGetter(StunAttack::effect),
+            MobEffectInstance.CODEC.optionalFieldOf("effect").forGetter(attack -> java.util.Optional.ofNullable(attack.effect)),
             ResourceLocation.CODEC.optionalFieldOf("particle", DEFAULT_PARTICLE).forGetter(StunAttack::particle)
-    ).apply(instance, StunAttack::new));
+    ).apply(instance, (multiplier, range, sound, effect, particle) -> new StunAttack(multiplier, range, sound, effect.orElse(null), particle)));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, StunAttack> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.FLOAT, StunAttack::backstabEffectDurationMultiplier,
@@ -81,9 +80,14 @@ public record StunAttack(
             DEFAULT_BACKSTAB_EFFECT_DURATION_MULTIPLIER,
             DEFAULT_RANGE,
             DEFAULT_NORMAL_SOUND,
-            DEFAULT_EFFECT,
+            null,
             DEFAULT_PARTICLE
     );
+
+    @Override
+    public MobEffectInstance effect() {
+        return effect != null ? effect : new MobEffectInstance(EnderscapeMobEffects.STUNNED, 20);
+    }
 
     public static boolean is(ItemStack stack) {
         return stack.has(EnderscapeDataComponents.STUN_ATTACK);
