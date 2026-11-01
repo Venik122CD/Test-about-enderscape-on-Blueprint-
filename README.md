@@ -1,4 +1,4 @@
-# Enderscape [Backport to <YOUR_MINECRAFT_VERSION>]
+# Enderscape Backport
 
 This is an **unofficial backport** of the **Enderscape** mod, bringing its features to Minecraft `<YOUR_MINECRAFT_VERSION>`.
 
