@@ -1,6 +1,7 @@
 package net.bunten.enderscape.client.hud;
 
 import net.bunten.enderscape.Enderscape;
+import net.bunten.enderscape.item.DaggerItem;
 import net.bunten.enderscape.item.MagniaAttractorItem;
 import net.bunten.enderscape.item.MirrorContext;
 import net.bunten.enderscape.item.MirrorItem;
@@ -146,9 +147,12 @@ public class NebuliteToolHud extends HudElement {
             invalid = !linked || !enoughFuel || !(sameDimension || transdimensionalAllowed);
             transdimensional = !invalid && !sameDimension && transdimensionalAllowed;
             updateDisplay(stack, context, true);
-        } else {
+        } else if (MagniaAttractorItem.is(stack)) {
             boolean active = MagniaAttractorItem.isEnabled(stack) && NebuliteToolItem.fuelExceedsCost(context);
             updateDisplay(stack, context, active);
+        } else {
+            invalid = !NebuliteToolItem.fuelExceedsCost(context);
+            updateDisplay(stack, context, true);
         }
 
         updateAnimations();
@@ -195,6 +199,6 @@ public class NebuliteToolHud extends HudElement {
     }
 
     private static boolean isSupportedTool(ItemStack stack) {
-        return MirrorItem.is(stack) || MagniaAttractorItem.is(stack);
+        return stack.getItem() instanceof DaggerItem || MirrorItem.is(stack) || MagniaAttractorItem.is(stack);
     }
 }
