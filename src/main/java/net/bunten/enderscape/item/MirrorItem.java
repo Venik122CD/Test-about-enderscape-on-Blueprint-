@@ -84,23 +84,6 @@ public class MirrorItem extends NebuliteToolItem {
     }
 
     @Override
-    public boolean displayHudWhen(NebuliteToolContext context) {
-        return true;
-    }
-
-    @Override
-    public boolean hideInvalidOutlineWhen(NebuliteToolContext context) {
-        MirrorContext mirrorContext = MirrorContext.of(context);
-
-        boolean isLinked = isLinked(context.stack());
-        boolean exceedsCost = fuelExceedsCost(context);
-        boolean sameDimension = isSameDimension(mirrorContext, mirrorContext.linkedDimension());
-        boolean hasTransdimensional = hasTransdimensional(mirrorContext);
-
-        return isLinked && exceedsCost && (sameDimension || (hasTransdimensional && isSameCoordinateScale(mirrorContext)));
-    }
-
-    @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         MirrorContext context = new MirrorContext(stack, world, player);
