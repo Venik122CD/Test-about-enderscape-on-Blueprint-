@@ -117,7 +117,6 @@ public class EnderscapeItems {
     //public static final Properties SHULKER_SHELL_PROPERTIES = new Item.Properties().component(DataComponents.EQUIPPABLE, Equippable.builder(ArmorType.HELMET.getSlot()).setEquipSound(EnderscapeItemSounds.SHULKER_SHELL_EQUIP).setAsset(ResourceKey.create(ROOT_ID, Enderscape.id("shulker_shell"))).build());
 
     public static final Supplier<Item> DRIFTER_SPAWN_EGG = registerSpawnEgg(EnderscapeEntities.DRIFTER, 0xE97FFF, 0x7554A8);
-    public static final Supplier<Item> DRIFTLET_SPAWN_EGG = registerSpawnEgg(EnderscapeEntities.DRIFTLET, 0xFFAAF9, 0xE97FFF);
     public static final Supplier<Item> RUBBLEMITE_SPAWN_EGG = registerSpawnEgg(EnderscapeEntities.RUBBLEMITE, 0xF2FDBE, 0xC1B687);
     public static final Supplier<Item> RUSTLE_SPAWN_EGG = registerSpawnEgg(EnderscapeEntities.RUSTLE, 15131119, 11905990);
 
