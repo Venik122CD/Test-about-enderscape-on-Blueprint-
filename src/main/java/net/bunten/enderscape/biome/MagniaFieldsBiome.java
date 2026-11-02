@@ -28,6 +28,8 @@ public class MagniaFieldsBiome {
                 .addFeature(UNDERGROUND_STRUCTURES, EnderscapePlacedFeatures.MAGNIA_ARCH)
 
                 .addFeature(SURFACE_STRUCTURES, EndPlacements.END_GATEWAY_RETURN)
+                .addFeature(SURFACE_STRUCTURES, EnderscapePlacedFeatures.MAGNIA_SPIKES)
+                .addFeature(SURFACE_STRUCTURES, EnderscapePlacedFeatures.LARGE_MAGNIA_SPIKES)
                 .addFeature(SURFACE_STRUCTURES, EnderscapePlacedFeatures.MAGNIA_TOWER)
 
                 .addFeature(UNDERGROUND_ORES, EnderscapePlacedFeatures.VOID_SHALE)
