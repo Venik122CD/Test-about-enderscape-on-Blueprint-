@@ -50,6 +50,8 @@ public class EnderscapePlacedFeatures {
     public static final ResourceKey<PlacedFeature> LARGE_CELESTIAL_CHANTERELLES = register("large_celestial_chanterelles");
     public static final ResourceKey<PlacedFeature> LARGE_MURUBLIGHT_CHANTERELLES = register("large_murublight_chanterelles");
     public static final ResourceKey<PlacedFeature> MAGNIA_ARCH = register("magnia_arches");
+    public static final ResourceKey<PlacedFeature> MAGNIA_SPIKES = register("magnia_spikes");
+    public static final ResourceKey<PlacedFeature> LARGE_MAGNIA_SPIKES = register("large_magnia_spikes");
     public static final ResourceKey<PlacedFeature> MAGNIA_TOWER = register("magnia_towers");
     public static final ResourceKey<PlacedFeature> MIRESTONE_BLOBS = register("mirestone_blobs");
     public static final ResourceKey<PlacedFeature> MIRESTONE_PILLARS = register("mirestone_pillars");
@@ -273,6 +275,24 @@ public class EnderscapePlacedFeatures {
     }
 
     private void registerMagniaFields(BootstrapContext<PlacedFeature> context) {
+        PlacementUtils.register(context, MAGNIA_SPIKES, get(context, EnderscapeConfiguredFeatures.MAGNIA_SPIKE),
+                CountPlacement.of(80),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
+                EnvironmentScanPlacement.scanningFor(Direction.UP, allOf(hasSturdyFace(Direction.DOWN), matchesBlocks(EnderscapeBlocks.REPULSIVE_MAGNIA.get())), ONLY_IN_AIR_PREDICATE, 12),
+                RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
+                BiomeFilter.biome()
+        );
+
+        PlacementUtils.register(context, LARGE_MAGNIA_SPIKES, get(context, EnderscapeConfiguredFeatures.LARGE_MAGNIA_SPIKE),
+                CountPlacement.of(40),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
+                EnvironmentScanPlacement.scanningFor(Direction.UP, allOf(hasSturdyFace(Direction.DOWN), matchesBlocks(EnderscapeBlocks.REPULSIVE_MAGNIA.get())), ONLY_IN_AIR_PREDICATE, 12),
+                RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
+                BiomeFilter.biome()
+        );
+
         PlacementUtils.register(context, UPWARD_ALLURING_MAGNIA_SPROUTS, get(context, EnderscapeConfiguredFeatures.UPWARD_ALLURING_MAGNIA_SPROUT),
                 aboveDepthsRange,
                 CountOnEveryLayerPlacement.of(12),
